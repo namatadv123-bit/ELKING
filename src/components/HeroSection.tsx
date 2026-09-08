@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useSiteSettings, type SiteSettings } from "@/hooks/useSiteSettings";
 import { optimizeImageUrl } from "@/utils/imageOptimizer";
 
-const defaultHeroImage = "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=1200";
+const defaultHeroImage = "/images/product-1.jpg";
 
 const HeroSection = () => {
   const { data } = useSiteSettings();
@@ -31,22 +31,22 @@ const HeroSection = () => {
           >
             <span className="w-2 h-2 rounded-full bg-primary" />
             <span className="text-primary tracking-[0.1em] text-xs sm:text-sm font-semibold uppercase">
-              التجربة العطرية الفاخرة
+              شركة الكينج
             </span>
           </motion.div>
           
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-bold text-foreground leading-[1.1] mb-4">
-            تميّزك يبدأ من عطرك
-            <span className="text-transparent bg-clip-text bg-gradient-to-l from-primary via-yellow-300 to-yellow-600 font-medium block mt-2">
-              فخامة تُترك أثرًا
+            لليجن والكولون
+            <span className="text-transparent bg-clip-text bg-gradient-to-l from-primary via-blue-400 to-red-500 font-medium block mt-2">
+              نعومة وراحة تدوم
             </span>
             <span className="text-2xl sm:text-3xl font-light text-muted-foreground block mt-3 tracking-widest">
-              📍 المنصورة
+              📍 مقاسات 2-16 | ألوان متنوعة
             </span>
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
-            حضورٌ لا يُنسى — اكتشف تشكيلتنا الحصرية من العطور الفاخرة التي تمزج بين الأصالة الشرقية والرقي الفرنسي، لتمنحك شخصية عطرية لا تُقاوم.
+            خبرة سورية بأيدٍ مصرية. متجر ملابس أطفال وصغار متخصص في تقديم أفضل خامات الليجن والكولون البناتي لتوفير أقصى درجات الراحة والأناقة لأطفالكم.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start items-center">
@@ -77,15 +77,15 @@ const HeroSection = () => {
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
         >
           {/* Replaced heavy blur overlays with optimized CSS radial gradients */}
-          <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%)' }} />
-          <div className="absolute -bottom-5 -left-10 w-40 h-40 rounded-full" style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%)' }} />
+          <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: 'radial-gradient(circle, rgba(0,51,204,0.2) 0%, transparent 70%)' }} />
+          <div className="absolute -bottom-5 -left-10 w-40 h-40 rounded-full" style={{ background: 'radial-gradient(circle, rgba(204,0,0,0.2) 0%, transparent 70%)' }} />
           
           <div className="relative w-full max-w-[400px] lg:max-w-[450px] aspect-[4/5] rounded-[2rem] overflow-hidden p-2 glass-card group">
             <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent z-10" />
               <img
                 src={optimizeImageUrl(heroImage, 1200)}
-                alt="أحمد الماسي"
+                alt="شركة الكينج"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 fetchPriority="high"
               />

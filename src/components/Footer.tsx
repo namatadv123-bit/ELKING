@@ -41,7 +41,7 @@ const Footer = () => {
   return (
     <footer className="bg-white dark:bg-background border-t border-border pt-20 pb-8 relative overflow-hidden">
       {/* Decorative Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(ellipse, rgba(212,175,55,0.05) 0%, transparent 70%)' }} />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(ellipse, rgba(0,51,204,0.05) 0%, transparent 70%)' }} />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16 mb-16">
@@ -56,11 +56,11 @@ const Footer = () => {
                 />
               </div>
               <span className="text-2xl font-bold text-foreground">
-                {settings?.site_name || "أحمد الماسي"}
+                {settings?.site_name || "شركة الكينج"}
               </span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs font-light">
-              {settings?.site_description || "شركة رائدة في مجال العطور الفاخرة. نقدم أجود أنواع العطور الشرقية والفرنسية والعود بأسعار تنافسية."}
+              {settings?.site_description || "متجر متخصص في ملابس الأطفال والصغار. نقدم أجود خامات الليجن والكولون البناتي لضمان راحة طفلتك."}
             </p>
           </div>
 
@@ -134,10 +134,15 @@ const Footer = () => {
         {/* Bottom */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-right">
           <p className="text-muted-foreground text-sm font-light">
-            © {new Date().getFullYear()} {settings?.site_name || "أحمد الماسي"}. جميع الحقوق محفوظة.
+            © {new Date().getFullYear()} {settings?.site_name || "شركة الكينج"}. جميع الحقوق محفوظة.
           </p>
+          
+          <p className="text-muted-foreground text-sm font-light">
+            صُنع بكل فخر بواسطة <a href="https://brand1me.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">Brand Me</a>
+          </p>
+
           <div className="flex items-center gap-4 text-sm text-muted-foreground font-light">
-            <a href="#" className="hover:text-primary transition-colors">سياسة الخصوصية</a>
+            <Link to="/privacy-policy" className="hover:text-primary transition-colors">سياسة الخصوصية</Link>
             <a href="#" className="hover:text-primary transition-colors">الشروط والأحكام</a>
           </div>
         </div>

@@ -33,6 +33,7 @@ const AdminServices = lazy(() => import("./pages/admin/AdminServices"));
 const AdminSettings = lazy(() => import("./pages/admin/AdminSettings"));
 const AdminTestimonials = lazy(() => import("./pages/admin/AdminTestimonials"));
 const AdminAnalytics = lazy(() => import("./pages/admin/AdminAnalytics"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -81,6 +82,7 @@ const AppContent = () => {
               <Route path="/articles" element={<Articles />} />
               <Route path="/articles/:slug" element={<ArticleDetail />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               
               {/* Admin Auth */}
               <Route path="/admin/login" element={<AdminLogin />} />

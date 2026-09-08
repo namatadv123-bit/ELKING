@@ -14,9 +14,9 @@ const ContactSection = () => {
   const { data: settings } = useSiteSettings();
 
   const contactInfo = [
-    { icon: Phone, title: "اتصل بنا", value: settings?.whatsapp || "+20 123 456 7890", dir: "ltr" as const },
-    { icon: Mail, title: "البريد الإلكتروني", value: settings?.email || "info.ganna1@gmail.com" },
-    { icon: MapPin, title: "العنوان", value: settings?.address || "المنصورة" },
+    { icon: Phone, title: "اتصل بنا", value: settings?.whatsapp || "01006395252", dir: "ltr" as const },
+    { icon: Mail, title: "البريد الإلكتروني", value: settings?.email || "contact@alking.com" },
+    { icon: MapPin, title: "العنوان", value: settings?.address || "مصر" },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {

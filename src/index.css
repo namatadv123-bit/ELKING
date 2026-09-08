@@ -12,8 +12,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
     
-    /* Modern vibrant gold/amber for primary */
-    --primary: 43 74% 50%;
+    /* Modern royal blue for primary matching the logo */
+    --primary: 220 90% 45%;
     --primary-foreground: 0 0% 98%;
     
     --secondary: 210 40% 96.1%;
@@ -22,19 +22,19 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
     
-    --accent: 43 74% 50%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 85% 50%;
+    --accent-foreground: 0 0% 98%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 43 74% 50%;
+    --ring: 220 90% 45%;
     
     --radius: 1rem;
     
-    --premium-gradient: linear-gradient(135deg, hsl(43 74% 50%), hsl(30 80% 45%), hsl(15 90% 50%));
+    --premium-gradient: linear-gradient(135deg, hsl(220 90% 45%), hsl(230 80% 40%), hsl(0 85% 50%));
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: rgba(255, 255, 255, 0.5);
   }
@@ -48,8 +48,8 @@
     --popover: 222 47% 7%;
     --popover-foreground: 210 40% 98%;
     
-    /* Neon/Rich Gold for dark mode */
-    --primary: 43 100% 60%;
+    /* Royal Blue for dark mode */
+    --primary: 220 100% 60%;
     --primary-foreground: 222.2 47.4% 11.2%;
     
     --secondary: 217.2 32.6% 17.5%;
@@ -58,7 +58,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
     
-    --accent: 43 100% 60%;
+    --accent: 0 100% 60%;
     --accent-foreground: 210 40% 98%;
     
     --destructive: 0 62.8% 30.6%;
@@ -66,7 +66,7 @@
     
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 43 100% 60%;
+    --ring: 220 100% 60%;
 
     --glass-bg: rgba(10, 10, 15, 0.5);
     --glass-border: rgba(255, 255, 255, 0.08);
@@ -84,8 +84,8 @@
   body {
     @apply bg-background text-foreground font-cairo antialiased selection:bg-primary/30;
     /* Adding subtle mesh gradient for dark mode and light mode */
-    background-image: radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.05), transparent 25%),
-                      radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.05), transparent 25%);
+    background-image: radial-gradient(circle at 15% 50%, rgba(0, 51, 204, 0.05), transparent 25%),
+                      radial-gradient(circle at 85% 30%, rgba(204, 0, 0, 0.05), transparent 25%);
     background-attachment: fixed;
   }
 }
@@ -111,10 +111,10 @@
   }
   .glass-card:hover {
     @apply shadow-xl -translate-y-1.5 border-primary/40;
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1), 0 0 20px -5px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1), 0 0 20px -5px rgba(0, 51, 204, 0.2);
   }
   .dark .glass-card:hover {
-    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5), 0 0 25px -5px rgba(255, 180, 0, 0.15);
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5), 0 0 25px -5px rgba(51, 153, 255, 0.15);
   }
   .font-en {
     @apply font-outfit tracking-wide;

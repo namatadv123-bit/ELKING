@@ -55,7 +55,17 @@ ${orderDetails.totalPrice ? `الإجمالي: ${orderDetails.totalPrice} ج.م`
     );
 
     const responses = await Promise.all(promises);
-    const allSuccess = responses.every(res => res.ok);
+    
+    // Check responses and log errors if any
+    let allSuccess = true;
+    for (let i = 0; i < responses.length; i++) {
+      const res = responses[i];
+      if (!res.ok) {
+        allSuccess = false;
+        const errorData = await res.text();
+        console.error(`Web3Forms Error for key ${accessKeys[i]}:`, res.status, errorData);
+      }
+    }
     
     return allSuccess;
   } catch (error) {

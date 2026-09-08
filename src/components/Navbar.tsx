@@ -133,7 +133,7 @@ const Navbar = () => {
               />
             </div>
             <span className="text-2xl font-black tracking-tighter font-cairo text-primary drop-shadow-sm">
-              أحمد الماسي
+              شركة الكينج
             </span>
           </Link>
 

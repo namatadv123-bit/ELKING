@@ -2,10 +2,10 @@ const SchemaMarkup = () => {
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "أحمد الماسي",
-    url: typeof window !== 'undefined' ? window.location.origin : "https://ahmedalmasi.com",
-    logo: "https://ahmedalmasi.com/logo-main.jpg",
-    description: "أحمد الماسي تقدم لك أندر وأفخم العطور التي تعكس شخصيتك بأعلى جودة وأفضل الأسعار",
+    name: "شركة الكينج",
+    url: typeof window !== 'undefined' ? window.location.origin : "https://alking.com",
+    logo: "https://alking.com/logo-main.jpg",
+    description: "شركة الكينج متجر متخصص في تقديم أجود خامات الليجن والكولون البناتي",
     sameAs: [],
     contactPoint: {
       "@type": "ContactPoint",
@@ -17,11 +17,11 @@ const SchemaMarkup = () => {
   const webSiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "أحمد الماسي",
-    url: typeof window !== 'undefined' ? window.location.origin : "https://ahmedalmasi.com",
+    name: "شركة الكينج",
+    url: typeof window !== 'undefined' ? window.location.origin : "https://alking.com",
     potentialAction: {
       "@type": "SearchAction",
-      target: `${typeof window !== 'undefined' ? window.location.origin : "https://ahmedalmasi.com"}/products?q={search_term_string}`,
+      target: `${typeof window !== 'undefined' ? window.location.origin : "https://alking.com"}/products?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   };

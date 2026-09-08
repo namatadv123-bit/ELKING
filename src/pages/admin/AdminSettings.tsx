@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -93,7 +93,7 @@ const AdminSettings = () => {
   useEffect(() => {
     if (settings) {
       setForm({
-        site_name: settings.site_name || "شركة الكينج",
+        site_name: settings.site_name || "مصنع الكينج",
         site_description: settings.site_description || "",
         logo_url: settings.logo_url || "",
         favicon_url: settings.favicon_url || "",
@@ -366,3 +366,4 @@ const AdminSettings = () => {
 };
 
 export default AdminSettings;
+

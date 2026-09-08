@@ -16,7 +16,7 @@ interface ProductCardProps {
     unit?: string | null;
     stock_quantity?: number | null;
     image_url: string | null;
-    categories: { name: string; slug: string } | null;
+    categories?: { name: string; slug: string } | null;
     slug?: string | null;
   };
   onOrder?: () => void;

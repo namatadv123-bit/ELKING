@@ -75,7 +75,7 @@ const FeaturedProducts = () => {
             أحدث الإصدارات
           </span>
           <h2 className="text-3xl md:text-4xl font-cairo font-extrabold text-foreground">
-            عطور مختارة لك
+            منتجات مختارة لك
           </h2>
         </div>
         <Link to="/products" className="hidden md:flex items-center gap-2 font-cairo text-muted-foreground hover:text-primary transition-colors">

@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+﻿import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 
 export interface SiteFeatureItem {
@@ -37,7 +37,7 @@ export interface SiteSettings {
 }
 
 const DEFAULT_SETTINGS: SiteSettings = {
-  site_name: "شركة الكينج",
+  site_name: "مصنع الكينج",
   logo_url: "/logo/logo.jpg",
   favicon_url: "/logo/logo.jpg",
   whatsapp: "01009119387",
@@ -76,3 +76,4 @@ export const useSiteSettings = () => {
     staleTime: 1000 * 30, // 30 seconds
   });
 };
+

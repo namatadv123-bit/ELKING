@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -175,7 +175,7 @@ const AdminOrders = () => {
           </div>
 
           <div class="footer">
-            هذا المستند يعتبر فاتورة مبيعات رسمية وإذن تسليم من مخازن شركة الكينج.
+            هذا المستند يعتبر فاتورة مبيعات رسمية وإذن تسليم من مخازن مصنع الكينج.
           </div>
           <script>
             window.onload = function() {
@@ -338,3 +338,4 @@ const AdminOrders = () => {
 };
 
 export default AdminOrders;
+

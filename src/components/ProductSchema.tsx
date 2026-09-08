@@ -19,7 +19,7 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, finalPrice }) =>
     "@type": "Product",
     "name": product.name,
     "image": product.image_url ? [product.image_url] : [],
-    "description": product.description || `عطر ${product.name} الأصلي`,
+    "description": product.description || `منتج ${product.name} الأصلي`,
     "sku": product.id,
     "brand": {
       "@type": "Brand",

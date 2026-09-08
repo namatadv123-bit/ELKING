@@ -1,4 +1,4 @@
-export const sendOrderEmail = async (orderDetails: {
+﻿export const sendOrderEmail = async (orderDetails: {
   customerName: string;
   customerPhone: string;
   customerAddress?: string;
@@ -18,7 +18,7 @@ export const sendOrderEmail = async (orderDetails: {
     .join("\n");
 
   const emailMessage = `
-  🎉 طلب جديد من موقع شركة الكينج!
+  🎉 طلب جديد من موقع مصنع الكينج!
 
 تفاصيل العميل:
 ----------------
@@ -46,7 +46,7 @@ ${orderDetails.totalPrice ? `الإجمالي: ${orderDetails.totalPrice} ج.م`
         body: JSON.stringify({
           access_key: key,
           subject: `طلب جديد من ${orderDetails.customerName}`,
-          from_name: "متجر شركة الكينج",
+          from_name: "متجر مصنع الكينج",
           name: orderDetails.customerName || "عميل",
           email: orderDetails.customerEmail || "no-reply@ahmedalmasi.com",
           message: emailMessage,
@@ -73,3 +73,4 @@ ${orderDetails.totalPrice ? `الإجمالي: ${orderDetails.totalPrice} ج.م`
     return false;
   }
 };
+

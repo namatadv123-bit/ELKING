@@ -129,7 +129,7 @@ const Products = () => {
                 <div className="relative flex-1">
                   <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input
-                    placeholder="ابحث عن عطر..."
+                    placeholder="ابحث عن منتج..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pr-10 h-11 md:h-12 rounded-xl bg-card border-border font-cairo text-sm md:text-base"

@@ -1,11 +1,11 @@
-const SchemaMarkup = () => {
+﻿const SchemaMarkup = () => {
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "شركة الكينج",
+    name: "مصنع الكينج",
     url: typeof window !== 'undefined' ? window.location.origin : "https://alking.com",
     logo: "https://alking.com/logo-main.jpg",
-    description: "شركة الكينج متجر متخصص في تقديم أجود خامات الليجن والكولون البناتي",
+    description: "مصنع الكينج متجر متخصص في تقديم أجود خامات الليجن والكولون البناتي",
     sameAs: [],
     contactPoint: {
       "@type": "ContactPoint",
@@ -17,7 +17,7 @@ const SchemaMarkup = () => {
   const webSiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "شركة الكينج",
+    name: "مصنع الكينج",
     url: typeof window !== 'undefined' ? window.location.origin : "https://alking.com",
     potentialAction: {
       "@type": "SearchAction",
@@ -70,3 +70,4 @@ const SchemaMarkup = () => {
 };
 
 export default SchemaMarkup;
+

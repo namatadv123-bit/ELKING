@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { useSiteSettings, type SiteSettings } from "@/hooks/useSiteSettings";
 
 const Footer = () => {
@@ -56,7 +56,7 @@ const Footer = () => {
                 />
               </div>
               <span className="text-2xl font-bold text-foreground">
-                {settings?.site_name || "شركة الكينج"}
+                {settings?.site_name || "مصنع الكينج"}
               </span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs font-light">
@@ -134,7 +134,7 @@ const Footer = () => {
         {/* Bottom */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-right">
           <p className="text-muted-foreground text-sm font-light">
-            © {new Date().getFullYear()} {settings?.site_name || "شركة الكينج"}. جميع الحقوق محفوظة.
+            © {new Date().getFullYear()} {settings?.site_name || "مصنع الكينج"}. جميع الحقوق محفوظة.
           </p>
           
           <p className="text-muted-foreground text-sm font-light">
@@ -152,3 +152,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

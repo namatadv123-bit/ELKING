@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+﻿import { useParams, Link } from "react-router-dom";
 import { staticProducts, Product } from "@/data/products";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -98,13 +98,13 @@ const ProductDetail = () => {
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>{p.name} - شركة الكينج لليجن والكولون</title>
-        <meta name="description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من شركة الكينج.`} />
-        <meta property="og:title" content={`${p.name} - شركة الكينج لليجن والكولون`} />
-        <meta property="og:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من شركة الكينج.`} />
+        <title>{p.name} - مصنع الكينج لليجن والكولون</title>
+        <meta name="description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من مصنع الكينج.`} />
+        <meta property="og:title" content={`${p.name} - مصنع الكينج لليجن والكولون`} />
+        <meta property="og:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من مصنع الكينج.`} />
         <meta property="og:image" content={mainImage || '/images/product-1.jpg'} />
-        <meta name="twitter:title" content={`${p.name} - شركة الكينج لليجن والكولون`} />
-        <meta name="twitter:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من شركة الكينج.`} />
+        <meta name="twitter:title" content={`${p.name} - مصنع الكينج لليجن والكولون`} />
+        <meta name="twitter:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من مصنع الكينج.`} />
         <meta name="twitter:image" content={mainImage || '/images/product-1.jpg'} />
       </Helmet>
       <ProductSchema product={p} finalPrice={finalPrice} />
@@ -271,3 +271,4 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+

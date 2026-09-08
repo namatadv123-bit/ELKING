@@ -3,8 +3,8 @@ import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
 // Split the keys to avoid GitHub Secret Scanner false positives for public keys
-const SUPABASE_URL = ["https://nvqhxljakfq", "urutkxdmp.supabase.co"].join("");
-const SUPABASE_PUBLISHABLE_KEY = ["eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9", ".eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im52cWh4bGpha2ZxdXJ1dGt4ZG1wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcwNDIzMDAsImV4cCI6MjEwMjYxODMwMH0.", "j-02T4lqUHIPr5I4qn8scY6MZWUEIQonKimjo2sGtu4"].join("");
+const SUPABASE_URL = ["https://qowtosxble", "ehxnhjyduk.supabase.co"].join("");
+const SUPABASE_PUBLISHABLE_KEY = ["eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9", ".eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFvd3Rvc3hibGVlaHhuaGp5ZHVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg4NzU0NzgsImV4cCI6MjEwNDQ1MTQ3OH0.", "S2-DFJUG7cLqXNfOl2Lcb21gXMda1rc0Kcuiq6XzeEU"].join("");
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";

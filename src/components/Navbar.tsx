@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { Menu, X, ShoppingCart, Moon, Sun, ChevronUp } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
@@ -118,22 +118,27 @@ const Navbar = () => {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "glass shadow-xl border-b border-white/5"
+            ? "glass shadow-2xl border-b border-primary/10"
             : "bg-transparent border-b border-transparent"
         }`}
       >
         <div className="container mx-auto px-4 flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="relative w-10 h-10 overflow-hidden transform group-hover:scale-110 transition-transform duration-300">
+        {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <div
+              className="relative w-11 h-11 rounded-xl overflow-hidden transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
+              style={{ boxShadow: "0 4px 15px rgba(0,51,204,0.25)" }}
+            >
               <img 
                 src={settings?.logo_url || "/logo/logo.jpg"} 
                 alt="Logo" 
                 className="w-full h-full object-contain"
               />
             </div>
-            <span className="text-2xl font-black tracking-tighter font-cairo text-primary drop-shadow-sm">
-              شركة الكينج
+            <span
+              className="text-xl font-black tracking-tight text-gradient transition-all duration-300"
+            >
+              مصنع الكينج
             </span>
           </Link>
 
@@ -340,3 +345,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

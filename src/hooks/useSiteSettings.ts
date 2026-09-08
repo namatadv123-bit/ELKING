@@ -1,4 +1,4 @@
-﻿import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 
 export interface SiteFeatureItem {
@@ -66,9 +66,9 @@ export const useSiteSettings = () => {
         ...settings 
       };
 
-      // Force correct whatsapp number if the old one is still in the DB
-      if (finalSettings.whatsapp === "01000592469") {
-        finalSettings.whatsapp = "01008246179";
+      // Force correct whatsapp number
+      if (!finalSettings.whatsapp || finalSettings.whatsapp !== "01006395252") {
+        finalSettings.whatsapp = "01006395252";
       }
 
       return finalSettings;

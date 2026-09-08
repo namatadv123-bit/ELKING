@@ -127,7 +127,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center gap-2 group">
             <div className="relative w-10 h-10 overflow-hidden transform group-hover:scale-110 transition-transform duration-300">
               <img 
-                src={settings?.logo_url || "/logo-main.jpg"} 
+                src={settings?.logo_url || "/logo/logo.jpg"} 
                 alt="Logo" 
                 className="w-full h-full object-contain"
               />

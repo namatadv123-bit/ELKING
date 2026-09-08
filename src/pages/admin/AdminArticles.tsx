@@ -21,7 +21,7 @@ interface ArticleForm {
   author: string;
 }
 
-const emptyForm: ArticleForm = { title: "", slug: "", excerpt: "", content: "", image_url: "", author: "أحمد الماسي" };
+const emptyForm: ArticleForm = { title: "", slug: "", excerpt: "", content: "", image_url: "", author: "فريق الكينج" };
 
 interface Article extends ArticleForm {
   id: string;
@@ -55,7 +55,7 @@ const AdminArticles = () => {
         excerpt: form.excerpt || null,
         content: form.content,
         image_url: form.image_url || null,
-        author: form.author || "أحمد الماسي",
+        author: form.author || "فريق الكينج",
         updated_at: new Date().toISOString(),
       };
       if (editingId) {

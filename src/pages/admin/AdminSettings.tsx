@@ -93,7 +93,7 @@ const AdminSettings = () => {
   useEffect(() => {
     if (settings) {
       setForm({
-        site_name: settings.site_name || "أحمد الماسي",
+        site_name: settings.site_name || "شركة الكينج",
         site_description: settings.site_description || "",
         logo_url: settings.logo_url || "",
         favicon_url: settings.favicon_url || "",

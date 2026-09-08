@@ -18,7 +18,7 @@ export const sendOrderEmail = async (orderDetails: {
     .join("\n");
 
   const emailMessage = `
-🎉 طلب جديد من موقع أحمد الماسي!
+  🎉 طلب جديد من موقع شركة الكينج!
 
 تفاصيل العميل:
 ----------------
@@ -46,7 +46,7 @@ ${orderDetails.totalPrice ? `الإجمالي: ${orderDetails.totalPrice} ج.م`
         body: JSON.stringify({
           access_key: key,
           subject: `طلب جديد من ${orderDetails.customerName}`,
-          from_name: "متجر أحمد الماسي",
+          from_name: "متجر شركة الكينج",
           name: orderDetails.customerName || "عميل",
           email: orderDetails.customerEmail || "no-reply@ahmedalmasi.com",
           message: emailMessage,

@@ -98,14 +98,14 @@ const ProductDetail = () => {
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>{p.name} - أحمد الماسي للعطور</title>
-        <meta name="description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من أحمد الماسي.`} />
-        <meta property="og:title" content={`${p.name} - أحمد الماسي للعطور`} />
-        <meta property="og:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من أحمد الماسي.`} />
-        <meta property="og:image" content={mainImage || 'https://ahmedalmasi.com/hero-main.jpg'} />
-        <meta name="twitter:title" content={`${p.name} - أحمد الماسي للعطور`} />
-        <meta name="twitter:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من أحمد الماسي.`} />
-        <meta name="twitter:image" content={mainImage || 'https://ahmedalmasi.com/hero-main.jpg'} />
+        <title>{p.name} - شركة الكينج لليجن والكولون</title>
+        <meta name="description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من شركة الكينج.`} />
+        <meta property="og:title" content={`${p.name} - شركة الكينج لليجن والكولون`} />
+        <meta property="og:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من شركة الكينج.`} />
+        <meta property="og:image" content={mainImage || '/images/product-1.jpg'} />
+        <meta name="twitter:title" content={`${p.name} - شركة الكينج لليجن والكولون`} />
+        <meta name="twitter:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من شركة الكينج.`} />
+        <meta name="twitter:image" content={mainImage || '/images/product-1.jpg'} />
       </Helmet>
       <ProductSchema product={p} finalPrice={finalPrice} />
       <Navbar />

@@ -37,13 +37,13 @@ export interface SiteSettings {
 }
 
 const DEFAULT_SETTINGS: SiteSettings = {
-  site_name: "احمد الماسي العطور",
-  logo_url: "/logo/logo'.jpg",
-  favicon_url: "/logo/logo'.jpg",
-  whatsapp: "01008246179",
-  facebook: "https://www.facebook.com/share/1cJnbbT8xc/?mibextid=wwXIfr",
-  instagram: "https://www.instagram.com/almassiperfume?igsh=MTRpZzlxcHYzeHMzdQ%3D%3D&igsi=MTRpZzlxcHYzeHMzdQ%3D%3D&utm_source=qr",
-  tiktok: "https://www.tiktok.com/@almassiperfume",
+  site_name: "شركة الكينج",
+  logo_url: "/logo/logo.jpg",
+  favicon_url: "/logo/logo.jpg",
+  whatsapp: "01009119387",
+  facebook: "",
+  instagram: "",
+  tiktok: "",
 };
 
 export const useSiteSettings = () => {

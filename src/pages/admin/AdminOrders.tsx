@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+﻿import { useState, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -73,11 +73,11 @@ const AdminOrders = () => {
     },
   });
 
-  const filtered = orders?.filter(o => {
+  const filtered = useMemo(() => orders?.filter(o => {
     const matchSearch = o.customer_name.toLowerCase().includes(search.toLowerCase()) || o.product_name.toLowerCase().includes(search.toLowerCase());
     const matchStatus = statusFilter === "all" || o.status === statusFilter;
     return matchSearch && matchStatus;
-  }) || [];
+  }) || [], [orders, search, statusFilter]);
 
   const handlePrint = (order: AdminOrder) => {
     const printWindow = window.open('', '_blank');

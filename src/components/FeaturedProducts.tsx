@@ -101,6 +101,9 @@ const FeaturedProducts = () => {
                     <img 
                       src={category.image_url} 
                       alt={category.name} 
+                      loading="lazy"
+                      width={128}
+                      height={128}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />

@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import ProductSchema from "@/components/ProductSchema";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import DOMPurify from "dompurify";
 
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
@@ -54,6 +55,7 @@ const ProductDetail = () => {
   const similarProducts = p ? staticProducts
     .filter(item => item.category_id === p.category_id && item.id !== p.id)
     .slice(0, 4) : [];
+  const mainImage = selectedImage || p?.image_url;
 
   if (isLoading) {
     return (
@@ -82,7 +84,6 @@ const ProductDetail = () => {
       </div>
     );
   }
-  const mainImage = selectedImage || p?.image_url;
   const gallery = p?.image_urls && Array.isArray(p.image_urls) 
     ? [p.image_url, ...p.image_urls].filter((url): url is string => !!url) 
     : [p?.image_url].filter((url): url is string => !!url);
@@ -217,7 +218,7 @@ const ProductDetail = () => {
                 <div 
                   className="prose prose-lg dark:prose-invert max-w-none mb-8 font-cairo text-muted-foreground leading-relaxed prose-headings:text-foreground prose-h2:text-2xl prose-h3:text-xl prose-h3:text-primary prose-strong:text-foreground prose-p:mb-4 prose-ul:mb-4 prose-ul:list-disc prose-ul:pl-4 prose-li:mb-2 whitespace-pre-line"
                   dir="auto"
-                  dangerouslySetInnerHTML={{ __html: p.description }}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(p.description) }}
                 />
               )}
 

@@ -1,15 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { createRequire } from "module";
-
-const require = createRequire(import.meta.url);
-const prerender = require("vite-plugin-prerender");
 import { componentTagger } from "lovable-tagger";
 
-const Renderer = prerender.PuppeteerRenderer;
-
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   base: process.env.VITE_BASE_PATH || "/",
   server: {
@@ -27,9 +20,30 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-    dedupe: ["react", "react-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
+    dedupe: ["react", "react-dom", "react-router-dom", "react/jsx-runtime", "react/jsx-dev-runtime"],
   },
   build: {
-    sourcemap: true,
+    sourcemap: mode === "development",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "react-vendor": ["react", "react-dom", "react-router-dom"],
+          "radix-vendor": [
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-dropdown-menu",
+            "@radix-ui/react-select",
+            "@radix-ui/react-tabs",
+            "@radix-ui/react-tooltip",
+            "@radix-ui/react-popover",
+            "@radix-ui/react-checkbox",
+            "@radix-ui/react-label",
+            "@radix-ui/react-slot",
+            "@radix-ui/react-separator",
+          ],
+          "motion-vendor": ["framer-motion"],
+          "charts-vendor": ["recharts"],
+        },
+      },
+    },
   },
 }));

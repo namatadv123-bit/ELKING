@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -53,8 +53,8 @@ const AdminMessages = () => {
     },
   });
 
-  const filtered = messages?.filter(m => m.name.toLowerCase().includes(search.toLowerCase()) || m.message.toLowerCase().includes(search.toLowerCase())) || [];
-  const unread = messages?.filter(m => !m.is_read).length || 0;
+  const filtered = useMemo(() => messages?.filter(m => m.name.toLowerCase().includes(search.toLowerCase()) || m.message.toLowerCase().includes(search.toLowerCase())) || [], [messages, search]);
+  const unread = useMemo(() => messages?.filter(m => !m.is_read).length || 0, [messages]);
 
   const openMessage = (m: ContactMessage) => {
     setSelectedMsg(m);

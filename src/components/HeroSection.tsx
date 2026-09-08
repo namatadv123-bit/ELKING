@@ -185,6 +185,8 @@ const HeroSection = () => {
               <img
                 src={optimizeImageUrl(heroImage, 900)}
                 alt="مصنع الكينج"
+                width={900}
+                height={1125}
                 className="w-full h-full object-cover"
                 fetchPriority="high"
               />

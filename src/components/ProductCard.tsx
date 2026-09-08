@@ -1,6 +1,6 @@
+import { memo, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ShoppingCart, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
@@ -23,19 +23,34 @@ interface ProductCardProps {
   linkTo?: string;
 }
 
-const ProductCard = ({ product, onOrder, linkTo }: ProductCardProps) => {
+const stripHtml = (html: string) => html.replace(/<[^>]*>?/gm, "");
+
+const ProductCard = memo(({ product, onOrder, linkTo }: ProductCardProps) => {
   const href = linkTo || `/products/${product.slug || product.id}`;
   const { addItem } = useCart();
-  
-  const discount = product.discount_percentage || 0;
-  const finalPrice = discount > 0 ? product.price - (product.price * discount / 100) : product.price;
 
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    addItem({ id: product.id, name: product.name, price: finalPrice, image_url: product.image_url });
-    toast.success(`تمت إضافة "${product.name}" للسلة`);
-  };
+  const discount = product.discount_percentage || 0;
+  const finalPrice = useMemo(
+    () => (discount > 0 ? product.price - (product.price * discount) / 100 : product.price),
+    [product.price, discount]
+  );
+
+  const optimizedImage = useMemo(() => optimizeImageUrl(product.image_url), [product.image_url]);
+
+  const plainDescription = useMemo(
+    () => (product.description ? stripHtml(product.description) : null),
+    [product.description]
+  );
+
+  const handleAddToCart = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      addItem({ id: product.id, name: product.name, price: finalPrice, image_url: product.image_url });
+      toast.success(`تمت إضافة "${product.name}" للسلة`);
+    },
+    [addItem, product.id, product.name, product.image_url, finalPrice]
+  );
 
   return (
     <motion.div
@@ -48,9 +63,11 @@ const ProductCard = ({ product, onOrder, linkTo }: ProductCardProps) => {
         <div className="aspect-square w-full bg-black/40 rounded-xl relative overflow-hidden group">
           {product.image_url ? (
             <img
-              src={optimizeImageUrl(product.image_url)}
+              src={optimizedImage}
               alt={product.name}
               loading="lazy"
+              width="400"
+              height="400"
               className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-transform duration-700 ease-out"
             />
           ) : (
@@ -88,10 +105,10 @@ const ProductCard = ({ product, onOrder, linkTo }: ProductCardProps) => {
             <h3 className="text-sm md:text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-1">
               {product.name}
             </h3>
-            {product.description && (
+            {plainDescription && (
               <p className="text-[11px] md:text-xs text-muted-foreground/80 font-light mb-4 line-clamp-2 leading-relaxed"
-                 title={product.description.replace(/<[^>]*>?/gm, '')}>
-                {product.description.replace(/<[^>]*>?/gm, '')}
+                 title={plainDescription}>
+                {plainDescription}
               </p>
             )}
           </div>
@@ -115,6 +132,8 @@ const ProductCard = ({ product, onOrder, linkTo }: ProductCardProps) => {
       </Link>
     </motion.div>
   );
-};
+});
+
+ProductCard.displayName = "ProductCard";
 
 export default ProductCard;

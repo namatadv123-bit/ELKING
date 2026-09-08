@@ -1,42 +1,41 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 
 const AnalyticsTracker = () => {
   const location = useLocation();
+  const lastPathRef = useRef(location.pathname);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const logPageView = async () => {
+    if (lastPathRef.current === location.pathname) return;
+    lastPathRef.current = location.pathname;
+
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+
+    debounceRef.current = setTimeout(async () => {
       try {
-        // Simple client-side "visitor ID" to help count unique visitors
         let visitorId = localStorage.getItem("ganna_visitor_id");
         if (!visitorId) {
-          visitorId = Math.random().toString(36).substring(2, 15);
+          visitorId = crypto.randomUUID?.() || Math.random().toString(36).substring(2, 15);
           localStorage.setItem("ganna_visitor_id", visitorId);
         }
 
-        const { error } = await supabase.from("page_views").insert({
+        await supabase.from("page_views").insert({
           path: location.pathname,
           referrer: document.referrer || "direct",
           user_agent: navigator.userAgent,
-          ip_hash: visitorId, // Using the local ID as a unique identifier
+          ip_hash: visitorId,
         });
-
-        if (error) {
-          // Fail silently in production to not disturb the user
-          console.error("Analytics log error:", error);
-        }
-      } catch (e) {
-        console.error("Analytics failed:", e);
+      } catch {
+        // Fail silently
       }
-    };
+    }, 2000);
 
-    // Delay slightly to ensure page title/context is ready
-    const timer = setTimeout(logPageView, 1000);
-    return () => clearTimeout(timer);
+    return () => { if (debounceRef.current) clearTimeout(debounceRef.current); };
   }, [location.pathname]);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default AnalyticsTracker;

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -31,6 +32,38 @@ const AdminAnalytics = () => {
     },
   });
 
+  const chartData = useMemo(() => {
+    if (!views || views.length === 0) return null;
+
+    const totalViews = views.length;
+    const uniqueVisitors = new Set(views.map(v => v.ip_hash)).size;
+
+    const last7Days = [...Array(7)].map((_, i) => {
+      const d = subDays(new Date(), i);
+      const dayName = format(d, "EEEE", { locale: ar });
+      const count = views.filter(v => {
+        const viewDate = new Date(v.created_at);
+        return viewDate.toDateString() === d.toDateString();
+      }).length;
+      return { name: dayName, views: count };
+    }).reverse();
+
+    const pathCounts: Record<string, number> = {};
+    views.forEach(v => { pathCounts[v.path] = (pathCounts[v.path] || 0) + 1; });
+    const topPages = Object.entries(pathCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([path, count]) => ({ path: path === "/" ? "الرئيسية" : path, count }));
+
+    const mobileCount = views.filter(v => /mobile|android|iphone/i.test(v.user_agent)).length;
+    const deviceData = [
+      { name: "موبايل", value: mobileCount },
+      { name: "كمبيوتر", value: totalViews - mobileCount },
+    ];
+
+    return { totalViews, uniqueVisitors, last7Days, topPages, deviceData };
+  }, [views]);
+
   if (isLoading) {
     return (
       <div className="flex h-[60vh] items-center justify-center">
@@ -39,7 +72,7 @@ const AdminAnalytics = () => {
     );
   }
 
-  if (!views || views.length === 0) {
+  if (!views || views.length === 0 || !chartData) {
     return (
       <div className="p-8 text-center space-y-4">
         <AlertCircle className="w-12 h-12 mx-auto text-muted-foreground opacity-20" />
@@ -49,38 +82,7 @@ const AdminAnalytics = () => {
     );
   }
 
-  // Process data for charts
-  const totalViews = views.length;
-  const uniqueVisitors = new Set(views.map(v => v.ip_hash)).size;
-  
-  // Last 7 days chart data
-  const last7Days = [...Array(7)].map((_, i) => {
-    const d = subDays(new Date(), i);
-    const dayName = format(d, "EEEE", { locale: ar });
-    const count = views.filter(v => {
-      const viewDate = new Date(v.created_at);
-      return viewDate.toDateString() === d.toDateString();
-    }).length;
-    return { name: dayName, views: count };
-  }).reverse();
-
-  // Top Pages
-  const pathCounts: Record<string, number> = {};
-  views.forEach(v => {
-    pathCounts[v.path] = (pathCounts[v.path] || 0) + 1;
-  });
-  const topPages = Object.entries(pathCounts)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5)
-    .map(([path, count]) => ({ path: path === "/" ? "الرئيسية" : path, count }));
-
-  // Device Data
-  const mobileCount = views.filter(v => /mobile|android|iphone/i.test(v.user_agent)).length;
-  const desktopCount = totalViews - mobileCount;
-  const deviceData = [
-    { name: "موبايل", value: mobileCount },
-    { name: "كمبيوتر", value: desktopCount },
-  ];
+  const { totalViews, uniqueVisitors, last7Days, topPages, deviceData } = chartData;
 
   const COLORS = ["#22c55e", "#f59e0b"];
 

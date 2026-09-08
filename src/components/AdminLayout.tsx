@@ -48,7 +48,8 @@ function AdminSidebar() {
       if (error) throw error;
       return count || 0;
     },
-    refetchInterval: 30000,
+    refetchInterval: collapsed ? false : 30000,
+    refetchIntervalInBackground: false,
   });
 
   const { data: unreadMessages } = useQuery({
@@ -58,7 +59,8 @@ function AdminSidebar() {
       if (error) throw error;
       return count || 0;
     },
-    refetchInterval: 30000,
+    refetchInterval: collapsed ? false : 30000,
+    refetchIntervalInBackground: false,
   });
 
   const badges: Record<string, number> = {

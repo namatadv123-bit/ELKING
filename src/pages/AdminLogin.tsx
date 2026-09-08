@@ -29,7 +29,7 @@ const AdminLogin = () => {
       .eq("role", "admin")
       .maybeSingle();
 
-    if (!roleData && data.user.email !== "elkingcompany420@gmail.com") {
+    if (!roleData) {
       toast.error("ليس لديك صلاحيات الأدمن");
       await supabase.auth.signOut();
       setLoading(false);

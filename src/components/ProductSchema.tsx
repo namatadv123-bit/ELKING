@@ -23,7 +23,7 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, finalPrice }) =>
     "sku": product.id,
     "brand": {
       "@type": "Brand",
-      "name": "أحمد الماسي"
+      "name": "مصنع الكينج"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -34,7 +34,7 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, finalPrice }) =>
     },
     "offers": {
       "@type": "Offer",
-      "url": typeof window !== 'undefined' ? window.location.href : `https://ahmedalmasi.com/products/${product.slug || product.id}`,
+      "url": typeof window !== 'undefined' ? window.location.href : `https://elkingclo.com/products/${product.slug || product.id}`,
       "priceCurrency": "EGP",
       "price": finalPrice,
       "availability": product.stock_quantity === null || product.stock_quantity > 0 
@@ -42,7 +42,7 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, finalPrice }) =>
         : "https://schema.org/OutOfStock",
       "seller": {
         "@type": "Organization",
-        "name": "أحمد الماسي"
+        "name": "مصنع الكينج"
       }
     }
   };

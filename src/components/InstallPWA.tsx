@@ -64,7 +64,7 @@ const InstallPWA = () => {
             </div>
             
             <div className="flex-1">
-              <h4 className="font-cairo font-bold text-foreground text-sm">تثبيت تطبيق أحمد الماسي</h4>
+              <h4 className="font-cairo font-bold text-foreground text-sm">تثبيت تطبيق مصنع الكينج</h4>
               <p className="font-cairo text-xs text-muted-foreground mt-0.5">تسوق أسرع وتابع طلباتك بسهولة</p>
             </div>
 

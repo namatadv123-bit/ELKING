@@ -48,7 +48,7 @@ ${orderDetails.totalPrice ? `الإجمالي: ${orderDetails.totalPrice} ج.م`
           subject: `طلب جديد من ${orderDetails.customerName}`,
           from_name: "متجر مصنع الكينج",
           name: orderDetails.customerName || "عميل",
-          email: orderDetails.customerEmail || "no-reply@ahmedalmasi.com",
+          email: orderDetails.customerEmail || "no-reply@elkingclo.com",
           message: emailMessage,
         }),
       })

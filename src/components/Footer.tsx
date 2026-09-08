@@ -98,7 +98,7 @@ const Footer = () => {
               </p>
               <p className="flex items-center gap-3 font-en">
                 <span className="text-primary">•</span> 
-                {settings?.email || "info.ahmedmasi@gmail.com"}
+                {settings?.email || "info@elkingclo.com"}
               </p>
               <p className="flex items-center gap-3">
                 <span className="text-primary">•</span> 

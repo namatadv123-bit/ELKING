@@ -354,7 +354,7 @@ const AdminProducts = () => {
                         الرابط المخصص (Slug)
                       </label>
                       <Input placeholder="مثال: misk-al-hareer" value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} className="font-en h-12" dir="ltr" />
-                      <p className="text-[11px] text-muted-foreground font-cairo">سيظهر هكذا: ahmedalmasi.com/products/misk-al-hareer</p>
+                      <p className="text-[11px] text-muted-foreground font-cairo">سيظهر هكذا: elkingclo.com/products/misk-al-hareer</p>
                     </div>
 
                     <div className="space-y-1.5">

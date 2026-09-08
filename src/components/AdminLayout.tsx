@@ -196,7 +196,7 @@ const AdminLayout = () => {
             <div className="flex-1" />
             <div className="flex items-center gap-2">
               <img src="/logo-main.jpg" alt="Logo" className="w-9 h-9 rounded-full object-cover border border-border shadow-sm" />
-              <h2 className="font-cairo font-bold text-foreground">أحمد الماسي</h2>
+              <h2 className="font-cairo font-bold text-foreground">مصنع الكينج</h2>
             </div>
           </header>
           <main className="flex-1 p-4 md:p-6 bg-secondary/10 overflow-auto">

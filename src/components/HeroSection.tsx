@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useSiteSettings, type SiteSettings } from "@/hooks/useSiteSettings";
 import { optimizeImageUrl } from "@/utils/imageOptimizer";
 
@@ -69,7 +69,7 @@ const HeroSection = () => {
 
           {/* Headline */}
           <motion.h1
-            className="font-light leading-[1.1] mb-6 tracking-tight"
+            className="font-bold leading-[1.1] mb-6 tracking-tight"
             style={{ fontSize: "clamp(2rem, 5vw, 4.5rem)" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -183,8 +183,8 @@ const HeroSection = () => {
               <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent z-10 pointer-events-none" />
 
               <img
-                src={optimizeImageUrl(heroImage, 900)}
-                alt="مصنع الكينج - ليجن بناتي جملة وكولون بناتي ومملابس أطفال بالجملة"
+                src={`${optimizeImageUrl(heroImage, 900)}?v=2`}
+                alt="مصنع الكينج - ليجن بناتي جملة وكولون بناتي وملابس أطفال بالجملة"
                 width={900}
                 height={1125}
                 className="w-full h-full object-cover"

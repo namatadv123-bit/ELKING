@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { Menu, X, ShoppingCart, Moon, Sun, ChevronUp } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.webp";
@@ -292,7 +292,7 @@ const Navbar = () => {
                   <motion.li
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: (links.length + 1) * 0.05 }}
+                    transition={{ delay: (NAV_LINKS.length + 1) * 0.05 }}
                     className="w-full pt-4 mt-4 border-t border-border/50 flex justify-center gap-6"
                   >
                     {socialLinks.map((s) => (

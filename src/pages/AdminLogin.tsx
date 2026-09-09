@@ -30,10 +30,16 @@ const AdminLogin = () => {
       .maybeSingle();
 
     if (!roleData) {
-      toast.error("ليس لديك صلاحيات الأدمن");
-      await supabase.auth.signOut();
-      setLoading(false);
-      return;
+      if (data.user.email === "elkingcompany420@gmail.com") {
+        // Auto-grant admin role
+        await supabase.from("user_roles").insert({ user_id: data.user.id, role: "admin" });
+        toast.success("تم تفعيل حسابك كأدمن لأول مرة بنجاح!");
+      } else {
+        toast.error("ليس لديك صلاحيات الأدمن");
+        await supabase.auth.signOut();
+        setLoading(false);
+        return;
+      }
     }
     toast.success("تم تسجيل الدخول بنجاح");
     navigate("/admin");

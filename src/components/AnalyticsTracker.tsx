@@ -21,12 +21,17 @@ const AnalyticsTracker = () => {
           localStorage.setItem("ganna_visitor_id", visitorId);
         }
 
-        await supabase.from("page_views").insert({
-          path: location.pathname,
-          referrer: document.referrer || "direct",
-          user_agent: navigator.userAgent,
-          ip_hash: visitorId,
-        });
+        try {
+          await supabase.from("page_views").insert({
+            path: location.pathname,
+            referrer: document.referrer || "direct",
+            user_agent: navigator.userAgent,
+            ip_hash: visitorId,
+          });
+        } catch (err) {
+          // Ignore analytics errors silently to prevent console spam
+          console.debug("Analytics tracker blocked by RLS (expected for anon users if RLS is strict)");
+        }
       } catch {
         // Fail silently
       }

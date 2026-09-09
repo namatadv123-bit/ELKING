@@ -142,13 +142,19 @@ const AdminLayout = () => {
         navigate("/admin/login");
         return;
       }
-      const { data: roleData } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", session.user.id)
-        .eq("role", "admin")
-        .maybeSingle();
-      if (!roleData && session.user.email !== "elkingcompany420@gmail.com") {
+      let roleData = null;
+      if (session.user.email !== "elkingcompany420@gmail.com") {
+        const { data: dbRoleData } = await supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", session.user.id)
+          .eq("role", "admin")
+          .maybeSingle();
+        roleData = dbRoleData;
+      } else {
+        roleData = { role: "admin" };
+      }
+      if (!roleData) {
         await supabase.auth.signOut();
         navigate("/admin/login");
         return;

@@ -21,13 +21,18 @@ const AdminLogin = () => {
       setLoading(false);
       return;
     }
-    // Check admin role
-    const { data: roleData } = await supabase
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", data.user.id)
-      .eq("role", "admin")
-      .maybeSingle();
+    let roleData = null;
+    if (data.user.email !== "elkingcompany420@gmail.com") {
+      const { data: dbRoleData } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", data.user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+      roleData = dbRoleData;
+    } else {
+      roleData = { role: "admin" };
+    }
 
     if (!roleData) {
       if (data.user.email === "elkingcompany420@gmail.com") {

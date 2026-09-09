@@ -3,10 +3,10 @@ import { Eye, Target, Zap, Award } from "lucide-react";
 import { useSiteSettings, type SiteSettings } from "@/hooks/useSiteSettings";
 
 const features = [
-  { icon: "🧵", title: "خامات فاخرة", desc: "أجود أنواع القطن المضلع والمطاط الممتاز لضمان نعومة لا مثيل لها" },
-  { icon: "🎨", title: "ألوان متنوعة", desc: "تشكيلة واسعة من الألوان الزاهية التي تناسب كل ذوق وكل مناسبة" },
-  { icon: "📏", title: "مقاسات 2-16", desc: "نغطي جميع أعمار الأطفال من سن سنتين حتى سن السادسة عشرة" },
-  { icon: "🚀", title: "توصيل لكل مصر", desc: "شحن سريع وآمن لجميع محافظات الجمهورية بأسعار تنافسية" },
+  { icon: "🧵", title: "خامات فاخرة — قطن مصري", desc: "أجود أنواع القطن المصري المضلع والمطاط الممتاز لضمان نعومة لا مثيل لها. ليجن قطن مصري." },
+  { icon: "🎨", title: "ألوان متنوعة وثابتة", desc: "تشكيلة واسعة من الألوان الزاهية التي تناسب كل ذوق وكل مناسبة. ملابس أطفال مقاومة للغسيل." },
+  { icon: "📏", title: "مقاسات 2-16 — ليجن و كولون", desc: "نغطي جميع أعمار الأطفال من سن سنتين حتى سن السادسة عشرة. ليجن بناتي وكولون بناتي." },
+  { icon: "🚀", title: "توصيل لكل مصر — جملة", desc: "شحن سريع وآمن لجميع محافظات الجمهورية بأسعار تنافسية. ليجن بناتي جملة، كولون بناتي جملة." },
 ];
 
 const AboutSection = () => {
@@ -56,7 +56,7 @@ const AboutSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/15 via-transparent to-red-500/10 z-10 pointer-events-none" />
                 <img
                   src={settings?.about_image || "/images/product-2.jpg"}
-                  alt="عن مصنع الكينج"
+                  alt="مصنع الكينج - ليجن بناتي جملة - ملابس أطفال بالجملة"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -95,11 +95,11 @@ const AboutSection = () => {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="badge-premium mb-6">✨ من نحن</div>
+            <div className="badge-premium mb-6">✨ من نحن — مصنع ملابس أطفال مصر</div>
 
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6 leading-tight">
               مصنع الكينج{" "}
-              <span className="text-gradient">لليجن والكولون</span>
+              <span className="text-gradient">ليجن بناتي جملة</span>
             </h2>
 
             <div className="divider-gradient mb-8" />
@@ -107,15 +107,19 @@ const AboutSection = () => {
             <div className="space-y-5 text-muted-foreground text-lg font-light leading-relaxed">
               <p>
                 مرحباً بك في عالم <strong className="text-foreground font-bold">مصنع الكينج</strong>، الوجهة
-                الأولى لملابس الأطفال وتحديداً الليجن والكولون البناتي عالي الجودة.
+                الأولى <strong className="text-foreground font-bold">لملابس الأطفال وتحديداً الليجن والكولون البناتي</strong> عالي الجودة.
               </p>
               <p>
-                نحمل <strong className="text-foreground font-bold">خبرة سورية</strong> راسخة في صناعة الملابس مع
+                نحن <strong className="text-foreground font-bold">مصنع ملابس أطفال</strong> متخصص في{" "}
+                <strong className="text-foreground font-bold">ليجن بناتي جملة</strong> و{" "}
+                <strong className="text-foreground font-bold">كولون بناتي جملة</strong>، نحمل{" "}
+                <strong className="text-foreground font-bold">خبرة سورية</strong> راسخة في صناعة الملابس مع
                 الأيدي المصرية المبدعة، لنقدم لكم منتجات تجمع بين الجودة العالية والسعر المناسب.
               </p>
               <p>
                 كل قطعة من مجموعتنا مصنوعة بعناية فائقة لتضمن{" "}
                 <strong className="text-foreground font-bold">نعومة وراحة تدوم</strong> طوال اليوم لطفلتك الحبيبة.
+                نستخدم أجود أنواع <strong className="text-foreground font-bold">القطن المصري</strong> الذي يتميز بنعومته الفائقة وقوته.
               </p>
             </div>
 
@@ -163,15 +167,15 @@ const AboutSection = () => {
             {
               icon: Eye,
               emoji: "🎯",
-              title: "رؤيتنا",
-              text: "أن نكون الخيار الأول والأفضل لملابس الأطفال في مصر والوطن العربي، من خلال تقديم منتجات عالية الجودة تجمع بين الأناقة والراحة.",
+              title: "رؤيتنا — مصنع ملابس أطفال",
+              text: "أن نكون الخيار الأول والأفضل لملابس الأطفال في مصر والوطن العربي، من خلال تقديم منتجات عالية الجودة تجمع بين الأناقة والراحة. ليجن بناتي جملة، كولون بناتي جملة.",
               gradient: "from-primary/10 to-primary/5",
             },
             {
               icon: Target,
               emoji: "💎",
-              title: "مهمتنا",
-              text: "توفير أزياء تمنح طفلتك راحة وحرية في الحركة، مع الالتزام بأعلى معايير جودة التصنيع وتقديم خدمة عملاء متميزة ومتواصلة.",
+              title: "مهمتنا — ليجن بناتي جملة",
+              text: "توفير أزياء تمنح طفلتك راحة وحرية في الحركة، مع الالتزام بأعلى معايير جودة التصنيع وتقديم خدمة عملاء متميزة. ملابس أطفال قطن مصري، مقاومة للغسيل.",
               gradient: "from-accent/10 to-accent/5",
             },
           ].map((item, i) => (

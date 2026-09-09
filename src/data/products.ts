@@ -19,7 +19,7 @@ export const staticProducts: Product[] = [
   {
     id: "1",
     name: "ليجن قطن بناتي مضلع",
-    description: "<p>ليجن قطني مضلع عالي الجودة لراحة يومية لطفلتك.</p>",
+    description: "<p>ليجن قطني مضلع عالي الجودة لراحة يومية لطفلتك. مصنوع من أجود أنواع القطن المصري، مطاط ممتاز، ملمس ناعم يحمي البشرة. مناسب للخروج والمدرسة والعب.</p>",
     price: 150,
     category_id: "leggings",
     image_url: "/images/product-3.jpg",
@@ -33,7 +33,7 @@ export const staticProducts: Product[] = [
   {
     id: "2",
     name: "كولون أبيض مدرسي",
-    description: "<p>كولون أبيض ممتاز مناسب للمدرسة.</p>",
+    description: "<p>كولون أبيض ممتاز مناسب للمدرسة. قطن مصري فاخر، مرونة عالية، مقاوم للغسيل. مثالي لكل يوم مدرسة.</p>",
     price: 85,
     category_id: "tights",
     image_url: "/images/product-6.jpg",

@@ -14,9 +14,9 @@ const ContactSection = () => {
   const { data: settings } = useSiteSettings();
 
   const contactInfo = [
-    { icon: Phone, title: "للتواصل", value: settings?.whatsapp || "01009119387", dir: "ltr" as const },
-    { icon: Mail, title: "البريد الإلكتروني", value: settings?.email || "contact@elkingclo.com" },
-    { icon: MapPin, title: "العنوان", value: settings?.address || "مصر" },
+    { icon: Phone, title: "للتواصل — ليجن بناتي جملة", value: settings?.whatsapp || "01006395252", dir: "ltr" as const },
+    { icon: Mail, title: "البريد الإلكتروني — مصنع ملابس أطفال", value: settings?.email || "contact@elkingclo.com" },
+    { icon: MapPin, title: "العنوان — مصنع الكينج مصر", value: settings?.address || "مصر" },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -47,10 +47,10 @@ const ContactSection = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-cairo font-extrabold text-foreground mb-4">
-            <span className="text-gradient">تواصل معنا</span>
+            <span className="text-gradient">تواصل معنا — مصنع ملابس أطفال</span>
           </h2>
           <p className="text-muted-foreground font-cairo max-w-2xl mx-auto">
-            نحن هنا لخدمتك! تواصل معنا للاستفسار عن منتجاتنا أو تقديم طلبك الآن
+            نحن هنا لخدمتك! تواصل معنا للاستفسار عن ليجن بناتي جملة، كولون بناتي جملة، أو تقديم طلبك الآن
           </p>
         </motion.div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">

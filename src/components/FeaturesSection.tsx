@@ -31,7 +31,7 @@ const FeaturesSection = () => {
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-red-500/10 z-10 rounded-[2.5rem] pointer-events-none" />
               <img
                 src={showcaseImage}
-                alt="تشكيلة مصنع الكينج"
+                alt="تشكيلة مصنع الكينج - ليجن بناتي جملة وكولون بناتي ومملابس أطفال بالجملة"
                 width={600}
                 height={800}
                 loading="lazy"
@@ -75,7 +75,7 @@ const FeaturesSection = () => {
           <h2 className="text-4xl md:text-5xl font-black text-foreground mb-8 leading-tight">
             مصنع الكينج <br />
             <span className="text-gradient block mt-2">
-              نعومة تواكب حركة طفلتك
+              ليجن بناتي — نعومة تواكب حركة طفلتك
             </span>
           </h2>
           
@@ -86,9 +86,9 @@ const FeaturesSection = () => {
             <div className="absolute top-8 bottom-8 right-7 w-0.5 bg-border hidden md:block" />
 
             {[
-              { title: "خامات قطنية فاخرة", desc: "ننتقي أجود أنواع القطن لضمان ملمس ناعم يحمي بشرة طفلتك من التحسس طوال اليوم." },
-              { title: "مرونة وحرية في الحركة", desc: "تصميمات مرنة تتكيف مع حركة الأطفال المستمرة، وتوفر أقصى درجات الراحة." },
-              { title: "ألوان ثابتة وجذابة", desc: "نستخدم صبغات عالية الجودة تضمن بقاء الألوان زاهية حتى بعد الغسيل المتكرر." },
+              { title: "خامات قطنية فاخرة", desc: "ننتقي أجود أنواع القطن المصري لضمان ملمس ناعم يحمي بشرة طفلتك من التحسس. ليجن قطن مصري ممتاز." },
+              { title: "مرونة وحرية في الحركة", desc: "تصميمات مطاطية مرنة تتكيف مع حركة الأطفال المستمرة، وتوفر أقصى درجات الراحة. ليجن مطاطي عالي." },
+              { title: "ألوان ثابتة وجذابة", desc: "نستخدم صبغات عالية الجودة تضمن بقاء الألوان زاهية حتى بعد الغسيل المتكرر. ملابس أطفال مقاومة للغسيل." },
             ].map((item, i) => (
               <motion.li
                 key={i}

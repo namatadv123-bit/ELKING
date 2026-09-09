@@ -117,10 +117,10 @@ const Products = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="text-2xl md:text-5xl font-cairo font-extrabold text-foreground mb-3">
-              تسوّق <span className="text-gradient">منتجاتنا</span>
+              تسوّق <span className="text-gradient">ليجن بناتي جملة</span>
             </h1>
             <p className="text-muted-foreground font-cairo text-sm md:text-lg mb-5 md:mb-8 px-2">
-              اكتشف تشكيلتنا المتنوعة من العطور الفاخرة بأعلى جودة وأفضل سعر
+              اكتشف تشكيلتنا المتنوعة من الليجن والكولون البناتي وملابس الأطفال بالجملة — أجود خامات القطن المصري
             </p>
 
             {/* Standard Search Bar */}

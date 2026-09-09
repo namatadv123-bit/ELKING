@@ -43,11 +43,11 @@ const Footer = () => {
                 />
               </div>
               <span className="text-2xl font-bold text-foreground">
-                {settings?.site_name || "مصنع الكينج"}
+              {settings?.site_name || "مصنع الكينج"}
               </span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs font-light">
-              {settings?.site_description || "متجر متخصص في ملابس الأطفال والصغار. نقدم أجود خامات الليجن والكولون البناتي لضمان راحة طفلتك."}
+              {settings?.site_description || "مصنع الكينج — ليجن بناتي جملة، كولون بناتي جملة، ملابس أطفال بالجملة. أجود خامات القطن المصري، مقاسات 2-16."}
             </p>
           </div>
 

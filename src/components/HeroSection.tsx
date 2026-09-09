@@ -63,7 +63,7 @@ const HeroSection = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
               </span>
-              مصنع الكينج — خبرة سورية بأيدٍ مصرية
+              مصنع الكينج — ليجن بناتي جملة • خبرة سورية بأيدٍ مصرية
             </div>
           </motion.div>
 
@@ -75,9 +75,9 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="block text-foreground mb-1">لليجن والكولون</span>
+            <span className="block text-foreground mb-1">ليجن بناتي جملة</span>
             <span className="text-gradient block">
-              نعومة وراحة تدوم
+              كولون بناتي — نعومة وراحة تدوم
             </span>
           </motion.h1>
 
@@ -90,7 +90,7 @@ const HeroSection = () => {
           >
             <div className="divider-gradient flex-1 max-w-[100px]" />
             <p className="text-base font-semibold text-muted-foreground tracking-widest">
-              مقاسات 2-16 | ألوان متنوعة
+              مقاسات 2-16 | قطن مصري | ألوان متنوعة
             </p>
           </motion.div>
 
@@ -101,8 +101,8 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.7 }}
           >
-            متجر متخصص في تقديم أجود خامات الليجن والكولون البناتي لأطفالكم.
-            جودة عالية، نعومة فائقة، وراحة تدوم طوال اليوم.
+            مصنع الكينج — ليجن بناتي جملة، كولون بناتي جملة، ملابس أطفال بالجملة.
+            أجود خامات القطن المصري، جودة عالية، نعومة فائقة، وراحة تدوم طوال اليوم.
           </motion.p>
 
           {/* Stats row */}
@@ -184,7 +184,7 @@ const HeroSection = () => {
 
               <img
                 src={optimizeImageUrl(heroImage, 900)}
-                alt="مصنع الكينج"
+                alt="مصنع الكينج - ليجن بناتي جملة وكولون بناتي ومملابس أطفال بالجملة"
                 width={900}
                 height={1125}
                 className="w-full h-full object-cover"

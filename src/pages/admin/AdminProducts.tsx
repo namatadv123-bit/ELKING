@@ -184,15 +184,24 @@ const AdminProducts = () => {
         }
       }
 
-      const products = [
-        { name: "ليجن قطن بناتي مضلع", description: "ليجن قطني مضلع عالي الجودة.", price: 150, unit: "قطعة", stock_quantity: 30, category_id: catMap["leggings"], image_url: "/images/product-3.webp" },
-        { name: "كولون أبيض مدرسي", description: "كولون أبيض ممتاز مناسب للمدرسة.", price: 85, unit: "قطعة", stock_quantity: 45, category_id: catMap["tights"], image_url: "/images/product-6.webp" },
-        { name: "ليجن رياضي ألوان", description: "ليجن رياضي خفيف ومريح.", price: 180, unit: "قطعة", stock_quantity: 25, category_id: catMap["leggings"], image_url: "/images/product-5.webp" },
-      ];
-
-      for (const p of products) {
-        await supabase.from("products").insert([p]);
+      const productsToInsert = [];
+      for (let i = 1; i <= 19; i++) {
+        productsToInsert.push({
+          name: `موديل مصنع الكينج رقم ${i}`,
+          description: `منتج من مصنع الكينج، متاح جملة للطلب. رقم الموديل في الكتالوج: ${i}`,
+          price: 150 + (i * 5), // As a placeholder price
+          unit: "دسته", // Wholesale unit
+          stock_quantity: 100,
+          category_id: catMap["kids"], // Putting them in kids by default
+          image_url: `/images/extracted_products/product_extracted_${i}.png`,
+          is_active: true,
+          is_featured: i <= 4 // feature first 4 products
+        });
       }
+
+      // Supabase has a limit on rows per request, so insert in batches or all if small
+      const { error } = await supabase.from("products").insert(productsToInsert);
+      if (error) throw error;
     },
     onSuccess: () => {
       queryClient.invalidateQueries();

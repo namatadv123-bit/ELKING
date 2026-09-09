@@ -50,7 +50,7 @@ export const useSiteSettings = () => {
   return useQuery<SiteSettings | null, Error>({
     queryKey: ["site-settings-public"],
     queryFn: async () => {
-      const { data, error } = await supabase.from("site_settings").select("*").single();
+      const { data, error } = await supabase.from("site_settings").select("*").maybeSingle();
       if (error) {
         if (error.code === 'PGRST116') return DEFAULT_SETTINGS;
         console.warn("useSiteSettings fetch failed", error);

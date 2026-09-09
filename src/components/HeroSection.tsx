@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useSiteSettings, type SiteSettings } from "@/hooks/useSiteSettings";
 import { optimizeImageUrl } from "@/utils/imageOptimizer";
 
-const defaultHeroImage = "/images/product-1.jpg";
+const defaultHeroImage = "/1ab01d34-6c68-4b48-9a19-a5cea34c11cb.jpg";
 
 const HeroSection = () => {
   const { data } = useSiteSettings();
@@ -183,7 +183,7 @@ const HeroSection = () => {
               <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent z-10 pointer-events-none" />
 
               <img
-                src={`${optimizeImageUrl(heroImage, 900)}?v=2`}
+                src={`${optimizeImageUrl(heroImage, 900)}?v=3`}
                 alt="مصنع الكينج - ليجن بناتي جملة وكولون بناتي وملابس أطفال بالجملة"
                 width={900}
                 height={1125}

@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+пїњimport { useParams, Link } from "react-router-dom";
 import { staticProducts, Product } from "@/data/products";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -73,11 +73,11 @@ const ProductDetail = () => {
       <div className="min-h-screen">
         <Navbar />
         <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-          <p className="text-xl font-cairo text-muted-foreground">«бгд ћ џн— гжћжѕ</p>
+          <p className="text-xl font-cairo text-muted-foreground">ЎІўДўЕўЖЎ™Ўђ ЎЇўКЎ± ўЕўИЎђўИЎѓ</p>
           <Link to="/products">
             <Button className="font-cairo gap-2">
               <ArrowRight className="w-4 h-4" />
-              «бЏжѕ… ббгд ћ« 
+              ЎІўДЎєўИЎѓЎ© ўДўДўЕўЖЎ™ЎђЎІЎ™
             </Button>
           </Link>
         </div>
@@ -93,19 +93,19 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     addItem({ id: p.id, name: p.name, price: finalPrice, image_url: mainImage });
-    toast.success(` г  ≈÷«Ё… "${p.name}" бб”б…`);
+    toast.success(`Ў™ўЕЎ™ Ў•ЎґЎІўБЎ© "${p.name}" ўДўДЎ≥ўДЎ©`);
   };
 
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>{p.name} - г’дЏ «бяндћ ббнћд ж«бяжбжд</title>
-        <meta name="description" content={p.description?.substring(0, 160) || ` ”жё ${p.name} »√Ё÷б ”Џ— гд г’дЏ «бяндћ.`} />
-        <meta property="og:title" content={`${p.name} - г’дЏ «бяндћ ббнћд ж«бяжбжд`} />
-        <meta property="og:description" content={p.description?.substring(0, 160) || ` ”жё ${p.name} »√Ё÷б ”Џ— гд г’дЏ «бяндћ.`} />
+        <title>{p.name} - ўЕЎµўЖЎє ЎІўДўГўКўЖЎђ ўДўДўКЎђўЖ ўИЎІўДўГўИўДўИўЖ</title>
+        <meta name="description" content={p.description?.substring(0, 160) || `Ў™Ў≥ўИўВ ${p.name} Ў®Ў£ўБЎґўД Ў≥ЎєЎ± ўЕўЖ ўЕЎµўЖЎє ЎІўДўГўКўЖЎђ.`} />
+        <meta property="og:title" content={`${p.name} - ўЕЎµўЖЎє ЎІўДўГўКўЖЎђ ўДўДўКЎђўЖ ўИЎІўДўГўИўДўИўЖ`} />
+        <meta property="og:description" content={p.description?.substring(0, 160) || `Ў™Ў≥ўИўВ ${p.name} Ў®Ў£ўБЎґўД Ў≥ЎєЎ± ўЕўЖ ўЕЎµўЖЎє ЎІўДўГўКўЖЎђ.`} />
         <meta property="og:image" content={mainImage || '/images/product-1.webp'} />
-        <meta name="twitter:title" content={`${p.name} - г’дЏ «бяндћ ббнћд ж«бяжбжд`} />
-        <meta name="twitter:description" content={p.description?.substring(0, 160) || ` ”жё ${p.name} »√Ё÷б ”Џ— гд г’дЏ «бяндћ.`} />
+        <meta name="twitter:title" content={`${p.name} - ўЕЎµўЖЎє ЎІўДўГўКўЖЎђ ўДўДўКЎђўЖ ўИЎІўДўГўИўДўИўЖ`} />
+        <meta name="twitter:description" content={p.description?.substring(0, 160) || `Ў™Ў≥ўИўВ ${p.name} Ў®Ў£ўБЎґўД Ў≥ЎєЎ± ўЕўЖ ўЕЎµўЖЎє ЎІўДўГўКўЖЎђ.`} />
         <meta name="twitter:image" content={mainImage || '/images/product-1.webp'} />
       </Helmet>
       <ProductSchema product={p} finalPrice={finalPrice} />
@@ -113,9 +113,9 @@ const ProductDetail = () => {
       <section className="pt-24 pb-12">
         <div className="container mx-auto px-4">
           <nav className="flex items-center gap-2 text-sm font-cairo text-muted-foreground mb-8">
-            <Link to="/" className="hover:text-primary transition-colors">«б—∆н”н…</Link>
+            <Link to="/" className="hover:text-primary transition-colors">ЎІўДЎ±Ў¶ўКЎ≥ўКЎ©</Link>
             <ChevronLeft className="w-3.5 h-3.5" />
-            <Link to="/products" className="hover:text-primary transition-colors">«бгд ћ« </Link>
+            <Link to="/products" className="hover:text-primary transition-colors">ЎІўДўЕўЖЎ™ЎђЎІЎ™</Link>
             {p.categories && (
               <>
                 <ChevronLeft className="w-3.5 h-3.5" />
@@ -135,17 +135,17 @@ const ProductDetail = () => {
                 {mainImage ? (
                   <img src={mainImage} alt={p.name} className="w-full h-full object-cover" />
                 ) : (
-                  <div className="text-muted-foreground font-cairo">б«  жћѕ ’ж—…</div>
+                  <div className="text-muted-foreground font-cairo">ўДЎІ Ў™ўИЎђЎѓ ЎµўИЎ±Ў©</div>
                 )}
                 
                 {p.is_featured && (
                   <Badge className="absolute top-4 right-4 font-cairo text-sm px-3 py-1" style={{ background: "var(--premium-gradient)" }}>
-                    ? гд ћ ггн“
+                    в≠Р ўЕўЖЎ™Ўђ ўЕўЕўКЎ≤
                   </Badge>
                 )}
                 {discount > 0 && (
                   <Badge className="absolute top-4 left-4 font-cairo text-sm px-3 py-1 bg-red-600 text-white hover:bg-red-700">
-                    ќ’г {discount}%
+                    ЎЃЎµўЕ {discount}%
                   </Badge>
                 )}
               </div>
@@ -187,29 +187,29 @@ const ProductDetail = () => {
                     <Star key={i} className="w-5 h-5 fill-accent text-accent" />
                   ))}
                 </div>
-                <span className="text-sm font-cairo text-muted-foreground">( ённг «бЏгб«Ѕ)</span>
+                <span className="text-sm font-cairo text-muted-foreground">(Ў™ўВўКўКўЕ ЎІўДЎєўЕўДЎІЎ°)</span>
               </div>
 
               <div className="flex flex-col gap-1 mb-6">
                 {discount > 0 && (
                   <p className="text-xl font-cairo text-muted-foreground line-through opacity-70">
-                    {Number(p.price).toLocaleString("ar-EG")} <span className="text-sm mr-1">ћ.г</span>
+                    {Number(p.price).toLocaleString("ar-EG")} <span className="text-sm mr-1">Ўђ.ўЕ</span>
                   </p>
                 )}
                 <p className="text-3xl font-cairo font-extrabold text-gradient">
-                  {Number(finalPrice).toLocaleString("ar-EG")} <span className="text-lg font-bold text-muted-foreground mr-1">ћ.г</span>
+                  {Number(finalPrice).toLocaleString("ar-EG")} <span className="text-lg font-bold text-muted-foreground mr-1">Ўђ.ўЕ</span>
                 </p>
                 {p.unit && (
-                  <span className="text-sm md:text-lg font-cairo text-muted-foreground/70">бяб {p.unit}</span>
+                  <span className="text-sm md:text-lg font-cairo text-muted-foreground/70">ўДўГўД {p.unit}</span>
                 )}
                 {p.stock_quantity <= 5 && p.stock_quantity > 0 && (
                   <span className="text-xs font-cairo text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-100 w-fit mt-1">
-                    г »ён {p.stock_quantity} {p.unit} ЁёЎ!
+                    ўЕЎ™Ў®ўВўК {p.stock_quantity} {p.unit} ўБўВЎЈ!
                   </span>
                 )}
                 {p.stock_quantity === 0 && (
                   <span className="text-xs font-cairo text-destructive bg-destructive/5 px-2 py-0.5 rounded-full border border-destructive/20 w-fit mt-1">
-                    дЁ–  «бягн… Ќ«бн«р
+                    ўЖўБЎ∞Ў™ ЎІўДўГўЕўКЎ© Ў≠ЎІўДўКЎІўЛ
                   </span>
                 )}
               </div>
@@ -225,11 +225,11 @@ const ProductDetail = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 <div className="flex items-center gap-3 bg-secondary/30 rounded-xl p-3">
                   <Truck className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-cairo font-semibold">‘Ќд ”—нЏ</span>
+                  <span className="text-sm font-cairo font-semibold">ЎіЎ≠ўЖ Ў≥Ў±ўКЎє</span>
                 </div>
                 <div className="flex items-center gap-3 bg-secondary/30 rounded-xl p-3">
                   <Star className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-cairo font-semibold">ћжѕ… Џ«бн…</span>
+                  <span className="text-sm font-cairo font-semibold">ЎђўИЎѓЎ© ЎєЎІўДўКЎ©</span>
                 </div>
               </div>
 
@@ -240,7 +240,7 @@ const ProductDetail = () => {
                 onClick={handleAddToCart}
               >
                 <ShoppingCart className="w-5 h-5" />
-                √÷Ё бб”б…
+                Ў£ЎґўБ ўДўДЎ≥ўДЎ©
               </Button>
             </motion.div>
           </div>
@@ -251,7 +251,7 @@ const ProductDetail = () => {
         <section className="pb-20">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-cairo font-extrabold text-foreground text-center mb-10">
-              гд ћ«  г‘«»е…
+              ўЕўЖЎ™ЎђЎІЎ™ ўЕЎіЎІЎ®ўЗЎ©
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {similarProducts.map((p) => (

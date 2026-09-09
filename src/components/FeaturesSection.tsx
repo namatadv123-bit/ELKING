@@ -31,7 +31,7 @@ const FeaturesSection = () => {
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-red-500/10 z-10 rounded-[2.5rem] pointer-events-none" />
               <img
                 src={showcaseImage}
-                alt="สิ฿ํแษ ใีไฺ วแ฿ํไฬ - แํฬไ ศไวสํ ฬใแษ ๆ฿ๆแๆไ ศไวสํ ๆใใแวศำ รุÝวแ ศวแฬใแษ"
+                alt="ุชุดูููุฉ ู…ุตูุน ุงููููุฌ - ููุฌู ุจูุงุชู ุฌู…ูุฉ ูููููู ุจูุงุชู ูู…ู…ูุงุจุณ ุฃุทูุงู ุจุงูุฌู…ูุฉ"
                 width={600}
                 height={800}
                 loading="lazy"
@@ -49,11 +49,11 @@ const FeaturesSection = () => {
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-premium-gradient flex items-center justify-center text-xl">
-                    ?
+                    โจ
                   </div>
                   <div>
-                    <div className="text-sm font-black text-foreground">ฬๆฯษ ÝวฦÞษ</div>
-                    <div className="text-xs text-muted-foreground">ฮวใวส ใฮสวัษ ศฺไวํษ</div>
+                    <div className="text-sm font-black text-foreground">ุฌูุฏุฉ ูุงุฆูุฉ</div>
+                    <div className="text-xs text-muted-foreground">ุฎุงู…ุงุช ู…ุฎุชุงุฑุฉ ุจุนูุงูุฉ</div>
                   </div>
                 </div>
               </motion.div>
@@ -69,26 +69,27 @@ const FeaturesSection = () => {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
         >
           <div className="inline-flex items-center gap-2 mb-6">
-            <span className="badge-premium">ใใําวสไว</span>
+            <span className="badge-premium">ู…ู…ูุฒุงุชูุง</span>
           </div>
 
           <h2 className="text-4xl md:text-5xl font-black text-foreground mb-8 leading-tight">
-            ใีไฺ วแ฿ํไฬ <br />
+            ู…ุตูุน ุงููููุฌ <br />
             <span className="text-gradient block mt-2">
-              แํฬไ ศไวสํ — ไฺๆใษ สๆว฿ศ อั฿ษ ุÝแส฿
+              ููุฌู ุจูุงุชู โ€” ูุนูู…ุฉ ุชูุงูุจ ุญุฑูุฉ ุทููุชู
             </span>
           </h2>
           
           <div className="divider-gradient mb-10 w-2/3 mx-auto md:mx-0 md:ml-auto" />
 
-          <ul className="space-y-8 text-base md:text-lg text-muted-foreground relative">
+          <div className="relative">
             {/* Connecting line */}
             <div className="absolute top-8 bottom-8 right-7 w-0.5 bg-border hidden md:block" />
+          <ul className="space-y-8 text-base md:text-lg text-foreground/70">
 
             {[
-              { title: "ฮวใวส Þุไํษ Ýวฮัษ", desc: "ไไสÞํ รฬๆฯ รไๆวฺ วแÞุไ วแใีัํ แึใวไ ใแใำ ไวฺใ ํอใํ ศิัษ ุÝแส฿ ใไ วแสอำำ. แํฬไ Þุไ ใีัํ ใใสวา." },
-              { title: "ใัๆไษ ๆอัํษ Ýํ วแอั฿ษ", desc: "สีใํใวส ใุวุํษ ใัไษ สส฿ํÝ ใฺ อั฿ษ วแรุÝวแ วแใำสใัษก ๆสๆÝั รÞี์ ฯัฬวส วแัวอษ. แํฬไ ใุวุํ ฺวแํ." },
-              { title: "รแๆวไ หวศสษ ๆฬะวศษ", desc: "ไำสฮฯใ ีศÛวส ฺวแํษ วแฬๆฯษ สึใไ ศÞวม วแรแๆวไ าวๅํษ อส์ ศฺฯ วแÛำํแ วแใส฿ัั. ใแวศำ รุÝวแ ใÞวๆใษ แแÛำํแ." },
+              { title: "ุฎุงู…ุงุช ูุทููุฉ ูุงุฎุฑุฉ", desc: "ููุชูู ุฃุฌูุฏ ุฃููุงุน ุงููุทู ุงูู…ุตุฑู ูุถู…ุงู ู…ูู…ุณ ูุงุนู… ูุญู…ู ุจุดุฑุฉ ุทููุชู ู…ู ุงูุชุญุณุณ. ููุฌู ูุทู ู…ุตุฑู ู…ู…ุชุงุฒ." },
+              { title: "ู…ุฑููุฉ ูุญุฑูุฉ ูู ุงูุญุฑูุฉ", desc: "ุชุตู…ูู…ุงุช ู…ุทุงุทูุฉ ู…ุฑูุฉ ุชุชููู ู…ุน ุญุฑูุฉ ุงูุฃุทูุงู ุงูู…ุณุชู…ุฑุฉุ ูุชููุฑ ุฃูุตู ุฏุฑุฌุงุช ุงูุฑุงุญุฉ. ููุฌู ู…ุทุงุทู ุนุงูู." },
+              { title: "ุฃููุงู ุซุงุจุชุฉ ูุฌุฐุงุจุฉ", desc: "ูุณุชุฎุฏู… ุตุจุบุงุช ุนุงููุฉ ุงูุฌูุฏุฉ ุชุถู…ู ุจูุงุก ุงูุฃููุงู ุฒุงููุฉ ุญุชู ุจุนุฏ ุงูุบุณูู ุงูู…ุชูุฑุฑ. ู…ูุงุจุณ ุฃุทูุงู ู…ูุงูู…ุฉ ููุบุณูู." },
             ].map((item, i) => (
               <motion.li
                 key={i}
@@ -104,12 +105,13 @@ const FeaturesSection = () => {
                   0{i + 1}
                 </div>
                 <div className="bg-card/50 backdrop-blur-sm p-4 rounded-2xl border border-border/50 flex-1 group-hover:border-primary/30 transition-colors">
-                  <h4 className="text-foreground text-xl font-bold mb-2 group-hover:text-primary transition-colors">{item.title}</h4>
+                  <h3 className="text-foreground text-xl font-bold mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
                   <p className="text-sm md:text-base font-light text-muted-foreground/90 leading-relaxed max-w-sm mx-auto md:mx-0">{item.desc}</p>
                 </div>
               </motion.li>
             ))}
           </ul>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -1,12 +1,12 @@
-import { motion } from "framer-motion";
+๏ปฟimport { motion } from "framer-motion";
 import { Eye, Target, Zap, Award } from "lucide-react";
 import { useSiteSettings, type SiteSettings } from "@/hooks/useSiteSettings";
 
 const features = [
-  { icon: "??", title: "ฮวใวส Ýวฮัษ — Þุไ ใีัํ", desc: "รฬๆฯ รไๆวฺ วแÞุไ วแใีัํ วแใึแฺ ๆวแใุวุ วแใใสวา แึใวไ ไฺๆใษ แว ใหํแ แๅว. แํฬไ Þุไ ใีัํ." },
-  { icon: "??", title: "รแๆวไ ใสไๆฺษ ๆหวศสษ", desc: "สิ฿ํแษ ๆวำฺษ ใไ วแรแๆวไ วแาวๅํษ วแสํ สไวำศ ฿แ ะๆÞ ๆ฿แ ใไวำศษ. ใแวศำ รุÝวแ ใÞวๆใษ แแÛำํแ." },
-  { icon: "??", title: "ใÞวำวส 2-16 — แํฬไ ๆ ฿ๆแๆไ", desc: "ไÛุํ ฬใํฺ รฺใวั วแรุÝวแ ใไ ำไ ำไสํไ อส์ ำไ วแำวฯำษ ฺิัษ. แํฬไ ศไวสํ ๆ฿ๆแๆไ ศไวสํ." },
-  { icon: "??", title: "สๆีํแ แ฿แ ใีั — ฬใแษ", desc: "ิอไ ำัํฺ ๆยใไ แฬใํฺ ใอวÝูวส วแฬใๅๆัํษ ศรำฺวั สไวÝำํษ. แํฬไ ศไวสํ ฬใแษก ฿ๆแๆไ ศไวสํ ฬใแษ." },
+  { icon: "๐งต", title: "ุฎุงู…ุงุช ูุงุฎุฑุฉ โ€” ูุทู ู…ุตุฑู", desc: "ุฃุฌูุฏ ุฃููุงุน ุงููุทู ุงูู…ุตุฑู ุงูู…ุถูุน ูุงูู…ุทุงุท ุงูู…ู…ุชุงุฒ ูุถู…ุงู ูุนูู…ุฉ ูุง ู…ุซูู ููุง. ููุฌู ูุทู ู…ุตุฑู." },
+  { icon: "๐จ", title: "ุฃููุงู ู…ุชููุนุฉ ูุซุงุจุชุฉ", desc: "ุชุดูููุฉ ูุงุณุนุฉ ู…ู ุงูุฃููุงู ุงูุฒุงููุฉ ุงูุชู ุชูุงุณุจ ูู ุฐูู ููู ู…ูุงุณุจุฉ. ู…ูุงุจุณ ุฃุทูุงู ู…ูุงูู…ุฉ ููุบุณูู." },
+  { icon: "๐“", title: "ู…ูุงุณุงุช 2-16 โ€” ููุฌู ู ููููู", desc: "ูุบุทู ุฌู…ูุน ุฃุนู…ุงุฑ ุงูุฃุทูุงู ู…ู ุณู ุณูุชูู ุญุชู ุณู ุงูุณุงุฏุณุฉ ุนุดุฑุฉ. ููุฌู ุจูุงุชู ูููููู ุจูุงุชู." },
+  { icon: "๐€", title: "ุชูุตูู ููู ู…ุตุฑ โ€” ุฌู…ูุฉ", desc: "ุดุญู ุณุฑูุน ูุขู…ู ูุฌู…ูุน ู…ุญุงูุธุงุช ุงูุฌู…ููุฑูุฉ ุจุฃุณุนุงุฑ ุชูุงูุณูุฉ. ููุฌู ุจูุงุชู ุฌู…ูุฉุ ููููู ุจูุงุชู ุฌู…ูุฉ." },
 ];
 
 const AboutSection = () => {
@@ -29,7 +29,7 @@ const AboutSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
 
-        {/* ?? Top section: text + image ?? */}
+        {/* โ”€โ”€ Top section: text + image โ”€โ”€ */}
         <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
 
           {/* Image */}
@@ -56,7 +56,7 @@ const AboutSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/15 via-transparent to-red-500/10 z-10 pointer-events-none" />
                 <img
                   src={settings?.about_image || "/images/product-2.webp"}
-                  alt="ใีไฺ วแ฿ํไฬ - แํฬไ ศไวสํ ฬใแษ - ใแวศำ รุÝวแ ศวแฬใแษ"
+                  alt="ู…ุตูุน ุงููููุฌ - ููุฌู ุจูุงุชู ุฌู…ูุฉ - ู…ูุงุจุณ ุฃุทูุงู ุจุงูุฌู…ูุฉ"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -70,10 +70,10 @@ const AboutSection = () => {
                 transition={{ delay: 0.5, duration: 0.6 }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="text-3xl">??</div>
+                  <div className="text-3xl">๐‘‘</div>
                   <div>
-                    <div className="text-sm font-black text-foreground">ฮศัษ ำๆัํษ</div>
-                    <div className="text-xs text-muted-foreground">ศรํฯ๒ ใีัํษ</div>
+                    <div className="text-sm font-black text-foreground">ุฎุจุฑุฉ ุณูุฑูุฉ</div>
+                    <div className="text-xs text-muted-foreground">ุจุฃูุฏู ู…ุตุฑูุฉ</div>
                   </div>
                 </div>
               </motion.div>
@@ -95,50 +95,50 @@ const AboutSection = () => {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="badge-premium mb-6">? ใไ ไอไ — ใีไฺ ใแวศำ รุÝวแ ใีั</div>
+            <div className="badge-premium mb-6">โจ ู…ู ูุญู โ€” ู…ุตูุน ู…ูุงุจุณ ุฃุทูุงู ู…ุตุฑ</div>
 
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6 leading-tight">
-              ใีไฺ วแ฿ํไฬ{" "}
-              <span className="text-gradient">แํฬไ ศไวสํ ฬใแษ</span>
+              ู…ุตูุน ุงููููุฌ{" "}
+              <span className="text-gradient">ููุฌู ุจูุงุชู ุฌู…ูุฉ</span>
             </h2>
 
             <div className="divider-gradient mb-8" />
 
             <div className="space-y-5 text-muted-foreground text-lg font-light leading-relaxed">
               <p>
-                ใัอศว๐ ศ฿ Ýํ ฺวแใ <strong className="text-foreground font-bold">ใีไฺ วแ฿ํไฬ</strong>ก วแๆฬๅษ
-                วแรๆแ์ <strong className="text-foreground font-bold">แใแวศำ วแรุÝวแ ๆสอฯํฯว๐ วแแํฬไ ๆวแ฿ๆแๆไ วแศไวสํ</strong> ฺวแํ วแฬๆฯษ.
+                ู…ุฑุญุจุงู ุจู ูู ุนุงูู… <strong className="text-foreground font-bold">ู…ุตูุน ุงููููุฌ</strong>ุ ุงููุฌูุฉ
+                ุงูุฃููู <strong className="text-foreground font-bold">ูู…ูุงุจุณ ุงูุฃุทูุงู ูุชุญุฏูุฏุงู ุงูููุฌู ูุงูููููู ุงูุจูุงุชู</strong> ุนุงูู ุงูุฌูุฏุฉ.
               </p>
               <p>
-                ไอไ <strong className="text-foreground font-bold">ใีไฺ ใแวศำ รุÝวแ</strong> ใสฮีี Ýํ{" "}
-                <strong className="text-foreground font-bold">แํฬไ ศไวสํ ฬใแษ</strong> ๆ{" "}
-                <strong className="text-foreground font-bold">฿ๆแๆไ ศไวสํ ฬใแษ</strong>ก ไอใแ{" "}
-                <strong className="text-foreground font-bold">ฮศัษ ำๆัํษ</strong> ัวำฮษ Ýํ ีไวฺษ วแใแวศำ ใฺ
-                วแรํฯํ วแใีัํษ วแใศฯฺษก แไÞฯใ แ฿ใ ใไสฬวส สฬใฺ ศํไ วแฬๆฯษ วแฺวแํษ ๆวแำฺั วแใไวำศ.
+                ูุญู <strong className="text-foreground font-bold">ู…ุตูุน ู…ูุงุจุณ ุฃุทูุงู</strong> ู…ุชุฎุตุต ูู{" "}
+                <strong className="text-foreground font-bold">ููุฌู ุจูุงุชู ุฌู…ูุฉ</strong> ู{" "}
+                <strong className="text-foreground font-bold">ููููู ุจูุงุชู ุฌู…ูุฉ</strong>ุ ูุญู…ู{" "}
+                <strong className="text-foreground font-bold">ุฎุจุฑุฉ ุณูุฑูุฉ</strong> ุฑุงุณุฎุฉ ูู ุตูุงุนุฉ ุงูู…ูุงุจุณ ู…ุน
+                ุงูุฃูุฏู ุงูู…ุตุฑูุฉ ุงูู…ุจุฏุนุฉุ ูููุฏู… ููู… ู…ูุชุฌุงุช ุชุฌู…ุน ุจูู ุงูุฌูุฏุฉ ุงูุนุงููุฉ ูุงูุณุนุฑ ุงูู…ูุงุณุจ.
               </p>
               <p>
-                ฿แ Þฺุษ ใไ ใฬใๆฺสไว ใีไๆฺษ ศฺไวํษ ÝวฦÞษ แสึใไ{" "}
-                <strong className="text-foreground font-bold">ไฺๆใษ ๆัวอษ สฯๆใ</strong> ุๆวแ วแํๆใ แุÝแส฿ วแอศํศษ.
-                ไำสฮฯใ รฬๆฯ รไๆวฺ <strong className="text-foreground font-bold">วแÞุไ วแใีัํ</strong> วแะํ ํสใํา ศไฺๆใสๅ วแÝวฦÞษ ๆÞๆสๅ.
+                ูู ูุทุนุฉ ู…ู ู…ุฌู…ูุนุชูุง ู…ุตููุนุฉ ุจุนูุงูุฉ ูุงุฆูุฉ ูุชุถู…ู{" "}
+                <strong className="text-foreground font-bold">ูุนูู…ุฉ ูุฑุงุญุฉ ุชุฏูู…</strong> ุทูุงู ุงูููู… ูุทููุชู ุงูุญุจูุจุฉ.
+                ูุณุชุฎุฏู… ุฃุฌูุฏ ุฃููุงุน <strong className="text-foreground font-bold">ุงููุทู ุงูู…ุตุฑู</strong> ุงูุฐู ูุชู…ูุฒ ุจูุนูู…ุชู ุงููุงุฆูุฉ ูููุชู.
               </p>
             </div>
 
             {/* CTA */}
             <div className="mt-10 flex items-center gap-4 justify-end">
               <a href="/products" className="btn-primary gap-2">
-                <span>สำๆÞ วแยไ</span>
+                <span>ุชุณูู ุงูุขู</span>
                 <svg className="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </a>
               <a href="/#contact" className="btn-outline gap-2">
-                สๆวีแ ใฺไว
+                ุชูุงุตู ู…ุนูุง
               </a>
             </div>
           </motion.div>
         </div>
 
-        {/* ?? Features grid ?? */}
+        {/* โ”€โ”€ Features grid โ”€โ”€ */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {features.map((f, i) => (
             <motion.div
@@ -161,21 +161,21 @@ const AboutSection = () => {
           ))}
         </div>
 
-        {/* ?? Vision / Mission cards ?? */}
+        {/* โ”€โ”€ Vision / Mission cards โ”€โ”€ */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {[
             {
               icon: Eye,
-              emoji: "??",
-              title: "ัฤํสไว — ใีไฺ ใแวศำ รุÝวแ",
-              text: "รไ ไ฿ๆไ วแฮํวั วแรๆแ ๆวแรÝึแ แใแวศำ วแรุÝวแ Ýํ ใีั ๆวแๆุไ วแฺัศํก ใไ ฮแวแ สÞฯํใ ใไสฬวส ฺวแํษ วแฬๆฯษ สฬใฺ ศํไ วแรไวÞษ ๆวแัวอษ. แํฬไ ศไวสํ ฬใแษก ฿ๆแๆไ ศไวสํ ฬใแษ.",
+              emoji: "๐ฏ",
+              title: "ุฑุคูุชูุง โ€” ู…ุตูุน ู…ูุงุจุณ ุฃุทูุงู",
+              text: "ุฃู ูููู ุงูุฎูุงุฑ ุงูุฃูู ูุงูุฃูุถู ูู…ูุงุจุณ ุงูุฃุทูุงู ูู ู…ุตุฑ ูุงููุทู ุงูุนุฑุจูุ ู…ู ุฎูุงู ุชูุฏูู… ู…ูุชุฌุงุช ุนุงููุฉ ุงูุฌูุฏุฉ ุชุฌู…ุน ุจูู ุงูุฃูุงูุฉ ูุงูุฑุงุญุฉ. ููุฌู ุจูุงุชู ุฌู…ูุฉุ ููููู ุจูุงุชู ุฌู…ูุฉ.",
               gradient: "from-primary/10 to-primary/5",
             },
             {
               icon: Target,
-              emoji: "??",
-              title: "ใๅใสไว — แํฬไ ศไวสํ ฬใแษ",
-              text: "สๆÝํั ราํวม สใไอ ุÝแส฿ ัวอษ ๆอัํษ Ýํ วแอั฿ษก ใฺ วแวแสาวใ ศรฺแ์ ใฺวํํั ฬๆฯษ วแสีไํฺ ๆสÞฯํใ ฮฯใษ ฺใแวม ใสใําษ. ใแวศำ รุÝวแ Þุไ ใีัํก ใÞวๆใษ แแÛำํแ.",
+              emoji: "๐’",
+              title: "ู…ูู…ุชูุง โ€” ููุฌู ุจูุงุชู ุฌู…ูุฉ",
+              text: "ุชูููุฑ ุฃุฒูุงุก ุชู…ูุญ ุทููุชู ุฑุงุญุฉ ูุญุฑูุฉ ูู ุงูุญุฑูุฉุ ู…ุน ุงูุงูุชุฒุงู… ุจุฃุนูู ู…ุนุงููุฑ ุฌูุฏุฉ ุงูุชุตููุน ูุชูุฏูู… ุฎุฏู…ุฉ ุนู…ูุงุก ู…ุชู…ูุฒุฉ. ู…ูุงุจุณ ุฃุทูุงู ูุทู ู…ุตุฑูุ ู…ูุงูู…ุฉ ููุบุณูู.",
               gradient: "from-accent/10 to-accent/5",
             },
           ].map((item, i) => (

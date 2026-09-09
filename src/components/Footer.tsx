@@ -46,7 +46,7 @@ const Footer = () => {
               {settings?.site_name || "مصنع الكينج"}
               </span>
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs font-light">
+            <p className="text-foreground/70 text-sm leading-relaxed max-w-xs font-light">
               {settings?.site_description || "مصنع الكينج — ليجن بناتي جملة، كولون بناتي جملة، ملابس أطفال بالجملة. أجود خامات القطن المصري، مقاسات 2-16."}
             </p>
           </div>

@@ -30,7 +30,7 @@ const ImageUpload = ({ value, onChange, folder = "general", maxSize = 10 }: Imag
     try {
       // Compress image before upload
       const compressedBlob = await compressImage(file);
-      const fileName = `${folder}/${Date.now()}-${Math.random().toString(36).substring(7)}.webp`;
+      const fileName = `${folder}/${Date.now()}-${Math.random().toString(36).substring(7)}.jpg`;
 
       const { error } = await supabase.storage.from("images").upload(fileName, compressedBlob, {
         contentType: "image/jpeg"

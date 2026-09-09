@@ -78,7 +78,7 @@ const FeaturedProducts = () => {
             منتجات مختارة لك
           </h2>
         </div>
-        <Link to="/products" className="hidden md:flex items-center gap-2 font-cairo text-muted-foreground hover:text-primary transition-colors">
+        <Link to="/products" className="hidden md:flex items-center gap-2 font-cairo text-foreground/70 hover:text-primary transition-colors">
           عرض الكل
           <ArrowLeft className="w-4 h-4" />
         </Link>

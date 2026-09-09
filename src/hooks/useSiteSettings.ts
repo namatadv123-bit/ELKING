@@ -38,8 +38,8 @@ export interface SiteSettings {
 
 const DEFAULT_SETTINGS: SiteSettings = {
   site_name: "مصنع الكينج",
-  logo_url: "/logo/logo.jpg",
-  favicon_url: "/logo/logo.jpg",
+  logo_url: "/logo/logo.webp",
+  favicon_url: "/logo/logo.webp",
   whatsapp: "01006395252",
   facebook: "",
   instagram: "",

@@ -22,7 +22,7 @@ export const staticProducts: Product[] = [
     description: "<p>ليجن قطني مضلع عالي الجودة لراحة يومية لطفلتك. مصنوع من أجود أنواع القطن المصري، مطاط ممتاز، ملمس ناعم يحمي البشرة. مناسب للخروج والمدرسة والعب.</p>",
     price: 150,
     category_id: "leggings",
-    image_url: "/images/product-3.jpg",
+    image_url: "/images/product-3.webp",
     is_active: true,
     is_featured: true,
     slug: "ليجن-قطن-بناتي-مضلع",
@@ -36,7 +36,7 @@ export const staticProducts: Product[] = [
     description: "<p>كولون أبيض ممتاز مناسب للمدرسة. قطن مصري فاخر، مرونة عالية، مقاوم للغسيل. مثالي لكل يوم مدرسة.</p>",
     price: 85,
     category_id: "tights",
-    image_url: "/images/product-6.jpg",
+    image_url: "/images/product-6.webp",
     is_active: true,
     is_featured: false,
     slug: "كولون-أبيض-مدرسي",
@@ -47,7 +47,7 @@ export const staticProducts: Product[] = [
 ];
 
 export const staticCategories = [
-  { id: "leggings", name: "ليجن بناتي", image_url: "/images/product-3.jpg" },
-  { id: "tights", name: "كولون بناتي", image_url: "/images/product-6.jpg" },
-  { id: "basics", name: "بيزك", image_url: "/images/product-5.jpg" }
+  { id: "leggings", name: "ليجن بناتي", image_url: "/images/product-3.webp" },
+  { id: "tights", name: "كولون بناتي", image_url: "/images/product-6.webp" },
+  { id: "basics", name: "بيزك", image_url: "/images/product-5.webp" }
 ];

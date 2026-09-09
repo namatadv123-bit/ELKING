@@ -1,7 +1,7 @@
-ï»¿import { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { Menu, X, ShoppingCart, Moon, Sun, ChevronUp } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import { useCart } from "@/contexts/CartContext";
 import { useTheme } from "@/hooks/useTheme";
 import { motion, AnimatePresence } from "framer-motion";
@@ -18,11 +18,11 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 const NAV_LINKS = [
-  { label: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©", href: "/#hero" },
-  { label: "Ù…Ù† Ù†Ø­Ù†", href: "/#about" },
-  { label: "Ù…Ù†ØªØ¬Ø§ØªÙ†Ø§", href: "/products" },
-  { label: "Ø§Ù„Ù…Ù‚Ø§Ù„Ø§Øª", href: "/articles" },
-  { label: "ØªÙˆØ§ØµÙ„ Ù…Ø¹Ù†Ø§", href: "/#contact" },
+  { label: "ÇáÑÆíÓíÉ", href: "/#hero" },
+  { label: "ãä äÍä", href: "/#about" },
+  { label: "ãäÊÌÇÊäÇ", href: "/products" },
+  { label: "ÇáãÞÇáÇÊ", href: "/articles" },
+  { label: "ÊæÇÕá ãÚäÇ", href: "/#contact" },
 ] as const;
 
 const Navbar = () => {
@@ -120,7 +120,7 @@ const Navbar = () => {
               style={{ boxShadow: "0 4px 15px rgba(0,51,204,0.25)" }}
             >
               <img 
-                src={settings?.logo_url || "/logo/logo.jpg"} 
+                src={settings?.logo_url || "/logo/logo.webp"} 
                 alt="Logo" 
                 className="w-full h-full object-contain"
               />
@@ -128,7 +128,7 @@ const Navbar = () => {
             <span
               className="text-xl font-black tracking-tight text-gradient transition-all duration-300"
             >
-              Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬
+              ãÕäÚ ÇáßíäÌ
             </span>
           </Link>
 
@@ -163,7 +163,7 @@ const Navbar = () => {
               whileTap={{ scale: 0.9 }}
               onClick={toggle}
               className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
-              aria-label={isDark ? "ØªÙØ¹ÙŠÙ„ Ø§Ù„ÙˆØ¶Ø¹ Ø§Ù„Ù†Ù‡Ø§Ø±ÙŠ" : "ØªÙØ¹ÙŠÙ„ Ø§Ù„ÙˆØ¶Ø¹ Ø§Ù„Ù„ÙŠÙ„ÙŠ"}
+              aria-label={isDark ? "ÊÝÚíá ÇáæÖÚ ÇáäåÇÑí" : "ÊÝÚíá ÇáæÖÚ Çááíáí"}
             >
               <AnimatePresence mode="wait">
                 <motion.span
@@ -184,7 +184,7 @@ const Navbar = () => {
                 whileTap={{ scale: 0.9 }}
                 onClick={handleInstall}
                 className="p-2 rounded-xl text-primary hover:bg-primary/10 transition-colors flex"
-                aria-label="ØªØ«Ø¨ÙŠØª Ø§Ù„ØªØ·Ø¨ÙŠÙ‚"
+                aria-label="ÊËÈíÊ ÇáÊØÈíÞ"
               >
                 <Download className="w-5 h-5" />
               </motion.button>
@@ -193,7 +193,7 @@ const Navbar = () => {
             <Link
               to="/cart"
               className="relative p-2 rounded-xl text-muted-foreground hover:text-primary hover:bg-muted/60 transition-colors"
-              aria-label="Ø³Ù„Ø© Ø§Ù„Ù…Ø´ØªØ±ÙŠØ§Øª"
+              aria-label="ÓáÉ ÇáãÔÊÑíÇÊ"
             >
               <ShoppingCart className="w-5 h-5" />
               {totalItems > 0 && (
@@ -283,7 +283,7 @@ const Navbar = () => {
                     className="text-base font-cairo font-semibold text-foreground hover:text-primary px-4 py-2.5 rounded-xl block text-center transition-colors hover:bg-muted/50"
                     onClick={closeMenu}
                   >
-                    ðŸ›’ Ø§Ù„Ø³Ù„Ø© {totalItems > 0 && `(${totalItems})`}
+                    ?? ÇáÓáÉ {totalItems > 0 && `(${totalItems})`}
                   </Link>
                 </motion.li>
 
@@ -324,7 +324,7 @@ const Navbar = () => {
             exit={{ opacity: 0, scale: 0 }}
             onClick={scrollToTop}
             className="fixed bottom-6 left-6 z-50 p-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-shadow"
-            aria-label="Ø§Ù„Ø¹ÙˆØ¯Ø© Ù„Ù„Ø£Ø¹Ù„Ù‰"
+            aria-label="ÇáÚæÏÉ ááÃÚáì"
           >
             <ChevronUp className="w-5 h-5" />
           </motion.button>

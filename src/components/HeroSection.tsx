@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useSiteSettings, type SiteSettings } from "@/hooks/useSiteSettings";
 import { optimizeImageUrl } from "@/utils/imageOptimizer";
 
-const defaultHeroImage = "/1ab01d34-6c68-4b48-9a19-a5cea34c11cb.jpg";
+const defaultHeroImage = "/1ab01d34-6c68-4b48-9a19-a5cea34c11cb.webp";
 
 const HeroSection = () => {
   const { data } = useSiteSettings();

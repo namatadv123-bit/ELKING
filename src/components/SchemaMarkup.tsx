@@ -1,12 +1,12 @@
-ï»¿const SITE_URL = typeof window !== 'undefined' ? window.location.origin : "https://elkingclo.com";
+const SITE_URL = typeof window !== 'undefined' ? window.location.origin : "https://elkingclo.com";
 
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬",
+  name: "ãÕäÚ ÇáßíäÌ",
   url: SITE_URL,
-  logo: `${SITE_URL}/logo/logo.jpg`,
-  description: "Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬ - Ù„ÙŠØ¬Ù† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø©ØŒ ÙƒÙˆÙ„ÙˆÙ† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø©ØŒ Ù…Ù„Ø§Ø¨Ø³ Ø£Ø·ÙØ§Ù„ Ø¨Ø§Ù„Ø¬Ù…Ù„Ø©. Ø£Ø¬ÙˆØ¯ Ø®Ø§Ù…Ø§Øª Ø§Ù„Ù‚Ø·Ù† Ø§Ù„Ù…ØµØ±ÙŠØŒ Ù…Ù‚Ø§Ø³Ø§Øª 2-16.",
+  logo: `${SITE_URL}/logo/logo.webp`,
+  description: "ãÕäÚ ÇáßíäÌ - áíÌä ÈäÇÊí ÌãáÉ¡ ßæáæä ÈäÇÊí ÌãáÉ¡ ãáÇÈÓ ÃØİÇá ÈÇáÌãáÉ. ÃÌæÏ ÎÇãÇÊ ÇáŞØä ÇáãÕÑí¡ ãŞÇÓÇÊ 2-16.",
   sameAs: [],
   contactPoint: {
     "@type": "ContactPoint",
@@ -19,15 +19,15 @@ const orgSchema = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬",
-  description: "Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬ - Ù„ÙŠØ¬Ù† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø©ØŒ ÙƒÙˆÙ„ÙˆÙ† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø©ØŒ Ù…Ù„Ø§Ø¨Ø³ Ø£Ø·ÙØ§Ù„ Ø¨Ø§Ù„Ø¬Ù…Ù„Ø©. Ø£Ø¬ÙˆØ¯ Ø®Ø§Ù…Ø§Øª Ø§Ù„Ù‚Ø·Ù† Ø§Ù„Ù…ØµØ±ÙŠ.",
+  name: "ãÕäÚ ÇáßíäÌ",
+  description: "ãÕäÚ ÇáßíäÌ - áíÌä ÈäÇÊí ÌãáÉ¡ ßæáæä ÈäÇÊí ÌãáÉ¡ ãáÇÈÓ ÃØİÇá ÈÇáÌãáÉ. ÃÌæÏ ÎÇãÇÊ ÇáŞØä ÇáãÕÑí.",
   url: SITE_URL,
   telephone: "+201006395252",
   email: "contact@elkingclo.com",
   address: {
     "@type": "PostalAddress",
     addressCountry: "EG",
-    addressLocality: "Ù…ØµØ±",
+    addressLocality: "ãÕÑ",
   },
   geo: {
     "@type": "GeoCoordinates",
@@ -41,15 +41,15 @@ const localBusinessSchema = {
     closes: "22:00",
   },
   priceRange: "$$",
-  image: `${SITE_URL}/logo/logo.jpg`,
+  image: `${SITE_URL}/logo/logo.webp`,
   sameAs: [],
 };
 
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Ù„ÙŠØ¬Ù† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø© - ÙƒÙˆÙ„ÙˆÙ† Ø¨Ù†Ø§ØªÙŠ - Ù…Ù„Ø§Ø¨Ø³ Ø£Ø·ÙØ§Ù„ Ø¨Ø§Ù„Ø¬Ù…Ù„Ø©",
-  description: "ØªØ´ÙƒÙŠÙ„Ø© Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬ Ù…Ù† Ø§Ù„Ù„ÙŠØ¬Ù† ÙˆØ§Ù„ÙƒÙˆÙ„ÙˆÙ† Ø§Ù„Ø¨Ù†Ø§ØªÙŠ ÙˆÙ…Ù„Ø§Ø¨Ø³ Ø§Ù„Ø£Ø·ÙØ§Ù„ Ø¨Ø§Ù„Ø¬Ù…Ù„Ø©",
+  name: "áíÌä ÈäÇÊí ÌãáÉ - ßæáæä ÈäÇÊí - ãáÇÈÓ ÃØİÇá ÈÇáÌãáÉ",
+  description: "ÊÔßíáÉ ãÕäÚ ÇáßíäÌ ãä ÇááíÌä æÇáßæáæä ÇáÈäÇÊí æãáÇÈÓ ÇáÃØİÇá ÈÇáÌãáÉ",
   numberOfItems: 2,
   itemListElement: [
     {
@@ -57,10 +57,10 @@ const productSchema = {
       position: 1,
       item: {
         "@type": "Product",
-        name: "Ù„ÙŠØ¬Ù† Ù‚Ø·Ù† Ø¨Ù†Ø§ØªÙŠ Ù…Ø¶Ù„Ø¹",
-        description: "Ù„ÙŠØ¬Ù† Ù‚Ø·Ù†ÙŠ Ù…Ø¶Ù„Ø¹ Ø¹Ø§Ù„ÙŠ Ø§Ù„Ø¬ÙˆØ¯Ø© Ù„Ø±Ø§Ø­Ø© ÙŠÙˆÙ…ÙŠØ© Ù„Ø·ÙÙ„ØªÙƒ. Ù…ØµÙ†ÙˆØ¹ Ù…Ù† Ø£Ø¬ÙˆØ¯ Ø£Ù†ÙˆØ§Ø¹ Ø§Ù„Ù‚Ø·Ù† Ø§Ù„Ù…ØµØ±ÙŠ.",
-        image: `${SITE_URL}/images/product-3.jpg`,
-        brand: { "@type": "Brand", name: "Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬" },
+        name: "áíÌä ŞØä ÈäÇÊí ãÖáÚ",
+        description: "áíÌä ŞØäí ãÖáÚ ÚÇáí ÇáÌæÏÉ áÑÇÍÉ íæãíÉ áØİáÊß. ãÕäæÚ ãä ÃÌæÏ ÃäæÇÚ ÇáŞØä ÇáãÕÑí.",
+        image: `${SITE_URL}/images/product-3.webp`,
+        brand: { "@type": "Brand", name: "ãÕäÚ ÇáßíäÌ" },
         offers: {
           "@type": "Offer",
           priceCurrency: "EGP",
@@ -74,10 +74,10 @@ const productSchema = {
       position: 2,
       item: {
         "@type": "Product",
-        name: "ÙƒÙˆÙ„ÙˆÙ† Ø£Ø¨ÙŠØ¶ Ù…Ø¯Ø±Ø³ÙŠ",
-        description: "ÙƒÙˆÙ„ÙˆÙ† Ø£Ø¨ÙŠØ¶ Ù…Ù…ØªØ§Ø² Ù…Ù†Ø§Ø³Ø¨ Ù„Ù„Ù…Ø¯Ø±Ø³Ø©. Ù…ØµÙ†ÙˆØ¹ Ù…Ù† Ù‚Ø·Ù† Ù…ØµØ±ÙŠ ÙØ§Ø®Ø±.",
-        image: `${SITE_URL}/images/product-6.jpg`,
-        brand: { "@type": "Brand", name: "Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬" },
+        name: "ßæáæä ÃÈíÖ ãÏÑÓí",
+        description: "ßæáæä ÃÈíÖ ããÊÇÒ ãäÇÓÈ ááãÏÑÓÉ. ãÕäæÚ ãä ŞØä ãÕÑí İÇÎÑ.",
+        image: `${SITE_URL}/images/product-6.webp`,
+        brand: { "@type": "Brand", name: "ãÕäÚ ÇáßíäÌ" },
         offers: {
           "@type": "Offer",
           priceCurrency: "EGP",
@@ -92,9 +92,9 @@ const productSchema = {
 const webSiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬ | Ù„ÙŠØ¬Ù† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø© - ÙƒÙˆÙ„ÙˆÙ† Ø¨Ù†Ø§ØªÙŠ - Ù…Ù„Ø§Ø¨Ø³ Ø£Ø·ÙØ§Ù„ Ø¨Ø§Ù„Ø¬Ù…Ù„Ø©",
+  name: "ãÕäÚ ÇáßíäÌ | áíÌä ÈäÇÊí ÌãáÉ - ßæáæä ÈäÇÊí - ãáÇÈÓ ÃØİÇá ÈÇáÌãáÉ",
   url: SITE_URL,
-  description: "Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬ - Ù„ÙŠØ¬Ù† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø©ØŒ ÙƒÙˆÙ„ÙˆÙ† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø©ØŒ Ù…Ù„Ø§Ø¨Ø³ Ø£Ø·ÙØ§Ù„ Ø¨Ø§Ù„Ø¬Ù…Ù„Ø©. Ø£Ø¬ÙˆØ¯ Ø®Ø§Ù…Ø§Øª Ø§Ù„Ù‚Ø·Ù† Ø§Ù„Ù…ØµØ±ÙŠ.",
+  description: "ãÕäÚ ÇáßíäÌ - áíÌä ÈäÇÊí ÌãáÉ¡ ßæáæä ÈäÇÊí ÌãáÉ¡ ãáÇÈÓ ÃØİÇá ÈÇáÌãáÉ. ÃÌæÏ ÎÇãÇÊ ÇáŞØä ÇáãÕÑí.",
   potentialAction: {
     "@type": "SearchAction",
     target: `${SITE_URL}/products?q={search_term_string}`,
@@ -106,9 +106,9 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Ø§Ù„Ù…Ù†ØªØ¬Ø§Øª", item: `${SITE_URL}/products` },
-    { "@type": "ListItem", position: 3, name: "Ø§Ù„Ù…Ù‚Ø§Ù„Ø§Øª", item: `${SITE_URL}/articles` },
+    { "@type": "ListItem", position: 1, name: "ÇáÑÆíÓíÉ", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "ÇáãäÊÌÇÊ", item: `${SITE_URL}/products` },
+    { "@type": "ListItem", position: 3, name: "ÇáãŞÇáÇÊ", item: `${SITE_URL}/articles` },
   ],
 };
 

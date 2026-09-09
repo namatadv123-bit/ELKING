@@ -1,17 +1,17 @@
-ï»¿import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 
-const FALLBACK_TITLE = "Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬ | Ù„ÙŠØ¬Ù† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø© - ÙƒÙˆÙ„ÙˆÙ† Ø¨Ù†Ø§ØªÙŠ - Ù…Ù„Ø§Ø¨Ø³ Ø£Ø·ÙØ§Ù„ Ø¨Ø§Ù„Ø¬Ù…Ù„Ø©";
-const FALLBACK_DESC = "Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬ - Ù„ÙŠØ¬Ù† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø©ØŒ ÙƒÙˆÙ„ÙˆÙ† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø©ØŒ Ù…Ù„Ø§Ø¨Ø³ Ø£Ø·ÙØ§Ù„ Ø¨Ø§Ù„Ø¬Ù…Ù„Ø©. Ø£Ø¬ÙˆØ¯ Ø®Ø§Ù…Ø§Øª Ø§Ù„Ù‚Ø·Ù† Ø§Ù„Ù…ØµØ±ÙŠØŒ Ù…Ù‚Ø§Ø³Ø§Øª 2-16ØŒ Ø£Ù„ÙˆØ§Ù† Ù…ØªÙ†ÙˆØ¹Ø©. Ù…ØµÙ†Ø¹ Ù…Ù„Ø§Ø¨Ø³ Ø£Ø·ÙØ§Ù„ Ù…ØµØ±.";
+const FALLBACK_TITLE = "ãÕäÚ ÇáßíäÌ | áíÌä ÈäÇÊí ÌãáÉ - ßæáæä ÈäÇÊí - ãáÇÈÓ ÃØÝÇá ÈÇáÌãáÉ";
+const FALLBACK_DESC = "ãÕäÚ ÇáßíäÌ - áíÌä ÈäÇÊí ÌãáÉ¡ ßæáæä ÈäÇÊí ÌãáÉ¡ ãáÇÈÓ ÃØÝÇá ÈÇáÌãáÉ. ÃÌæÏ ÎÇãÇÊ ÇáÞØä ÇáãÕÑí¡ ãÞÇÓÇÊ 2-16¡ ÃáæÇä ãÊäæÚÉ. ãÕäÚ ãáÇÈÓ ÃØÝÇá ãÕÑ.";
 const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1519241047957-be31d7379a5d?auto=format&fit=crop&q=80&w=1200";
-const FALLBACK_KEYWORDS = "Ù„ÙŠØ¬Ù† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø©,ÙƒÙˆÙ„ÙˆÙ† Ø¨Ù†Ø§ØªÙŠ Ø¬Ù…Ù„Ø©,Ù…Ù„Ø§Ø¨Ø³ Ø§Ø·ÙØ§Ù„ Ø¨Ø§Ù„Ø¬Ù…Ù„Ø©,Ù…ØµÙ†Ø¹ Ù…Ù„Ø§Ø¨Ø³ Ø§Ø·ÙØ§Ù„,Ù…Ù„Ø§Ø¨Ø³ Ø¨Ù†Ø§Øª Ø¨Ø§Ù„Ø¬Ù…Ù„Ø©,ØªØ¬Ø§Ø±Ø© Ø¬Ù…Ù„Ø© Ù…Ù„Ø§Ø¨Ø³ Ø§Ø·ÙØ§Ù„,Ø³ÙˆÙ‚ Ø¬Ù…Ù„Ø© Ù…Ù„Ø§Ø¨Ø³ Ø§Ø·ÙØ§Ù„,Ù…ÙˆØ±Ø¯ Ù…Ù„Ø§Ø¨Ø³ Ø§Ø·ÙØ§Ù„,Ù„ÙŠØ¬Ù† Ø§Ø·ÙØ§Ù„ Ø¬Ù…Ù„Ø©,Ø¨Ù†Ø·Ù„ÙˆÙ†Ø§Øª Ø§Ø·ÙØ§Ù„ Ø¬Ù…Ù„Ø©,Ù…Ù„Ø§Ø¨Ø³ Ø§Ø·ÙØ§Ù„ Ù‚Ø·Ù† Ù…ØµØ±ÙŠ,Ù…Ù„Ø§Ø¨Ø³ Ø§Ø·ÙØ§Ù„ Ù…Ù‚Ø§ÙˆÙ…Ø© Ù„Ù„ØºØ³ÙŠÙ„,Ù…Ù„Ø§Ø¨Ø³ Ø¨Ù†Ø§Øª Ø®Ø±ÙˆØ¬,Ù…Ù„Ø§Ø¨Ø³ Ø§Ø·ÙØ§Ù„ Ø¹Ø²ÙˆÙ…Ø§Øª,Ù…Ù„Ø§Ø¨Ø³ Ø¨Ù†Ø§Øª ØµÙŠÙÙŠ,Ù…Ù„Ø§Ø¨Ø³ Ø¨Ù†Ø§Øª Ø´ØªÙˆÙŠ";
+const FALLBACK_KEYWORDS = "áíÌä ÈäÇÊí ÌãáÉ,ßæáæä ÈäÇÊí ÌãáÉ,ãáÇÈÓ ÇØÝÇá ÈÇáÌãáÉ,ãÕäÚ ãáÇÈÓ ÇØÝÇá,ãáÇÈÓ ÈäÇÊ ÈÇáÌãáÉ,ÊÌÇÑÉ ÌãáÉ ãáÇÈÓ ÇØÝÇá,ÓæÞ ÌãáÉ ãáÇÈÓ ÇØÝÇá,ãæÑÏ ãáÇÈÓ ÇØÝÇá,áíÌä ÇØÝÇá ÌãáÉ,ÈäØáæäÇÊ ÇØÝÇá ÌãáÉ,ãáÇÈÓ ÇØÝÇá ÞØä ãÕÑí,ãáÇÈÓ ÇØÝÇá ãÞÇæãÉ ááÛÓíá,ãáÇÈÓ ÈäÇÊ ÎÑæÌ,ãáÇÈÓ ÇØÝÇá ÚÒæãÇÊ,ãáÇÈÓ ÈäÇÊ ÕíÝí,ãáÇÈÓ ÈäÇÊ ÔÊæí";
 
 const MetaTags = () => {
   const { data: settings } = useSiteSettings();
 
   if (!settings) return null;
 
-  const siteName = settings.site_name || "Ù…ØµÙ†Ø¹ Ø§Ù„ÙƒÙŠÙ†Ø¬";
+  const siteName = settings.site_name || "ãÕäÚ ÇáßíäÌ";
   const siteDesc = settings.site_description || FALLBACK_DESC;
   const title = settings.site_name ? `${siteName} - ${siteDesc}` : FALLBACK_TITLE;
   const image = settings.hero_image || FALLBACK_IMAGE;
@@ -29,7 +29,7 @@ const MetaTags = () => {
       <meta name="twitter:title" content={siteName} />
       <meta name="twitter:description" content={siteDesc} />
       <meta name="twitter:image" content={image} />
-      <link rel="icon" href={settings.favicon_url || "/logo/logo.jpg"} />
+      <link rel="icon" href={settings.favicon_url || "/logo/logo.webp"} />
       {settings.google_site_verification && (
         <meta name="google-site-verification" content={settings.google_site_verification} />
       )}

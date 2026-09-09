@@ -185,9 +185,9 @@ const AdminProducts = () => {
       }
 
       const products = [
-        { name: "ليجن قطن بناتي مضلع", description: "ليجن قطني مضلع عالي الجودة.", price: 150, unit: "قطعة", stock_quantity: 30, category_id: catMap["oud"], image_url: "/images/product-3.jpg" },
-        { name: "كولون أبيض مدرسي", description: "كولون أبيض ممتاز مناسب للمدرسة.", price: 85, unit: "قطعة", stock_quantity: 45, category_id: catMap["women"], image_url: "/images/product-6.jpg" },
-        { name: "ليجن رياضي ألوان", description: "ليجن رياضي خفيف ومريح.", price: 180, unit: "قطعة", stock_quantity: 25, category_id: catMap["men"], image_url: "/images/product-5.jpg" },
+        { name: "ليجن قطن بناتي مضلع", description: "ليجن قطني مضلع عالي الجودة.", price: 150, unit: "قطعة", stock_quantity: 30, category_id: catMap["oud"], image_url: "/images/product-3.webp" },
+        { name: "كولون أبيض مدرسي", description: "كولون أبيض ممتاز مناسب للمدرسة.", price: 85, unit: "قطعة", stock_quantity: 45, category_id: catMap["women"], image_url: "/images/product-6.webp" },
+        { name: "ليجن رياضي ألوان", description: "ليجن رياضي خفيف ومريح.", price: 180, unit: "قطعة", stock_quantity: 25, category_id: catMap["men"], image_url: "/images/product-5.webp" },
       ];
 
       for (const p of products) {

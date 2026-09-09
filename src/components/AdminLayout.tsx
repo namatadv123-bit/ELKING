@@ -201,7 +201,7 @@ const AdminLayout = () => {
             
             <div className="flex-1" />
             <div className="flex items-center gap-2">
-              <img src="/logo-main.jpg" alt="Logo" className="w-9 h-9 rounded-full object-cover border border-border shadow-sm" />
+              <img src="/logo-main.webp" alt="Logo" className="w-9 h-9 rounded-full object-cover border border-border shadow-sm" />
               <h2 className="font-cairo font-bold text-foreground">مصنع الكينج</h2>
             </div>
           </header>

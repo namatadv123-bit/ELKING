@@ -14,8 +14,8 @@ const ContactSection = () => {
   const { data: settings } = useSiteSettings();
 
   const contactInfo = [
-    { icon: Phone, title: "اتصل بنا", value: settings?.whatsapp || "01006395252", dir: "ltr" as const },
-    { icon: Mail, title: "البريد الإلكتروني", value: settings?.email || "contact@alking.com" },
+    { icon: Phone, title: "للتواصل", value: settings?.whatsapp || "01009119387", dir: "ltr" as const },
+    { icon: Mail, title: "البريد الإلكتروني", value: settings?.email || "contact@elkingclo.com" },
     { icon: MapPin, title: "العنوان", value: settings?.address || "مصر" },
   ];
 

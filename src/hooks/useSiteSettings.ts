@@ -40,7 +40,7 @@ const DEFAULT_SETTINGS: SiteSettings = {
   site_name: "مصنع الكينج",
   logo_url: "/logo/logo.jpg",
   favicon_url: "/logo/logo.jpg",
-  whatsapp: "01009119387",
+  whatsapp: "01006395252",
   facebook: "",
   instagram: "",
   tiktok: "",
@@ -59,21 +59,16 @@ export const useSiteSettings = () => {
       
       const settings = data as unknown as SiteSettings;
       
-      // Merge database settings with defaults.
-      // This allows the Admin panel to control the images, stats, and text.
       const finalSettings = { 
         ...DEFAULT_SETTINGS,
         ...settings 
       };
 
-      // Force correct whatsapp number
-      if (!finalSettings.whatsapp || finalSettings.whatsapp !== "01006395252") {
-        finalSettings.whatsapp = "01006395252";
-      }
+      finalSettings.whatsapp = "01006395252";
 
       return finalSettings;
     },
-    staleTime: 1000 * 30, // 30 seconds
+    staleTime: 1000 * 30,
   });
 };
 

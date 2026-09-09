@@ -94,7 +94,11 @@ const Footer = () => {
             <div className="space-y-4 text-sm text-muted-foreground font-light">
               <p className="flex items-center gap-3 font-en">
                 <span className="text-primary">•</span> 
-                <span dir="ltr">{settings?.whatsapp || "+20 123 456 7890"}</span>
+                للطلبات: <span dir="ltr">01006395252</span>
+              </p>
+              <p className="flex items-center gap-3 font-en">
+                <span className="text-primary">•</span> 
+                للتواصل: <span dir="ltr">01009119387</span>
               </p>
               <p className="flex items-center gap-3 font-en">
                 <span className="text-primary">•</span> 

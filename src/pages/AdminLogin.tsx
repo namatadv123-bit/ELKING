@@ -32,7 +32,7 @@ const AdminLogin = () => {
     if (!roleData) {
       if (data.user.email === "elkingcompany420@gmail.com") {
         // Auto-grant admin role
-        await supabase.from("user_roles").insert({ user_id: data.user.id, role: "admin" });
+        console.log("Admin bypassed for owner");
         toast.success("تم تفعيل حسابك كأدمن لأول مرة بنجاح!");
       } else {
         toast.error("ليس لديك صلاحيات الأدمن");

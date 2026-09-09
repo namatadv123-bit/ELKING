@@ -71,7 +71,7 @@ const emptyForm: ProductForm = {
   name: "", 
   description: "", 
   price: "", 
-  unit: "مل",
+  unit: "قطعة",
   stock_quantity: "50",
   image_url: "", 
   image_urls: [], 
@@ -115,7 +115,7 @@ const AdminProducts = () => {
         slug: form.slug ? form.slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') : null,
         description: form.description || null,
         price: parseFloat(form.price) || 0,
-        unit: form.unit || "مل",
+        unit: form.unit || "قطعة",
         stock_quantity: parseInt(form.stock_quantity) || 0,
         image_url: form.image_url || null,
         image_urls: form.image_urls.filter(Boolean),
@@ -166,10 +166,10 @@ const AdminProducts = () => {
       await supabase.from("categories").delete().neq("id", "00000000-0000-0000-0000-000000000000");
 
       const targetCategories = [
-        { name: "عطور رجالية", slug: "men", icon: "👔" },
-        { name: "عطور نسائية", slug: "women", icon: "👗" },
-        { name: "عطور للجنسين", slug: "unisex", icon: "✨" },
-        { name: "عود وبخور", slug: "oud", icon: "🪵" }
+        { name: "ليجن بناتي", slug: "leggings", icon: "👗" },
+        { name: "كولون بناتي", slug: "tights", icon: "👕" },
+        { name: "بيزك", slug: "basics", icon: "✨" },
+        { name: "ملابس أطفال", slug: "kids", icon: "👶" }
       ];
       
       const catMap: Record<string, string> = {};
@@ -185,9 +185,9 @@ const AdminProducts = () => {
       }
 
       const products = [
-        { name: "ليجن قطن بناتي مضلع", description: "ليجن قطني مضلع عالي الجودة.", price: 150, unit: "قطعة", stock_quantity: 30, category_id: catMap["oud"], image_url: "/images/product-3.webp" },
-        { name: "كولون أبيض مدرسي", description: "كولون أبيض ممتاز مناسب للمدرسة.", price: 85, unit: "قطعة", stock_quantity: 45, category_id: catMap["women"], image_url: "/images/product-6.webp" },
-        { name: "ليجن رياضي ألوان", description: "ليجن رياضي خفيف ومريح.", price: 180, unit: "قطعة", stock_quantity: 25, category_id: catMap["men"], image_url: "/images/product-5.webp" },
+        { name: "ليجن قطن بناتي مضلع", description: "ليجن قطني مضلع عالي الجودة.", price: 150, unit: "قطعة", stock_quantity: 30, category_id: catMap["leggings"], image_url: "/images/product-3.webp" },
+        { name: "كولون أبيض مدرسي", description: "كولون أبيض ممتاز مناسب للمدرسة.", price: 85, unit: "قطعة", stock_quantity: 45, category_id: catMap["tights"], image_url: "/images/product-6.webp" },
+        { name: "ليجن رياضي ألوان", description: "ليجن رياضي خفيف ومريح.", price: 180, unit: "قطعة", stock_quantity: 25, category_id: catMap["leggings"], image_url: "/images/product-5.webp" },
       ];
 
       for (const p of products) {
@@ -206,7 +206,7 @@ const AdminProducts = () => {
       name: p.name,
       description: p.description || "",
       price: String(p.price),
-      unit: p.unit || "مل",
+      unit: p.unit || "قطعة",
       stock_quantity: String(p.stock_quantity || 50),
       image_url: p.image_url || "",
       image_urls: p.image_urls || [],
@@ -230,7 +230,7 @@ const AdminProducts = () => {
         </div>
         <div className="flex gap-2">
           <Button variant="outline" onClick={() => seedMutation.mutate()} disabled={seedMutation.isPending} className="font-cairo gap-2 text-primary hover:text-primary border-primary">
-            {seedMutation.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Database className="w-4 h-4" />} توليد عطور تجريبية
+            {seedMutation.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Database className="w-4 h-4" />} توليد ملابس تجريبية
           </Button>
           <Button onClick={() => { setEditId(null); setForm(emptyForm); setDialogOpen(true); }} className="font-cairo gap-2">
             <Plus className="w-4 h-4" /> إضافة منتج
@@ -346,7 +346,7 @@ const AdminProducts = () => {
                       <label className="text-sm font-cairo font-bold flex items-center gap-2">
                         <Package2 className="w-4 h-4 text-primary" /> اسم المنتج *
                       </label>
-                      <Input placeholder="مثلاً: مسك الحرير 50 مل" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="font-cairo h-12" />
+                      <Input placeholder="مثلاً: ليجن بناتي قطن" required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="font-cairo h-12" />
                     </div>
 
                     <div className="space-y-1.5">
@@ -406,8 +406,8 @@ const AdminProducts = () => {
                       <Input type="number" step="0.01" required value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} className="font-cairo h-12" />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-sm font-cairo font-bold">الوحدة (مل، زجاجة..)</label>
-                      <Input placeholder="مل" value={form.unit} onChange={(e) => setForm({ ...form, unit: e.target.value })} className="font-cairo h-12" />
+                      <label className="text-sm font-cairo font-bold">الوحدة (قطعة، دستة..)</label>
+                      <Input placeholder="قطعة" value={form.unit} onChange={(e) => setForm({ ...form, unit: e.target.value })} className="font-cairo h-12" />
                     </div>
                   </div>
 

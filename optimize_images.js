@@ -27,12 +27,15 @@ async function processImages(dir) {
         let pipeline = sharp(fullPath);
         const metadata = await pipeline.metadata();
 
-        // Resize if too large
-        if (metadata.width > 1080) {
-          pipeline = pipeline.resize(1080, null, { withoutEnlargement: true });
+        // Hero image: keep at 800px, products: 500px max
+        const isHero = basename.includes('1ab01d34') || basename.includes('hero');
+        const maxW = isHero ? 800 : 500;
+
+        if (metadata.width > maxW) {
+          pipeline = pipeline.resize(maxW, null, { withoutEnlargement: true });
         }
 
-        await pipeline.webp({ quality: 80 }).toFile(webpPath);
+        await pipeline.webp({ quality: 78 }).toFile(webpPath);
         console.log(`Success: ${webpPath}`);
         
         // Remove old file to save space

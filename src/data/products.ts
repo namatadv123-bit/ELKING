@@ -47,7 +47,7 @@ export const staticProducts: Product[] = [
 ];
 
 export const staticCategories = [
-  { id: "leggings", name: "ليجن بناتي", image_url: "/images/product-3.webp" },
-  { id: "tights", name: "كولون بناتي", image_url: "/images/product-6.webp" },
-  { id: "basics", name: "بيزك", image_url: "/images/product-5.webp" }
+  { id: "leggings", name: "ليجن بناتي", image_url: "/images/product-3.webp", slug: "leggings", icon: "👗" },
+  { id: "tights", name: "كولون بناتي", image_url: "/images/product-6.webp", slug: "tights", icon: "👕" },
+  { id: "basics", name: "بيزك", image_url: "/images/product-5.webp", slug: "basics", icon: "✨" }
 ];

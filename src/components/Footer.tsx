@@ -53,7 +53,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-foreground mb-6 text-lg tracking-wide">روابط سريعة</h4>
+            <h3 className="font-bold text-foreground mb-6 text-lg tracking-wide">روابط سريعة</h3>
             <ul className="space-y-3">
               {[
                 { label: "الرئيسية", href: "/" },
@@ -61,7 +61,7 @@ const Footer = () => {
                 { label: "منتجاتنا", href: "/products" },
               ].map((l) => (
                 <li key={l.href}>
-                  <a href={l.href} className="text-muted-foreground hover:text-primary text-sm transition-colors flex items-center gap-2 group">
+                  <a href={l.href} className="text-foreground/70 hover:text-primary text-sm transition-colors flex items-center gap-2 group">
                     <span className="w-1 h-1 rounded-full bg-primary/0 group-hover:bg-primary transition-colors" />
                     {l.label}
                   </a>
@@ -72,14 +72,14 @@ const Footer = () => {
 
           {/* More Links */}
           <div>
-            <h4 className="font-bold text-foreground mb-6 text-lg tracking-wide">المزيد</h4>
+            <h3 className="font-bold text-foreground mb-6 text-lg tracking-wide">المزيد</h3>
             <ul className="space-y-3">
               {[
                 { label: "المقالات", href: "/articles" },
                 { label: "تواصل معنا", href: "/#contact" },
               ].map((l) => (
                 <li key={l.href}>
-                  <a href={l.href} className="text-muted-foreground hover:text-primary text-sm transition-colors flex items-center gap-2 group">
+                  <a href={l.href} className="text-foreground/70 hover:text-primary text-sm transition-colors flex items-center gap-2 group">
                     <span className="w-1 h-1 rounded-full bg-primary/0 group-hover:bg-primary transition-colors" />
                     {l.label}
                   </a>
@@ -90,8 +90,8 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-bold text-foreground mb-6 text-lg tracking-wide">تواصل معنا</h4>
-            <div className="space-y-4 text-sm text-muted-foreground font-light">
+            <h3 className="font-bold text-foreground mb-6 text-lg tracking-wide">تواصل معنا</h3>
+            <div className="space-y-4 text-sm text-foreground/70 font-light">
               <p className="flex items-center gap-3 font-en">
                 <span className="text-primary">•</span> 
                 للطلبات: <span dir="ltr">01006395252</span>
@@ -124,15 +124,15 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-right">
-          <p className="text-muted-foreground text-sm font-light">
+          <p className="text-foreground/70 text-sm font-light">
             © {new Date().getFullYear()} {settings?.site_name || "مصنع الكينج"}. جميع الحقوق محفوظة.
           </p>
           
-          <p className="text-muted-foreground text-sm font-light">
+          <p className="text-foreground/70 text-sm font-light">
             صُنع بكل فخر بواسطة <a href="https://brand1me.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">Brand Me</a>
           </p>
 
-          <div className="flex items-center gap-4 text-sm text-muted-foreground font-light">
+          <div className="flex items-center gap-4 text-sm text-foreground/70 font-light">
             <Link to="/privacy-policy" className="hover:text-primary transition-colors">سياسة الخصوصية</Link>
             <a href="#" className="hover:text-primary transition-colors">الشروط والأحكام</a>
           </div>

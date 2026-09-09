@@ -37,14 +37,18 @@ const Index = () => {
       <MetaTags />
       <SchemaMarkup />
       <Navbar />
-      <HeroSection />
-      <Suspense fallback={<SectionLoader />}>
-        <FeaturedProducts />
-        <FeaturesSection />
-        <AboutSection />
-        <ArticlesSection />
-        <TestimonialsSection />
-        <ContactSection />
+      <main>
+        <HeroSection />
+        <Suspense fallback={<SectionLoader />}>
+          <FeaturedProducts />
+          <FeaturesSection />
+          <AboutSection />
+          <ArticlesSection />
+          <TestimonialsSection />
+          <ContactSection />
+        </Suspense>
+      </main>
+      <Suspense fallback={null}>
         <Footer />
       </Suspense>
     </div>

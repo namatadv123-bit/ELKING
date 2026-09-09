@@ -13,7 +13,7 @@ BEGIN
   INSERT INTO categories (id, name, slug, icon) VALUES 
     (leggings_id, 'ليجن بناتي', 'leggings', '👖'),
     (tights_id, 'كولون بناتي', 'tights', '🧦'),
-    (basics_id, 'بيزك أطفال', 'basics', '👕');
+    (basics_id, 'بيزك', 'basics', '👕');
 
   -- 3. إدخال منتجات الليجن
   INSERT INTO products (name, description, price, category_id, image_url, is_active, unit) VALUES

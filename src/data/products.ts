@@ -49,5 +49,5 @@ export const staticProducts: Product[] = [
 export const staticCategories = [
   { id: "leggings", name: "ليجن بناتي", image_url: "/images/product-3.jpg" },
   { id: "tights", name: "كولون بناتي", image_url: "/images/product-6.jpg" },
-  { id: "basics", name: "بيزك أطفال", image_url: "/images/product-5.jpg" }
+  { id: "basics", name: "بيزك", image_url: "/images/product-5.jpg" }
 ];

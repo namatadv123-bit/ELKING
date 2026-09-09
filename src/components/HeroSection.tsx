@@ -69,7 +69,7 @@ const HeroSection = () => {
 
           {/* Headline */}
           <motion.h1
-            className="font-bold leading-[1.1] mb-6 tracking-tight"
+            className="font-light leading-[1.1] mb-6 tracking-tight"
             style={{ fontSize: "clamp(2rem, 5vw, 4.5rem)" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

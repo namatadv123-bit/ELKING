@@ -7,7 +7,7 @@
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://www.googletagmanager.com https://www.google-analytics.com https://aeeaepqrmgsqmeaimnhn.supabase.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://aeeaepqrmgsqmeaimnhn.supabase.co https://*.supabase.co; frame-src 'self' https://js.stripe.com; media-src 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://www.googletagmanager.com https://www.google-analytics.com https://www.googletagmanager.com https://static.cloudflareinsights.com https://qowtosxbleehxnhjyduk.supabase.co https://*.supabase.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://qowtosxbleehxnhjyduk.supabase.co wss://qowtosxbleehxnhjyduk.supabase.co https://*.supabase.co wss://*.supabase.co; frame-src 'self' https://js.stripe.com; media-src 'self'
 
 # ============================================
 # Cache Static Assets (Long-lived)

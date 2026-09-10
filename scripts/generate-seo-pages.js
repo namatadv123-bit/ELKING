@@ -1,34 +1,55 @@
 import fs from 'fs';
 import path from 'path';
 
-// Helper to extract JSON from TS exports
+// Helper to extract data from TS exports
 function extractDataFromTS(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
-  // extract staticProducts array
-  const productsMatch = content.match(/export const staticProducts: Product\[\] = (\[[\s\S]*?\]);/);
-  // extract staticArticles array
-  const articlesMatch = content.match(/export const staticArticles: Article\[\] = (\[[\s\S]*?\]);/);
   
+  // Extract staticProducts - find array boundaries
   let products = [];
   let articles = [];
   
   try {
-    if (productsMatch) products = JSON.parse(productsMatch[1]);
-  } catch(e) { console.error("Error parsing products", e); }
-
-  try {
-    if (articlesMatch) {
-      const artText = articlesMatch[1];
-      const slugs = [...artText.matchAll(/slug:\s*["']([^"']+)["']/g)].map(m => m[1]);
-      const titles = [...artText.matchAll(/title:\s*["']([^"']+)["']/g)].map(m => m[1]);
-      const excerpts = [...artText.matchAll(/excerpt:\s*["']([^"']+)["']/g)].map(m => m[1]);
-      const images = [...artText.matchAll(/image_url:\s*["']([^"']+)["']/g)].map(m => m[1]);
+    const productsMatch = content.match(/export const staticProducts: Product\[\] = \[([\s\S]*?)\n\];/);
+    if (productsMatch) {
+      const text = productsMatch[1];
+      const slugs = [...text.matchAll(/slug:\s*["']([^"']+)["']/g)].map(m => m[1]);
+      const names = [...text.matchAll(/name:\s*["']([^"']+)["']/g)].map(m => m[1]);
+      const prices = [...text.matchAll(/price:\s*(\d+)/g)].map(m => Number(m[1]));
+      const images = [...text.matchAll(/image_url:\s*["']([^"']+)["']/g)].map(m => m[1]);
+      const descriptions = [...text.matchAll(/description:\s*["']([\s\S]*?)["'],/g)].map(m => m[1].substring(0, 160));
+      const isFeatureds = [...text.matchAll(/is_featured:\s*(true|false)/g)].map(m => m[1] === 'true');
       
-      for(let i=0; i<slugs.length; i++) {
-        articles.push({ slug: slugs[i], title: titles[i], excerpt: excerpts[i], image_url: images[i] });
+      for (let i = 0; i < slugs.length; i++) {
+        products.push({
+          slug: slugs[i],
+          name: names[i] || `منتج ${i+1}`,
+          price: prices[i] || 150,
+          image_url: images[i] || '',
+          description: descriptions[i] || '',
+          is_featured: isFeatureds[i] || false,
+        });
       }
     }
-  } catch(e) { console.error("Error parsing articles", e); }
+  } catch(e) { console.error("Error parsing products:", e.message); }
+
+  try {
+    if (fs.existsSync(path.resolve('src/data/articles.ts'))) {
+      const artContent = fs.readFileSync(path.resolve('src/data/articles.ts'), 'utf8');
+      const artMatch = artContent.match(/export const staticArticles: Article\[\] = \[([\s\S]*?)\n\];/);
+      if (artMatch) {
+        const text = artMatch[1];
+        const slugs = [...text.matchAll(/slug:\s*["']([^"']+)["']/g)].map(m => m[1]);
+        const titles = [...text.matchAll(/title:\s*["']([^"']+)["']/g)].map(m => m[1]);
+        const excerpts = [...text.matchAll(/excerpt:\s*["']([^"']+)["']/g)].map(m => m[1]);
+        const images = [...text.matchAll(/image_url:\s*["']([^"']+)["']/g)].map(m => m[1]);
+        
+        for (let i = 0; i < slugs.length; i++) {
+          articles.push({ slug: slugs[i], title: titles[i], excerpt: excerpts[i], image_url: images[i] });
+        }
+      }
+    }
+  } catch(e) { console.error("Error parsing articles:", e.message); }
 
   return { products, articles };
 }
@@ -43,14 +64,7 @@ function generatePages() {
   }
   
   const baseHtml = fs.readFileSync(indexHtmlPath, 'utf8');
-  
   let { products, articles } = extractDataFromTS(path.resolve('src/data/products.ts'));
-  
-  // also fetch articles from articles.ts if it exists
-  if (fs.existsSync(path.resolve('src/data/articles.ts'))) {
-      const artData = extractDataFromTS(path.resolve('src/data/articles.ts'));
-      if (artData.articles.length > 0) articles = artData.articles;
-  }
 
   console.log(`Generating SEO pages for ${products.length} products and ${articles.length} articles...`);
 
@@ -61,27 +75,25 @@ function generatePages() {
   products.forEach(product => {
     if (!product.slug) return;
     
-    // Create folder for slug to serve clean URL: /products/slug/index.html -> /products/slug
     const productDir = path.join(productsDir, product.slug);
     if (!fs.existsSync(productDir)) fs.mkdirSync(productDir, { recursive: true });
     
-    // Inject SEO tags
     let html = baseHtml;
-    const title = `${product.name} - أحمد الماسي للعطور`;
-    const description = product.description ? product.description.substring(0, 160) : `تسوق ${product.name} بأفضل سعر من أحمد الماسي.`;
-    const image = product.image_url || 'https://ahmedalmasi.com/hero-main.jpg';
+    const title = `${product.name} - مصنع الكينج`;
+    const description = product.description ? product.description.replace(/<[^>]+>/g, '').substring(0, 160) : `تسوق ${product.name} بأسعار جملة من مصنع الكينج.`;
+    const image = product.image_url.startsWith('/') ? `https://elkingclo.com${product.image_url}` : product.image_url || 'https://elkingclo.com/hero-main.webp';
     
-    // Product Schema
     const schema = {
       "@context": "https://schema.org/",
       "@type": "Product",
       "name": product.name,
       "image": [image],
       "description": description,
-      "sku": product.id,
+      "sku": product.slug,
+      "brand": { "@type": "Brand", "name": "مصنع الكينج" },
       "offers": {
         "@type": "Offer",
-        "url": `https://ahmedalmasi.com/products/${product.slug}`,
+        "url": `https://elkingclo.com/products/${product.slug}`,
         "priceCurrency": "EGP",
         "price": product.price,
         "availability": "https://schema.org/InStock",
@@ -96,7 +108,7 @@ function generatePages() {
     <meta property="og:title" content="${title}">
     <meta property="og:description" content="${description}">
     <meta property="og:image" content="${image}">
-    <meta property="og:url" content="https://ahmedalmasi.com/products/${product.slug}">
+    <meta property="og:url" content="https://elkingclo.com/products/${product.slug}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${title}">
     <meta name="twitter:description" content="${description}">
@@ -104,7 +116,6 @@ function generatePages() {
     <script type="application/ld+json">${JSON.stringify(schema)}</script>
     `;
     
-    // Replace default tags
     html = html.replace(/<title>.*?<\/title>/s, '');
     html = html.replace(/<meta name="description".*?>/s, '');
     html = html.replace(/<meta property="og:.*?".*?>/sg, '');
@@ -125,21 +136,21 @@ function generatePages() {
     if (!fs.existsSync(articleDir)) fs.mkdirSync(articleDir, { recursive: true });
     
     let html = baseHtml;
-    const title = `${article.title} - مدونة أحمد الماسي`;
-    const description = article.excerpt ? article.excerpt.substring(0, 160) : `اقرأ مقال ${article.title} حصرياً على أحمد الماسي.`;
-    const image = article.image_url || 'https://ahmedalmasi.com/hero-main.jpg';
+    const title = `${article.title} - مدونة مصنع الكينج`;
+    const description = article.excerpt ? article.excerpt.substring(0, 160) : `اقرأ ${article.title} على موقع مصنع الكينج.`;
+    const image = article.image_url || 'https://elkingclo.com/hero-main.webp';
     
     const schema = {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": article.title,
       "image": [image],
-      "datePublished": article.published_at || new Date().toISOString(),
+      "datePublished": new Date().toISOString(),
       "author": [{
-          "@type": "Organization",
-          "name": "أحمد الماسي",
-          "url": "https://ahmedalmasi.com"
-        }]
+        "@type": "Organization",
+        "name": "مصنع الكينج",
+        "url": "https://elkingclo.com"
+      }]
     };
 
     const seoTags = `
@@ -149,7 +160,7 @@ function generatePages() {
     <meta property="og:title" content="${title}">
     <meta property="og:description" content="${description}">
     <meta property="og:image" content="${image}">
-    <meta property="og:url" content="https://ahmedalmasi.com/articles/${article.slug}">
+    <meta property="og:url" content="https://elkingclo.com/articles/${article.slug}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${title}">
     <meta name="twitter:description" content="${description}">

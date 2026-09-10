@@ -193,7 +193,7 @@ const AdminProducts = () => {
           unit: "دسته", // Wholesale unit
           stock_quantity: 100,
           category_id: catMap["kids"], // Putting them in kids by default
-          image_url: `/images/extracted_products/product_extracted_${i}.png`,
+          image_url: `/placeholder.svg`,
           is_active: true,
           is_featured: i <= 4 // feature first 4 products
         });

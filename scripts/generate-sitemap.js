@@ -1,106 +1,56 @@
 import fs from 'fs';
 import path from 'path';
-import { createClient } from '@supabase/supabase-js';
 
-// Parse .env file manually
-const envPath = path.resolve(process.cwd(), '.env');
-const envConfig = {};
-if (fs.existsSync(envPath)) {
-  const envFile = fs.readFileSync(envPath, 'utf8');
-  envFile.split('\n').forEach(line => {
-    const match = line.match(/^([^=]+)=(.*)$/);
-    if (match) {
-      envConfig[match[1].trim()] = match[2].trim().replace(/^"|"$/g, '');
-    }
-  });
+function extractProductsFromTS() {
+  const productsPath = path.resolve('src/data/products.ts');
+  if (!fs.existsSync(productsPath)) return [];
+  
+  const content = fs.readFileSync(productsPath, 'utf8');
+  const match = content.match(/export const staticProducts: Product\[\] = \[([\s\S]*?)\n\];/);
+  if (!match) return [];
+  
+  const text = match[1];
+  const slugs = [...text.matchAll(/slug:\s*["']([^"']+)["']/g)].map(m => m[1]);
+  return slugs.map(slug => ({ slug }));
 }
 
-let supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || envConfig['VITE_SUPABASE_URL'] || envConfig['SUPABASE_URL'];
-let supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_PUBLISHABLE_KEY || process.env.SUPABASE_PUBLISHABLE_KEY || envConfig['VITE_SUPABASE_ANON_KEY'] || envConfig['VITE_SUPABASE_PUBLISHABLE_KEY'] || envConfig['SUPABASE_PUBLISHABLE_KEY'];
-
-let supabase = null;
-if (!supabaseUrl || !supabaseKey) {
-  console.warn("⚠️ Warning: Missing Supabase credentials in environment or .env");
-  console.warn("⚠️ Sitemap will be generated with only static URLs.");
-} else {
-  supabase = createClient(supabaseUrl, supabaseKey);
-}
-
-async function generateSitemap() {
+function generateSitemap() {
   console.log("Generating dynamic sitemap...");
-  const baseUrl = "https://ahmedalmasi.com";
+  const baseUrl = "https://elkingclo.com";
   const sitemapPath = path.resolve('public/sitemap.xml');
   
   let urls = [
     { url: '/', priority: 1.0, changefreq: 'daily' },
     { url: '/products', priority: 0.9, changefreq: 'daily' },
     { url: '/articles', priority: 0.8, changefreq: 'weekly' },
-    { url: '/services', priority: 0.7, changefreq: 'monthly' }
+    { url: '/services', priority: 0.7, changefreq: 'monthly' },
+    { url: '/privacy-policy', priority: 0.3, changefreq: 'yearly' },
   ];
 
-  try {
-    if (supabase) {
-      // Fetch active products
-      const { data: products, error: pError } = await supabase
-        .from('products')
-        .select('slug, id, updated_at')
-        .eq('is_active', true);
-        
-      if (pError) throw pError;
-      
-      if (products) {
-        products.forEach(p => {
-          const identifier = p.slug || p.id;
-          if (identifier) {
-            urls.push({
-              url: `/products/${identifier}`,
-              priority: 0.8,
-              changefreq: 'weekly',
-              lastmod: p.updated_at
-            });
-          }
-        });
-      }
+  // Add static products
+  const products = extractProductsFromTS();
+  products.forEach(p => {
+    urls.push({
+      url: `/products/${p.slug}`,
+      priority: 0.8,
+      changefreq: 'weekly',
+    });
+  });
 
-      // Fetch published articles
-      const { data: articles, error: aError } = await supabase
-        .from('articles')
-        .select('slug, updated_at')
-        .eq('is_published', true);
-        
-      if (aError) throw aError;
-      
-      if (articles) {
-        articles.forEach(a => {
-          if (a.slug) {
-            urls.push({
-              url: `/articles/${a.slug}`,
-              priority: 0.7,
-              changefreq: 'monthly',
-              lastmod: a.updated_at
-            });
-          }
-        });
-      }
-    }
-
-    // Generate XML
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+  // Generate XML
+  const today = new Date().toISOString().split('T')[0];
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${urls.map(u => `
-  <url>
+${urls.map(u => `  <url>
     <loc>${baseUrl}${u.url}</loc>
-    ${u.lastmod ? `<lastmod>${new Date(u.lastmod).toISOString()}</lastmod>` : ''}
+    <lastmod>${today}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
-  </url>`).join('')}
+  </url>`).join('\n')}
 </urlset>`;
 
-    fs.writeFileSync(sitemapPath, xml.trim());
-    console.log(`Sitemap generated successfully with ${urls.length} URLs at ${sitemapPath}`);
-  } catch (err) {
-    console.error("Error generating sitemap:", err);
-  }
+  fs.writeFileSync(sitemapPath, xml.trim());
+  console.log(`Sitemap generated with ${urls.length} URLs at ${sitemapPath}`);
 }
 
 generateSitemap();

@@ -3,12 +3,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
-
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { sendOrderEmail } from "@/utils/sendOrderEmail";
 
 interface OrderDialogProps {
   open: boolean;
@@ -24,34 +21,24 @@ const OrderDialog = ({ open, onOpenChange, product }: OrderDialogProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!product) return;
-    setLoading(true);
-    const { error } = await supabase.from("orders").insert({
-      customer_name: form.name,
-      customer_phone: form.phone,
-      customer_email: form.email || null,
-      product_id: product.id,
-      product_name: product.name,
-      quantity: form.quantity,
-      notes: form.notes || null,
-      status: 'pending'
-    });
-    setLoading(false);
-    if (error) {
-      toast.error("حدث خطأ، حاول مرة أخرى");
-    } else {
-      // Send email notification
-      await sendOrderEmail({
-        customerName: form.name,
-        customerPhone: form.phone,
-        customerEmail: form.email,
-        notes: form.notes,
-        items: [{ name: product.name, quantity: form.quantity }]
-      });
+    const messageBody = `طلب منتج جديد:\n\n` + 
+      `المنتج: ${product.name}\n` +
+      `الكمية: ${form.quantity}\n\n` +
+      `بيانات العميل:\n` +
+      `الاسم: ${form.name.trim()}\n` +
+      `الهاتف: ${form.phone.trim()}\n` +
+      (form.email ? `البريد: ${form.email.trim()}\n` : '') +
+      (form.notes ? `ملاحظات: ${form.notes.trim()}` : '');
 
-      toast.success("تم إرسال طلبك بنجاح! سنتواصل معك قريباً لتأكيد الطلب.");
-      setForm({ name: "", phone: "", email: "", notes: "", quantity: 1 });
-      onOpenChange(false);
-    }
+    const targetPhone = settings?.whatsapp || "01006395252";
+    const waLink = `https://wa.me/2${targetPhone}?text=${encodeURIComponent(messageBody)}`;
+    
+    window.open(waLink, '_blank');
+    
+    setLoading(false);
+    toast.success("تم تحويلك للواتساب لإرسال الطلب!");
+    setForm({ name: "", phone: "", email: "", notes: "", quantity: 1 });
+    onOpenChange(false);
   };
 
 

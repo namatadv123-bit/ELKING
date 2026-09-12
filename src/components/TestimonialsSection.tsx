@@ -1,44 +1,8 @@
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
-
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
+import { staticTestimonials } from "@/data/testimonials";
 
 const TestimonialsSection = () => {
-  const { data: testimonials, isLoading } = useQuery({
-    queryKey: ["testimonials"],
-    queryFn: async () => {
-      const { data, error } = await supabase.from("testimonials").select("*").order("created_at", { ascending: false });
-      if (error) throw error;
-      return data;
-    },
-  });
-
-  const fallbackTestimonials = [
-    {
-      id: 1,
-      name: "سارة أحمد",
-      role: "أم لثلاث أطفال",
-      text: "خامات الكينج ممتازة جداً. الليجن ناعم على بشرة بناتي ومريح في اللبس والغسيل.",
-      rating: 5,
-    },
-    {
-      id: 2,
-      name: "نورهان مجدي",
-      role: "ربة منزل",
-      text: "الكولون الأبيض بتاع المدرسة ممتاز ومش بيوبر بسرعة. جودة سورية بجد ممتازة.",
-      rating: 5,
-    },
-    {
-      id: 3,
-      name: "هدى مصطفى",
-      role: "معلمة",
-      text: "كل هدوم بنتي من عندكم، الألوان ثابتة والأسعار ممتازة مقارنة بالجودة العالية.",
-      rating: 4,
-    },
-  ];
-
-  const displayTestimonials = testimonials && testimonials.length > 0 ? testimonials : fallbackTestimonials;
   return (
     <section className="py-20 bg-secondary/30 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
@@ -55,12 +19,12 @@ const TestimonialsSection = () => {
           <h2 className="text-3xl md:text-4xl font-cairo font-extrabold text-foreground mb-4">
             <span className="text-gradient">آراء عملائنا</span>
           </h2>
-          <p className="text-muted-foreground font-cairo max-w-2xl mx-auto">ماذا يقول عملاؤنا عن تجربتهم مع عطور أريج</p>
+          <p className="text-muted-foreground font-cairo max-w-2xl mx-auto">تجارب عملائنا مع منتجات مصنع الكينج</p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {displayTestimonials.map((t, i) => (
+          {staticTestimonials.map((t, i) => (
             <motion.div
-              key={t.name}
+              key={t.id}
               className="bg-card rounded-2xl p-8 border border-border relative group hover:border-primary/30 transition-all duration-300 overflow-hidden"
               style={{ boxShadow: "var(--card-shadow)" }}
               initial={{ opacity: 0, y: 40 }}
@@ -72,17 +36,19 @@ const TestimonialsSection = () => {
               <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <Quote className="w-8 h-8 text-primary/20 mb-4 relative z-10" />
               <div className="flex gap-0.5 mb-4 relative z-10">
-                {Array.from({ length: t.rating }).map((_, j) => (
+                {Array.from({ length: t.rating || 5 }).map((_, j) => (
                   <Star key={j} className="w-4 h-4 fill-accent text-accent" />
                 ))}
               </div>
-              <p className="text-muted-foreground font-cairo mb-6 leading-relaxed relative z-10">"{t.text}"</p>
-              <div className="relative z-10">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center text-primary-foreground font-cairo font-bold text-sm" style={{ background: "var(--premium-gradient)" }}>
+              <p className="text-muted-foreground font-cairo mb-6 leading-relaxed relative z-10">"{t.content}"</p>
+              <div className="relative z-10 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center text-primary-foreground font-cairo font-bold text-sm shrink-0" style={{ background: "var(--premium-gradient)" }}>
                   {t.name[0]}
                 </div>
-                <p className="font-cairo font-bold text-foreground mt-2">{t.name}</p>
-                <p className="font-cairo text-sm text-muted-foreground">{t.role}</p>
+                <div>
+                  <p className="font-cairo font-bold text-foreground">{t.name}</p>
+                  <p className="font-cairo text-sm text-muted-foreground">{t.role}</p>
+                </div>
               </div>
             </motion.div>
           ))}

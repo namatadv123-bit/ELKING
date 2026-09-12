@@ -4,7 +4,6 @@ import { Phone, Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useSiteSettings } from "@/hooks/useSiteSettings";
 
@@ -21,15 +20,20 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    const { error } = await supabase.from("contact_messages").insert({
-      name: form.name, phone: form.phone || null, email: form.email || null, message: form.message,
-    });
+    const messageBody = `رسالة جديدة من الموقع:\n\n` + 
+      `الاسم: ${form.name.trim()}\n` +
+      (form.phone ? `الهاتف: ${form.phone.trim()}\n` : '') +
+      (form.email ? `البريد: ${form.email.trim()}\n` : '') +
+      `\nالرسالة:\n${form.message.trim()}`;
+
+    const targetPhone = settings?.whatsapp || "01006395252";
+    const waLink = `https://wa.me/2${targetPhone}?text=${encodeURIComponent(messageBody)}`;
+    
+    window.open(waLink, '_blank');
+    
     setLoading(false);
-    if (error) { toast.error("حدث خطأ، حاول مرة أخرى"); } else {
-      toast.success("تم إرسال رسالتك بنجاح!");
-      setForm({ name: "", phone: "", email: "", message: "" });
-    }
+    toast.success("تم تحويلك للواتساب لإرسال الرسالة!");
+    setForm({ name: "", phone: "", email: "", message: "" });
   };
 
   return (

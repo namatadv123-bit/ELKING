@@ -1,6 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
-
 export interface SiteFeatureItem {
   bold: string;
   text: string;
@@ -36,39 +33,40 @@ export interface SiteSettings {
   home_stats?: SiteStatItem[];
 }
 
-const DEFAULT_SETTINGS: SiteSettings = {
+export const staticSettings: SiteSettings = {
   site_name: "مصنع الكينج",
+  site_description: "مصنع الكينج - ليجن بناتي جملة، كولون بناتي جملة، ملابس أطفال بالجملة. أجود خامات القطن المصري.",
   logo_url: "/logo/logo.webp",
   favicon_url: "/logo/logo.webp",
   whatsapp: "01006395252",
-  facebook: "",
-  instagram: "",
+  facebook: "https://www.facebook.com/profile.php?id=61594011362740",
+  instagram: "https://www.instagram.com/elking_121?stkn=cndtbXk4dTJrYnBn",
   tiktok: "",
+  email: "info@elkingclo.com",
+  address: "القاهرة، مصر",
+  hero_image: "/images/hero.jpg",
+  about_image: "/images/about.jpg",
+  features_image: "/images/features.jpg",
+  footer_image: "/images/footer.jpg",
+  features_title: "لماذا تختار مصنع الكينج؟",
+  features_bottom_text: "نسعى دائماً لتقديم الأفضل لعملائنا.",
+  features_list: [
+    { bold: "جودة عالية", text: "نستخدم أفضل خامات القطن المصري" },
+    { bold: "أسعار تنافسية", text: "نقدم أفضل أسعار الجملة في السوق" },
+    { bold: "تنوع الموديلات", text: "تشكيلة واسعة من المقاسات والألوان" }
+  ],
+  home_stats: [
+    { icon: "Users", value: "1000+", label: "عميل سعيد" },
+    { icon: "Star", value: "500+", label: "تقييم إيجابي" },
+    { icon: "ShoppingBag", value: "50+", label: "منتج مميز" }
+  ]
 };
 
 export const useSiteSettings = () => {
-  return useQuery<SiteSettings | null, Error>({
-    queryKey: ["site-settings-public"],
-    queryFn: async () => {
-      const { data, error } = await supabase.from("site_settings").select("*").maybeSingle();
-      if (error) {
-        if (error.code === 'PGRST116') return DEFAULT_SETTINGS;
-        console.warn("useSiteSettings fetch failed", error);
-        return DEFAULT_SETTINGS;
-      }
-      
-      const settings = data as unknown as SiteSettings;
-      
-      const finalSettings = { 
-        ...DEFAULT_SETTINGS,
-        ...settings 
-      };
-
-      finalSettings.whatsapp = "01006395252";
-
-      return finalSettings;
-    },
-    staleTime: 1000 * 30,
-  });
+  return {
+    data: staticSettings,
+    isLoading: false,
+    error: null
+  };
 };
 

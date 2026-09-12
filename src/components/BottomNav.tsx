@@ -1,49 +1,17 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, LayoutGrid, ShoppingCart, BookText, User } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
-import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 
 const BottomNav = () => {
   const location = useLocation();
   const { totalItems } = useCart();
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    const checkAdmin = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        setIsAdmin(false);
-        return;
-      }
-      const { data: roleData } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", session.user.id)
-        .eq("role", "admin")
-        .maybeSingle();
-      setIsAdmin(!!roleData);
-    };
-    checkAdmin();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) {
-        checkAdmin();
-      } else {
-        setIsAdmin(false);
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
 
   const navItems = [
     { label: "الرئيسية", icon: Home, href: "/" },
     { label: "المنتجات", icon: LayoutGrid, href: "/products" },
     { label: "السلة", icon: ShoppingCart, href: "/cart", badge: totalItems },
     { label: "المقالات", icon: BookText, href: "/articles" },
-    ...(isAdmin ? [{ label: "حسابي", icon: User, href: "/admin" }] : []),
   ];
 
   const isActive = (href: string) => {

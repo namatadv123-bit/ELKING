@@ -1,7 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { Link, useSearchParams } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
@@ -49,31 +47,15 @@ const Products = () => {
 
   const activeCategoryId = selectedCategoryObj?.id || selectedCategory;
 
-  const { data: dynamicProducts, isLoading: isQueryLoading } = useQuery({
-    queryKey: ["products-all"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("products")
-        .select("*, categories(name, slug)")
-        .order("created_at", { ascending: false });
-      if (error || !data || data.length === 0) {
-        if (error) console.warn("Dynamic products fetch failed", error);
-        return staticProducts;
-      }
-      return data as unknown as Product[];
-    },
-    staleTime: 1000 * 60, // 1 min
-  });
-
-  const isLoading = !dynamicProducts && isQueryLoading;
+  const isLoading = false;
   
   const displayProducts = useMemo(() => {
-    let products = dynamicProducts || staticProducts;
+    let products = staticProducts;
     if (activeCategoryId) {
       products = products.filter(p => p.category_id === activeCategoryId || p.categories?.slug === activeCategoryId);
     }
     return products;
-  }, [activeCategoryId, dynamicProducts]);
+  }, [activeCategoryId]);
 
   // AI-powered smart search: fuzzy match on name, description, category
   const filteredProducts = useMemo(() => {

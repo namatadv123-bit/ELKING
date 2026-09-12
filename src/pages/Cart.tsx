@@ -6,13 +6,11 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { Trash2, Plus, Minus, ShoppingCart, ArrowRight, Loader2, Package, MapPin } from "lucide-react";
 
 import { useSiteSettings } from "@/hooks/useSiteSettings";
-import { sendOrderEmail } from "@/utils/sendOrderEmail";
 
 // Split the token to avoid GitHub Secret Scanner false positives for public keys
 const MAPBOX_TOKEN = ["pk.eyJ1IjoiaGtnamhmYmZ", "2emQiLCJhIjoiY200eHo1MGxoMHR2cjJt", "czhkZGthcXdzMCJ9.0cagdqC-ZhTdRhgrx5bx8A"].join("");
@@ -97,40 +95,24 @@ const Cart = () => {
     const locationLink = location ? `\nرابط الموقع: https://www.google.com/maps?q=${location.lat},${location.lng}` : "";
     const fullAddress = form.address.trim() + locationLink;
 
-    const orders = items.map((item) => ({
-      customer_name: form.name.trim(),
-      customer_phone: form.phone.trim(),
-      customer_address: fullAddress,
-      customer_email: form.email.trim() || null,
-      product_id: item.id,
-      product_name: item.name,
-      quantity: item.quantity,
-      notes: form.notes.trim() || null,
-      status: 'pending'
-    }));
+    const whatsappMessage = `طلب جديد:\n\n` + 
+      items.map(i => `- ${i.name} (${i.quantity} قطعة) = ${i.price * i.quantity} ج.م`).join('\n') +
+      `\n\nالإجمالي: ${totalPrice} ج.م\n` +
+      `\nالاسم: ${form.name.trim()}` +
+      `\nرقم الهاتف: ${form.phone.trim()}` +
+      `\nالعنوان: ${fullAddress}` +
+      (form.notes.trim() ? `\nملاحظات: ${form.notes.trim()}` : ``);
 
-    const { error } = await supabase.from("orders").insert(orders as any);
+    const targetPhone = settings?.whatsapp || "01006395252";
+    const waLink = `https://wa.me/2${targetPhone}?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    window.open(waLink, '_blank');
+
+    toast.success("تم تحويلك للواتساب لإتمام الطلب!");
+    clearCart();
+    setForm({ name: "", phone: "", address: "", email: "", notes: "" });
+    setLocation(null);
     setLoading(false);
-
-    if (error) {
-      toast.error("حدث خطأ، حاول مرة أخرى");
-    } else {
-      // Send email notification
-      await sendOrderEmail({
-        customerName: form.name.trim(),
-        customerPhone: form.phone.trim(),
-        customerAddress: fullAddress,
-        customerEmail: form.email.trim(),
-        notes: form.notes.trim(),
-        items: items.map(i => ({ name: i.name, quantity: i.quantity, price: i.price })),
-        totalPrice: totalPrice
-      });
-
-      toast.success("تم إرسال طلبك بنجاح! سنتواصل معك قريباً لتأكيد الطلب.");
-      clearCart();
-      setForm({ name: "", phone: "", address: "", email: "", notes: "" });
-      setLocation(null);
-    }
   };
 
 

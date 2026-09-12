@@ -1,9 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
 import ProductCard from "./ProductCard";
-import { Loader2, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { staticProducts, staticCategories } from "@/data/products";
 
@@ -11,61 +8,13 @@ const FeaturedProducts = () => {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  // Fetch categories
-  const { data: categories = [] } = useQuery({
-    queryKey: ["categories"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("categories")
-        .select("*")
-        .order("name");
-      if (error || !data || data.length === 0) {
-         if (error) console.warn("Categories fetch failed", error);
-         return staticCategories;
-      }
-      return data;
-    },
-    initialData: staticCategories
-  });
-
-  const { data: products, isLoading: isQueryLoading } = useQuery({
-    queryKey: ["featured-products", selectedCategory],
-    queryFn: async () => {
-      let query = supabase
-        .from("products")
-        .select("*, categories(name, slug)")
-        .eq("is_active", true)
-        .order("created_at", { ascending: false });
-        
-      if (selectedCategory) {
-        query = query.eq("category_id", selectedCategory);
-      }
-      
-      const { data, error } = await query.limit(20);
-      if (error || !data || data.length === 0) {
-         if (error) console.warn("Featured products fetch failed", error);
-         let fallback = staticProducts.filter(p => p.is_active);
-         if (selectedCategory) fallback = fallback.filter(p => p.category_id === selectedCategory);
-         return fallback.slice(0, 8) as any;
-      }
-      
-      return data.slice(0, 8);
-    },
-    staleTime: 1000 * 60,
-  });
-
-  const isLoading = !products && isQueryLoading;
-
-  if (isLoading) {
-    return (
-      <div className="py-20 flex justify-center bg-background">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
-      </div>
-    );
+  const categories = staticCategories;
+  
+  let displayProducts = staticProducts.filter(p => p.is_active);
+  if (selectedCategory) {
+    displayProducts = displayProducts.filter(p => p.category_id === selectedCategory);
   }
-
-  // Remove marquee duplication
-  const displayProducts = products || [];
+  displayProducts = displayProducts.slice(0, 8);
 
   return (
     <section className="py-20 bg-background overflow-hidden relative">

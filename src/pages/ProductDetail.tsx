@@ -1,4 +1,4 @@
-﻿import { useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { staticProducts, Product } from "@/data/products";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -14,8 +14,7 @@ import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import DOMPurify from "dompurify";
 
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
+import DOMPurify from "dompurify";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -25,48 +24,11 @@ const ProductDetail = () => {
   // Find the product statically based on slug or ID
   const staticProduct = staticProducts.find(p => p.slug === id || p.slug === decodeURIComponent(id!) || p.id === id) as Product;
   
-  const { data: product, isLoading: isQueryLoading } = useQuery({
-    queryKey: ["product", id],
-    queryFn: async () => {
-      // Allow searching by id or slug
-      let query = supabase.from("products").select("*, categories(name, slug)");
-      
-      const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id!);
-      
-      if (isUUID) {
-        query = query.eq('id', id);
-      } else {
-        query = query.eq('slug', decodeURIComponent(id!));
-      }
-      
-      const { data, error } = await query.single();
-        
-      if (error) {
-        console.warn("Dynamic fetch failed", error);
-        return staticProduct; // fallback to static if network fails
-      }
-      return data as unknown as Product;
-    },
-    staleTime: 1000 * 60, // 1 min
-  });
-
-  const p = product || staticProduct;
-  const isLoading = !p && isQueryLoading;
+  const p = staticProduct;
   const similarProducts = p ? staticProducts
     .filter(item => item.category_id === p.category_id && item.id !== p.id)
     .slice(0, 4) : [];
   const mainImage = selectedImage || p?.image_url;
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background flex flex-col">
-        <Navbar />
-        <div className="flex-1 flex items-center justify-center">
-          <Loader2 className="w-10 h-10 animate-spin text-primary" />
-        </div>
-      </div>
-    );
-  }
 
   if (!p) {
     return (

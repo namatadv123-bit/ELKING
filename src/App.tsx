@@ -19,20 +19,6 @@ const Cart = lazy(() => import("./pages/Cart"));
 const Articles = lazy(() => import("./pages/Articles"));
 const ArticleDetail = lazy(() => import("./pages/ArticleDetail"));
 const Services = lazy(() => import("./pages/Services"));
-const AdminLogin = lazy(() => import("./pages/AdminLogin"));
-const AdminLayout = lazy(() => import("./components/AdminLayout"));
-const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
-const AdminProducts = lazy(() => import("./pages/admin/AdminProducts"));
-const AdminOrders = lazy(() => import("./pages/admin/AdminOrders"));
-const AdminMessages = lazy(() => import("./pages/admin/AdminMessages"));
-const AdminBanners = lazy(() => import("./pages/admin/AdminBanners"));
-const AdminArticles = lazy(() => import("./pages/admin/AdminArticles"));
-const AdminCategories = lazy(() => import("./pages/admin/AdminCategories"));
-const AdminDiscounts = lazy(() => import("./pages/admin/AdminDiscounts"));
-const AdminServices = lazy(() => import("./pages/admin/AdminServices"));
-const AdminSettings = lazy(() => import("./pages/admin/AdminSettings"));
-const AdminTestimonials = lazy(() => import("./pages/admin/AdminTestimonials"));
-const AdminAnalytics = lazy(() => import("./pages/admin/AdminAnalytics"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 
 const queryClient = new QueryClient({
@@ -86,24 +72,7 @@ const AppContent = () => {
               <Route path="/services" element={<Services />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               
-              {/* Admin Auth */}
-              <Route path="/admin/login" element={<AdminLogin />} />
-              
-              {/* Admin Routes */}
-              <Route path="/admin" element={<AdminLayout />}>
-                <Route index element={<AdminDashboard />} />
-                <Route path="products" element={<AdminProducts />} />
-                <Route path="orders" element={<AdminOrders />} />
-                <Route path="messages" element={<AdminMessages />} />
-                <Route path="banners" element={<AdminBanners />} />
-                <Route path="articles" element={<AdminArticles />} />
-                <Route path="categories" element={<AdminCategories />} />
-                <Route path="discounts" element={<AdminDiscounts />} />
-                <Route path="services" element={<AdminServices />} />
-                <Route path="settings" element={<AdminSettings />} />
-                <Route path="testimonials" element={<AdminTestimonials />} />
-                <Route path="analytics" element={<AdminAnalytics />} />
-              </Route>
+              {/* Admin Routes Removed */}
               
               <Route path="*" element={<NotFound />} />
             </Routes>

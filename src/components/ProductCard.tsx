@@ -1,9 +1,7 @@
 import { memo, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useCart } from "@/contexts/CartContext";
-import { toast } from "sonner";
 import { optimizeImageUrl } from "@/utils/imageOptimizer";
 
 interface ProductCardProps {
@@ -25,15 +23,10 @@ interface ProductCardProps {
 
 const stripHtml = (html: string) => html.replace(/<[^>]*>?/gm, "");
 
+const WHATSAPP_PHONE = "201006395252";
+
 const ProductCard = memo(({ product, onOrder, linkTo }: ProductCardProps) => {
   const href = linkTo || `/products/${product.slug || product.id}`;
-  const { addItem } = useCart();
-
-  const discount = product.discount_percentage || 0;
-  const finalPrice = useMemo(
-    () => (discount > 0 ? product.price - (product.price * discount) / 100 : product.price),
-    [product.price, discount]
-  );
 
   const optimizedImage = useMemo(() => optimizeImageUrl(product.image_url), [product.image_url]);
 
@@ -42,14 +35,14 @@ const ProductCard = memo(({ product, onOrder, linkTo }: ProductCardProps) => {
     [product.description]
   );
 
-  const handleAddToCart = useCallback(
+  const handleWhatsApp = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      addItem({ id: product.id, name: product.name, price: finalPrice, image_url: product.image_url });
-      toast.success(`تمت إضافة "${product.name}" للسلة`);
+      const msg = `السلام عليكم، عايز أطلب "${product.name}" بالجملة.\n\nالكود: ${product.id}\nالكمية: ___ دستة`;
+      window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`, "_blank");
     },
-    [addItem, product.id, product.name, product.image_url, finalPrice]
+    [product.name, product.id]
   );
 
   return (
@@ -84,19 +77,20 @@ const ProductCard = memo(({ product, onOrder, linkTo }: ProductCardProps) => {
                 {product.categories.name}
               </span>
             )}
-            {discount > 0 && (
-              <span className="text-[10px] md:text-[11px] uppercase tracking-widest font-bold bg-red-600/90 backdrop-blur-md text-white px-3 py-1.5 rounded-full shadow-sm">
-                خصم {discount}%
+            {product.unit && (
+              <span className="text-[10px] md:text-[11px] font-bold bg-primary/90 backdrop-blur-md text-black px-3 py-1.5 rounded-full shadow-sm">
+                {product.unit}
               </span>
             )}
           </div>
 
           <button 
-            onClick={handleAddToCart}
-            className="absolute bottom-3 left-3 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-primary/90 backdrop-blur-md text-black shadow-[0_0_15px_rgba(212,175,55,0.4)] active:scale-95 hover:bg-primary transition-all translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
-            aria-label="أضف للسلة"
+            onClick={handleWhatsApp}
+            className="absolute bottom-3 left-3 z-20 flex items-center gap-1.5 px-3 py-2 rounded-full bg-green-600/90 backdrop-blur-md text-white shadow-lg active:scale-95 hover:bg-green-500 transition-all translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+            aria-label="اطلب عبر الواتساب"
           >
-            <Plus className="w-5 h-5" />
+            <MessageCircle className="w-4 h-4" />
+            <span className="text-[11px] font-bold">اطلب</span>
           </button>
         </div>
 
@@ -106,28 +100,20 @@ const ProductCard = memo(({ product, onOrder, linkTo }: ProductCardProps) => {
               {product.name}
             </h3>
             {plainDescription && (
-              <p className="text-[11px] md:text-xs text-muted-foreground/80 font-light mb-4 line-clamp-2 leading-relaxed"
+              <p className="text-[11px] md:text-xs text-muted-foreground/80 font-light mb-3 line-clamp-2 leading-relaxed"
                  title={plainDescription}>
                 {plainDescription}
               </p>
             )}
           </div>
           
-          <div className="flex items-center justify-between mt-auto">
-            <div className="flex flex-col">
-              {discount > 0 && (
-                <span className="text-xs text-muted-foreground line-through font-en opacity-70">
-                  {product.price.toLocaleString("en-US")} ج.م
-                </span>
-              )}
-              <div className="flex items-baseline gap-1">
-                <span className="text-lg md:text-xl font-bold text-foreground tracking-wide font-en">
-                  {finalPrice.toLocaleString("en-US")}
-                </span>
-                <span className="text-[10px] text-primary font-medium">ج.م</span>
-              </div>
-            </div>
-          </div>
+          <button
+            onClick={handleWhatsApp}
+            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-green-600 hover:bg-green-500 text-white text-sm font-bold transition-colors mt-auto"
+          >
+            <MessageCircle className="w-4 h-4" />
+            <span>اطلب عبر الواتساب</span>
+          </button>
         </div>
       </Link>
     </motion.div>

@@ -6,18 +6,17 @@ import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { Loader2, ArrowRight, ShoppingCart, Star, Shield, Truck, ChevronLeft } from "lucide-react";
-import { useCart } from "@/contexts/CartContext";
-import { toast } from "sonner";
+import { ArrowRight, MessageCircle, Star, Truck, ChevronLeft } from "lucide-react";
 import ProductSchema from "@/components/ProductSchema";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import DOMPurify from "dompurify";
 
 
+const WHATSAPP_PHONE = "201006395252";
+
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const { addItem } = useCart();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   // Find the product statically based on slug or ID
@@ -48,13 +47,10 @@ const ProductDetail = () => {
   const gallery = p?.image_urls && Array.isArray(p.image_urls) 
     ? [p.image_url, ...p.image_urls].filter((url): url is string => !!url) 
     : [p?.image_url].filter((url): url is string => !!url);
-    
-  const discount = p?.discount_percentage || 0;
-  const finalPrice = discount > 0 ? p.price - (p.price * discount / 100) : p.price;
 
-  const handleAddToCart = () => {
-    addItem({ id: p.id, name: p.name, price: finalPrice, image_url: mainImage });
-    toast.success(`تمت إضافة "${p.name}" للسلة`);
+  const handleWhatsApp = () => {
+    const msg = `السلام عليكم، عايز أطلب "${p.name}" بالجملة.\n\nالكود: ${p.id}\nالكمية: ___ دستة`;
+    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   return (
@@ -69,7 +65,7 @@ const ProductDetail = () => {
         <meta name="twitter:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من مصنع الكينج.`} />
         <meta name="twitter:image" content={mainImage || '/images/product-1.webp'} />
       </Helmet>
-      <ProductSchema product={p} finalPrice={finalPrice} />
+      <ProductSchema product={p} finalPrice={p.price} />
       <Navbar />
       <section className="pt-24 pb-12">
         <div className="container mx-auto px-4">
@@ -101,11 +97,6 @@ const ProductDetail = () => {
                 {p.is_featured && (
                   <Badge className="absolute top-4 right-4 font-cairo text-sm px-3 py-1" style={{ background: "var(--premium-gradient)" }}>
                     ⭐ منتج مميز
-                  </Badge>
-                )}
-                {discount > 0 && (
-                  <Badge className="absolute top-4 left-4 font-cairo text-sm px-3 py-1 bg-red-600 text-white hover:bg-red-700">
-                    خصم {discount}%
                   </Badge>
                 )}
               </div>
@@ -150,29 +141,9 @@ const ProductDetail = () => {
                 <span className="text-sm font-cairo text-muted-foreground">(تقييم العملاء)</span>
               </div>
 
-              <div className="flex flex-col gap-1 mb-6">
-                {discount > 0 && (
-                  <p className="text-xl font-cairo text-muted-foreground line-through opacity-70">
-                    {Number(p.price).toLocaleString("ar-EG")} <span className="text-sm mr-1">ج.م</span>
-                  </p>
-                )}
-                <p className="text-3xl font-cairo font-extrabold text-gradient">
-                  {Number(finalPrice).toLocaleString("ar-EG")} <span className="text-lg font-bold text-muted-foreground mr-1">ج.م</span>
-                </p>
-                {p.unit && (
-                  <span className="text-sm md:text-lg font-cairo text-muted-foreground/70">لكل {p.unit}</span>
-                )}
-                {p.stock_quantity <= 5 && p.stock_quantity > 0 && (
-                  <span className="text-xs font-cairo text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-100 w-fit mt-1">
-                    متبقي {p.stock_quantity} {p.unit} فقط!
-                  </span>
-                )}
-                {p.stock_quantity === 0 && (
-                  <span className="text-xs font-cairo text-destructive bg-destructive/5 px-2 py-0.5 rounded-full border border-destructive/20 w-fit mt-1">
-                    نفذت الكمية حالياً
-                  </span>
-                )}
-              </div>
+              {p.unit && (
+                <p className="text-lg font-cairo text-muted-foreground mb-4">الوحدة: <span className="font-bold text-foreground">{p.unit}</span></p>
+              )}
 
               {p.description && (
                 <div 
@@ -195,12 +166,11 @@ const ProductDetail = () => {
 
               <Button
                 size="lg"
-                className="font-cairo text-lg gap-2 py-6 rounded-xl w-full sm:w-auto"
-                style={{ background: "var(--premium-gradient)" }}
-                onClick={handleAddToCart}
+                className="font-cairo text-lg gap-2 py-6 rounded-xl w-full bg-green-600 hover:bg-green-500 text-white"
+                onClick={handleWhatsApp}
               >
-                <ShoppingCart className="w-5 h-5" />
-                أضف للسلة
+                <MessageCircle className="w-5 h-5" />
+                اطلب عبر الواتساب
               </Button>
             </motion.div>
           </div>

@@ -50,7 +50,7 @@ export const staticProducts: Product[] = [
     description: "<p>ليجن كولون قطني مضلع بلون أحمر غامق مميز. مناسب للمدرسة والخروجات. خامة قطنية تسمح بتهوية البشرة.</p><ul><li>100% قطن مصري</li><li>لون ثابت</li><li>مناسب للمدرسة والخروج</li></ul>",
     price: 85,
     category_id: "leggings",
-    image_url: "/images/product-3.webp",
+    image_url: "/images/product-11.webp",
     is_active: true,
     is_featured: false,
     slug: "ليجن-كولون-قطني-مضلع-احمر",
@@ -78,7 +78,7 @@ export const staticProducts: Product[] = [
     description: "<p>ليجن مخملي مضلع بألوان متنوعة: أبيض، وردي، بيج، أسود، رمادي. خامة مخملي فاخرة توفر دفئاً وراحة. مناسب للشتاء والخروجات.</p><ul><li>خامة مخملي دافئة</li><li>ألوان متعددة</li><li>مناسبة للشتاء</li></ul>",
     price: 100,
     category_id: "leggings",
-    image_url: "/images/product-5.webp",
+    image_url: "/images/product-10.webp",
     is_active: true,
     is_featured: true,
     slug: "ليجن-خملي-مضلع-ملون",
@@ -92,7 +92,7 @@ export const staticProducts: Product[] = [
     description: "<p>ليجن مضلع بتصميم أنيق بألوان ناعمة: أبيض، وردي، أسود، رمادي. مناسب للخروجات والمناسبات. خامة قطنية مريحة.</p><ul><li>تصميم أنيق</li><li>خامة قطنية مريحة</li><li>ألوان ناعمة</li></ul>",
     price: 85,
     category_id: "leggings",
-    image_url: "/images/product-6.webp",
+    image_url: "/images/product-12.webp",
     is_active: true,
     is_featured: false,
     slug: "ليجن-مضلع-انيق-ملون",
@@ -299,7 +299,7 @@ export const staticProducts: Product[] = [
 ];
 
 export const staticCategories = [
-  { id: "leggings", name: "ليجن بناتي", image_url: "/images/product-3.webp", slug: "leggings", icon: "👗" },
-  { id: "tights", name: "كولون بناتي", image_url: "/images/product-6.webp", slug: "tights", icon: "👕" },
-  { id: "basics", name: "بيزك", image_url: "/images/product-5.webp", slug: "basics", icon: "✨" }
+  { id: "leggings", name: "ليجن بناتي", image_url: "/images/product-1.webp", slug: "leggings", icon: "👗" },
+  { id: "tights", name: "كولون بناتي", image_url: "/images/product-4.webp", slug: "tights", icon: "👕" },
+  { id: "basics", name: "بيزك", image_url: "/images/product-8.webp", slug: "basics", icon: "✨" }
 ];

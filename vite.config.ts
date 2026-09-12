@@ -41,7 +41,7 @@ export default defineConfig(({ mode }) => ({
             "@radix-ui/react-separator",
           ],
           "motion-vendor": ["framer-motion"],
-          "charts-vendor": ["recharts"],
+
         },
       },
     },

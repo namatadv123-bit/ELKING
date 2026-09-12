@@ -38,7 +38,7 @@ const Footer = () => {
               <div className="w-12 h-12 rounded-xl bg-card border border-border flex items-center justify-center overflow-hidden shadow-sm">
                 <img 
                   src={settings?.logo_url || "/logo-main.webp"} 
-                  alt="Logo" 
+                  alt="شعار مصنع الكينج - أفضل مصنع ملابس أطفال بالجملة في مصر" 
                   className="w-8 h-8 object-contain"
                 />
               </div>

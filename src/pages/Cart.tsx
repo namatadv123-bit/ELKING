@@ -161,7 +161,7 @@ const Cart = () => {
                     >
                       <div className="w-20 h-20 rounded-xl bg-secondary/30 overflow-hidden flex-shrink-0">
                         {item.image_url ? (
-                          <img src={item.image_url} alt={item.name} className="w-full h-full object-cover" />
+                          <img src={item.image_url} alt={`شراء ${item.name} - مصنع الكينج`} className="w-full h-full object-cover" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
                             <Package className="w-6 h-6 text-muted-foreground/40" />

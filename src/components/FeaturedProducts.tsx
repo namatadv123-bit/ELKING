@@ -49,7 +49,7 @@ const FeaturedProducts = () => {
                   <div className="absolute inset-0">
                     <img 
                       src={category.image_url} 
-                      alt={category.name} 
+                      alt={`تصنيف ${category.name} - مصنع الكينج للملابس بالجملة`} 
                       loading="lazy"
                       width={128}
                       height={128}

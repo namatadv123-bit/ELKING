@@ -324,7 +324,7 @@ const ProductListItem = ({ product }: { product: Product }) => {
       <Link to={`/products/${product.slug || product.id}`} className="shrink-0 relative">
         <div className="w-24 h-24 md:w-36 md:h-36 rounded-xl md:rounded-2xl overflow-hidden bg-secondary/30">
           {product.image_url ? (
-            <img src={product.image_url} alt={product.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src={product.image_url} alt={`ليجن بناتي وملابس أطفال بالجملة - ${product.name}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-muted-foreground text-[10px] md:text-xs font-cairo">لا صورة</div>
           )}

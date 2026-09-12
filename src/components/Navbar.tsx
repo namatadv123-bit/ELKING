@@ -121,7 +121,7 @@ const Navbar = () => {
             >
               <img 
                 src={settings?.logo_url || "/logo/logo.webp"} 
-                alt="Logo" 
+                alt="شعار مصنع الكينج لليجن والكولون وملابس الأطفال بالجملة" 
                 className="w-full h-full object-contain"
               />
             </div>

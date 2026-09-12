@@ -31,7 +31,7 @@ const Articles = () => {
                 >
                   {article.image_url ? (
                     <div className="h-48 overflow-hidden">
-                      <img src={article.image_url} alt={article.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                      <img src={article.image_url} alt={`مقال: ${article.title} - مدونة مصنع الكينج`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                     </div>
                   ) : (
                     <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">

@@ -46,13 +46,13 @@ const ArticlesSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-2xl" />
                 {article.image_url && (
                   <div className="h-48 overflow-hidden">
-                    <img src={article.image_url} alt={article.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <img src={article.image_url} alt={`اقرأ عن ${article.title} - مصنع الكينج`} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                 )}
                 <div className="p-6 relative z-10">
                   <div className="flex items-center gap-2 text-xs text-muted-foreground font-cairo mb-3">
                     <Calendar className="w-3.5 h-3.5" />
-                    {new Date(article.published_at || article.created_at).toLocaleDateString("ar-EG")}
+                    {new Date(article.published_at).toLocaleDateString("ar-EG")}
                   </div>
                   <h3 className="font-cairo font-bold text-foreground text-lg mb-2 group-hover:text-primary transition-colors">{article.title}</h3>
                   {article.excerpt && <p className="text-sm text-muted-foreground font-cairo line-clamp-2">{article.excerpt}</p>}

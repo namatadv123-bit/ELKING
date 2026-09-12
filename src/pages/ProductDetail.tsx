@@ -14,7 +14,6 @@ import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import DOMPurify from "dompurify";
 
-import DOMPurify from "dompurify";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -95,11 +94,10 @@ const ProductDetail = () => {
             >
               <div className="bg-secondary/20 rounded-3xl overflow-hidden border border-border aspect-square flex items-center justify-center relative">
                 {mainImage ? (
-                  <img src={mainImage} alt={p.name} className="w-full h-full object-cover" />
+                  <img src={mainImage} alt={`شراء ${p.name} من مصنع الكينج لملابس الأطفال بالجملة`} className="w-full h-full object-cover" />
                 ) : (
                   <div className="text-muted-foreground font-cairo">لا توجد صورة</div>
                 )}
-                
                 {p.is_featured && (
                   <Badge className="absolute top-4 right-4 font-cairo text-sm px-3 py-1" style={{ background: "var(--premium-gradient)" }}>
                     ⭐ منتج مميز
@@ -120,7 +118,7 @@ const ProductDetail = () => {
                       onClick={() => setSelectedImage(img)}
                       className={`w-20 h-20 rounded-xl overflow-hidden border-2 transition-all ${selectedImage === img || (!selectedImage && i === 0) ? "border-primary scale-105" : "border-transparent opacity-60 hover:opacity-100"}`}
                     >
-                      <img src={img} alt={`${product.name} ${i}`} className="w-full h-full object-cover" />
+                      <img src={img} alt={`صورة إضافية للمنتج ${p.name} - مصنع الكينج`} className="w-full h-full object-cover" />
                     </button>
                   ))}
                 </div>

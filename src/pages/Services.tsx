@@ -2,7 +2,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { staticServices } from "@/data/services";
-import * as Icons from "lucide-react";
+import { ShieldCheck, Tags, Truck } from "lucide-react";
+
+const iconMap: Record<string, any> = { ShieldCheck, Tags, Truck };
 
 const Services = () => {
   const services = staticServices;
@@ -29,7 +31,7 @@ const Services = () => {
           {services && services.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, i) => {
-                const Icon = (Icons as any)[service.icon] || Icons.ShieldCheck;
+                const Icon = iconMap[service.icon] || ShieldCheck;
                 return (
                   <motion.div
                     key={service.id}

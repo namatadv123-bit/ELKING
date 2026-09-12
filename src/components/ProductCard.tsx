@@ -64,7 +64,7 @@ const ProductCard = memo(({ product, onOrder, linkTo }: ProductCardProps) => {
           {product.image_url ? (
             <img
               src={optimizedImage}
-              alt={product.name}
+              alt={`منتج ${product.name} - مصنع الكينج لليجن والكولون`}
               loading="lazy"
               width="400"
               height="400"

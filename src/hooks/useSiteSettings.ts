@@ -46,7 +46,7 @@ export const staticSettings: SiteSettings = {
   address: "القاهرة، مصر",
   hero_image: "/1ab01d34-6c68-4b48-9a19-a5cea34c11cb.webp",
   about_image: "",
-  features_image: "/images/product-18.webp",
+  features_image: "/images/dadadub-fawater-dafaya.webp",
   footer_image: "",
   features_title: "لماذا تختار مصنع الكينج؟",
   features_bottom_text: "نسعى دائماً لتقديم الأفضل لعملائنا.",

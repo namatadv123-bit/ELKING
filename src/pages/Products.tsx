@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Loader2, Search, SlidersHorizontal, LayoutGrid, List, Sparkles, X } from "lucide-react";
+import { Loader2, Search, SlidersHorizontal, LayoutGrid, List, MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/contexts/CartContext";
@@ -307,13 +307,14 @@ const Products = () => {
   );
 };
 
+const WHATSAPP_PHONE = "201006395252";
+
 const ProductListItem = ({ product }: { product: Product }) => {
-  const { addItem } = useCart();
-  const handleAdd = (e: React.MouseEvent) => {
+  const handleWhatsApp = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    addItem({ id: product.id, name: product.name, price: product.price, image_url: product.image_url });
-    toast.success(`تمت إضافة "${product.name}" للسلة`);
+    const msg = `السلام عليكم، عايز أطلب "${product.name}" بالجملة.\n\nالكود: ${product.id}\nالكمية: ___ دستة`;
+    window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   return (
@@ -324,7 +325,7 @@ const ProductListItem = ({ product }: { product: Product }) => {
       <Link to={`/products/${product.slug || product.id}`} className="shrink-0 relative">
         <div className="w-24 h-24 md:w-36 md:h-36 rounded-xl md:rounded-2xl overflow-hidden bg-secondary/30">
           {product.image_url ? (
-            <img src={product.image_url} alt={`ليجن بناتي وملابس أطفال بالجملة - ${product.name}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src={product.image_url} alt={`${product.name} - مصنع الكينج`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-muted-foreground text-[10px] md:text-xs font-cairo">لا صورة</div>
           )}
@@ -343,17 +344,13 @@ const ProductListItem = ({ product }: { product: Product }) => {
               </span>
             )}
           </div>
-          <p className="text-xs md:text-sm text-muted-foreground font-cairo line-clamp-2 leading-relaxed">{product.description}</p>
+          <p className="text-xs md:text-sm text-muted-foreground font-cairo line-clamp-2 leading-relaxed">{product.description?.replace(/<[^>]*>/g, '')}</p>
         </div>
         
-        <div className="flex items-center justify-between mt-3">
-          <span className="text-sm md:text-2xl font-cairo font-black text-primary whitespace-nowrap">
-            {product.price.toLocaleString("ar-EG")} <span className="text-[10px] md:text-sm font-bold text-muted-foreground">ج.م</span>
-          </span>
-          <Button size="sm" onClick={handleAdd} className="font-cairo gap-1.5 text-xs md:text-sm h-8 md:h-10 px-3 md:px-5 rounded-xl shadow-md transition-all hover:scale-105 bg-premium-gradient">
-            <ShoppingCart className="w-3.5 h-3.5 md:w-4 md:h-4" />
-            <span className="hidden sm:inline">إضافة للسلة</span>
-            <span className="sm:hidden">أضف</span>
+        <div className="flex items-center justify-end mt-3">
+          <Button size="sm" onClick={handleWhatsApp} className="font-cairo gap-1.5 text-xs md:text-sm h-8 md:h-10 px-3 md:px-5 rounded-xl shadow-md transition-all hover:scale-105 bg-green-600 hover:bg-green-500 text-white">
+            <MessageCircle className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            <span>اطلب عبر الواتساب</span>
           </Button>
         </div>
       </div>

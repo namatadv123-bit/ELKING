@@ -96,9 +96,8 @@ const Cart = () => {
     const fullAddress = form.address.trim() + locationLink;
 
     const whatsappMessage = `طلب جديد:\n\n` + 
-      items.map(i => `- ${i.name} (${i.quantity} قطعة) = ${i.price * i.quantity} ج.م`).join('\n') +
-      `\n\nالإجمالي: ${totalPrice} ج.م\n` +
-      `\nالاسم: ${form.name.trim()}` +
+      items.map(i => `- ${i.name} (${i.quantity} ${i.unit || 'دستة'})`).join('\n') +
+      `\n\nالاسم: ${form.name.trim()}` +
       `\nرقم الهاتف: ${form.phone.trim()}` +
       `\nالعنوان: ${fullAddress}` +
       (form.notes.trim() ? `\nملاحظات: ${form.notes.trim()}` : ``);
@@ -175,8 +174,8 @@ const Cart = () => {
                             {item.name}
                           </h3>
                         </Link>
-                        <p className="text-sm font-cairo font-extrabold text-gradient mt-1">
-                          {item.price.toLocaleString("ar-EG")} ج.م
+                        <p className="text-sm font-cairo text-muted-foreground mt-1">
+                          {item.unit || 'دستة'}
                         </p>
                       </div>
 
@@ -201,8 +200,8 @@ const Cart = () => {
                         </Button>
                       </div>
 
-                      <p className="font-cairo font-extrabold text-foreground min-w-[80px] text-center hidden sm:block">
-                        {(item.price * item.quantity).toLocaleString("ar-EG")} ج.م
+                      <p className="font-cairo font-bold text-foreground min-w-[80px] text-center hidden sm:block">
+                        {item.quantity} {item.unit || 'دستة'}
                       </p>
 
                       <Button
@@ -230,19 +229,15 @@ const Cart = () => {
                     {items.map((item) => (
                       <div key={item.id} className="flex justify-between text-sm font-cairo">
                         <span className="text-muted-foreground truncate ml-2">
-                          {item.name} × {item.quantity}
-                        </span>
-                        <span className="font-bold text-foreground flex-shrink-0">
-                          {(item.price * item.quantity).toLocaleString("ar-EG")} ج.م
+                          {item.name} × {item.quantity} {item.unit || 'دستة'}
                         </span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="flex justify-between items-center mb-6">
-                    <span className="font-cairo font-bold text-lg">الإجمالي</span>
-                    <span className="font-cairo font-extrabold text-2xl text-gradient">
-                      {totalPrice.toLocaleString("ar-EG")} ج.م
+                  <div className="flex justify-center items-center mb-6">
+                    <span className="font-cairo font-bold text-lg text-muted-foreground">
+                      سيتم تحديد الأسعار عبر الواتساب
                     </span>
                   </div>
 

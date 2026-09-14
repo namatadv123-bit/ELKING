@@ -53,19 +53,30 @@ const ProductDetail = () => {
     window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
+  const cleanDesc = p.description?.replace(/<[^>]*>/g, '').substring(0, 160) || `تسوق ${p.name} بأسعار الجملة من مصنع الكينج. خامة عالية الجودة، شحن سريع لجميع المحافظات.`;
+  const canonicalUrl = `https://elkingclo.com/products/${p.slug || p.id}`;
+
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>{p.name} - مصنع الكينج لليجن والكولون</title>
-        <meta name="description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من مصنع الكينج.`} />
+        <title>{`${p.name} | مصنع الكينج - شراء بالجملة`}</title>
+        <meta name="description" content={cleanDesc} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="product" />
         <meta property="og:title" content={`${p.name} - مصنع الكينج لليجن والكولون`} />
-        <meta property="og:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من مصنع الكينج.`} />
-        <meta property="og:image" content={mainImage || '/images/product-1.webp'} />
+        <meta property="og:description" content={cleanDesc} />
+        <meta property="og:image" content={mainImage || '/images/dadadub-fawater-dafaya.webp'} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="مصنع الكينج لليجن والكولون" />
+        <meta property="og:locale" content="ar_EG" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${p.name} - مصنع الكينج لليجن والكولون`} />
-        <meta name="twitter:description" content={p.description?.substring(0, 160) || `تسوق ${p.name} بأفضل سعر من مصنع الكينج.`} />
-        <meta name="twitter:image" content={mainImage || '/images/product-1.webp'} />
+        <meta name="twitter:description" content={cleanDesc} />
+        <meta name="twitter:image" content={mainImage || '/images/dadadub-fawater-dafaya.webp'} />
+        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content={`${p.name}, مصنع الكينج, بالجملة, ${p.categories?.name || ''}, فوطه دفايه, قطن ليكرا, ملابس أطفال`} />
       </Helmet>
-      <ProductSchema product={p} finalPrice={p.price} />
+      <ProductSchema product={p} finalPrice={0} />
       <Navbar />
       <section className="pt-24 pb-12">
         <div className="container mx-auto px-4">

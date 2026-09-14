@@ -55,7 +55,7 @@ const AboutSection = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/15 via-transparent to-red-500/10 z-10 pointer-events-none" />
                 <img
-                  src={settings?.about_image || "/images/product-2.webp"}
+                  src={settings?.about_image || "/images/dadadub-qotn-lycra.webp"}
                   alt="مصنع الكينج - ليجن بناتي جملة - ملابس أطفال بالجملة"
                   className="w-full h-full object-cover"
                 />

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useSiteSettings, type SiteSettings } from "@/hooks/useSiteSettings";
 
-const defaultShowcase = "/images/product-18.webp";
+const defaultShowcase = "/images/dadadub-fawater-dafaya.webp";
 
 const FeaturesSection = () => {
   const { data } = useSiteSettings();

@@ -75,7 +75,9 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="block text-foreground mb-1">ليجن بناتي جملة</span>
+            <span className="block text-foreground mb-1">
+              <span className="text-gradient">مصنع الكينج</span> ليجن بناتي جملة
+            </span>
             <span className="text-gradient block">
               كولون بناتي — نعومة وراحة تدوم
             </span>

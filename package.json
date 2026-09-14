@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:github": "cross-env VITE_BASE_PATH=/smartaffor/ vite build",
+    "build:github": "cross-env VITE_BASE_PATH=/ELKING/ vite build",
     "postbuild": "node -e \"const fs=require('fs');fs.copyFileSync('dist/index.html','dist/404.html')\" && node scripts/generate-seo-pages.js && node scripts/generate-sitemap.js",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
